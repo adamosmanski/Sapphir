@@ -12,6 +12,9 @@
         <DataTemplate DataType="{x:Type vm:ChatVM}">
             <local:ChatView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ProjectBoardVM}">
+            <local:ProjectBoard/>
+        </DataTemplate>
         <!--<DataTemplate DataType="{x:Type vm:KanbanBoardVM}">
             <local:KanbanBoard/>
         </DataTemplate>-->
@@ -119,7 +122,9 @@
             </StackPanel>
             <ContentControl Grid.RowSpan="4" Grid.Row="0"
                             Grid.Column="1" Grid.ColumnSpan="2" 
-                            Content="{Binding CurrentVM}" />            
+                            Content="{Binding CurrentVM}" />
+
+            
         </Grid>
     </Border>
 </Window>
