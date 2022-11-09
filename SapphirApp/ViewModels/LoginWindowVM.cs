@@ -79,6 +79,7 @@ namespace SapphirApp.ViewModels
             {
                 LoggedUser.Login = LoginName;
                 LoggedUser.Password = Password;
+                LoggedUser.ID = UserRepository.GetID(LoggedUser.Login);
                 LoggedUser.LevelAcces = UserRepository.GetAccesUser(LoginName);
                 isVisible = false;
             }
