@@ -46,5 +46,10 @@ namespace SapphirApp.Data.Repository
             }
             ///////////////////////////////////////////////// FLUENT STYLE 
         }
+        public int GetID(string Login)
+        {
+            var GetID = context.Users.Where(x => x.Login == Login).Select(x => x.Id).SingleOrDefault();
+            return GetID;
+        }
     }
 }
