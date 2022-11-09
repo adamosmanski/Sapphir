@@ -30,7 +30,7 @@ namespace SapphirApp.Data.Context
         {
             modelBuilder.Entity<Project>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
                 entity.Property(e => e.Description).IsUnicode(false);
@@ -43,7 +43,7 @@ namespace SapphirApp.Data.Context
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.Property(e => e.FirstName)
                     .HasMaxLength(20)
