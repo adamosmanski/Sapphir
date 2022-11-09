@@ -40,3 +40,17 @@ D:\Projekty\Sapphir.v1-main\Sapphir.v1-main\SapphireApp.Data\obj\Debug\net6.0-wi
 D:\Projekty\Sapphir.v1-main\Sapphir.v1-main\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.pdb
 D:\Projekty\Sapphir.v1-main\Sapphir.v1-main\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.genruntimeconfig.cache
 D:\Projekty\Sapphir.v1-main\Sapphir.v1-main\SapphireApp.Data\obj\Debug\net6.0-windows\ref\SapphirApp.Data.dll
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\bin\Debug\net6.0-windows\SapphirApp.Data.deps.json
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\bin\Debug\net6.0-windows\SapphirApp.Data.runtimeconfig.json
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\bin\Debug\net6.0-windows\SapphirApp.Data.dll
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\bin\Debug\net6.0-windows\SapphirApp.Data.pdb
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.csproj.AssemblyReference.cache
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.AssemblyInfoInputs.cache
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.AssemblyInfo.cs
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.csproj.CoreCompileInputs.cache
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.dll
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\refint\SapphirApp.Data.dll
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.pdb
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\SapphirApp.Data.genruntimeconfig.cache
+D:\Projekty\Sapphir\Sapphir\SapphireApp.Data\obj\Debug\net6.0-windows\ref\SapphirApp.Data.dll

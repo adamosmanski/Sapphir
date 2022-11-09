@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Projekty\Sapphir.v1-main\Sapphir.v1-main\SapphirApp\obj\Debug\net6.0-windows\
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\
 SapphirApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\Projekty\Sapphir.v1-main\Sapphir.v1-main\SapphirApp\App.xaml
+D:\Projekty\Sapphir\Sapphir\SapphirApp\App.xaml
 102103985739
 
 20-348334795
-230433741171
+230-2109385696
 Views\ChangingPassword.xaml;Views\ChatView.xaml;Views\Dictionary\ChangePasswordDict.xaml;Views\Dictionary\LogWindowDict.xaml;Views\Dictionary\NewProjectDict.xaml;Views\Dictionary\Templates.xaml;Views\LoginWindow.xaml;Views\Main.xaml;Views\NewProjectPopUp.xaml;Views\NotifyPopUp.xaml;
 
 False

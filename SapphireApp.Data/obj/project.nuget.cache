@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nD1+UEgze34399Szps5d0kX9YM4WXfrX+DxSEo5I0mqJjhXa50rDWLWUPBh5x1/WrsPUA4U8h51LOshOykAbkQ==",
+  "dgSpecHash": "bdgEvbu3jKNtuXxhdaAqYUXob+Qipp8XuMWdGmzNdrZOEAu8XK/TGjcP6574Z6rcugvpRot6ORav+bzGzaYedQ==",
   "success": true,
-  "projectFilePath": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\SapphirApp.Data.csproj",
+  "projectFilePath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\SapphirApp.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adamo\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphirApp\\SapphirApp.csproj": {}
+    "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\SapphirApp.csproj": {}
   },
   "projects": {
-    "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphirApp\\SapphirApp.csproj": {
+    "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\SapphirApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphirApp\\SapphirApp.csproj",
+        "projectUniqueName": "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\SapphirApp.csproj",
         "projectName": "SapphirApp",
-        "projectPath": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphirApp\\SapphirApp.csproj",
+        "projectPath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\SapphirApp.csproj",
         "packagesPath": "C:\\Users\\adamo\\.nuget\\packages\\",
-        "outputPath": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphirApp\\obj\\",
+        "outputPath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "e:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\SapphirApp.Data.csproj": {
-                "projectPath": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\SapphirApp.Data.csproj"
+              "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\SapphirApp.Data.csproj": {
+                "projectPath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\SapphirApp.Data.csproj"
               }
             }
           }
@@ -100,14 +100,14 @@
         }
       }
     },
-    "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\SapphirApp.Data.csproj": {
+    "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\SapphirApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\SapphirApp.Data.csproj",
+        "projectUniqueName": "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\SapphirApp.Data.csproj",
         "projectName": "SapphirApp.Data",
-        "projectPath": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\SapphirApp.Data.csproj",
+        "projectPath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\SapphirApp.Data.csproj",
         "packagesPath": "C:\\Users\\adamo\\.nuget\\packages\\",
-        "outputPath": "D:\\Projekty\\Sapphir.v1-main\\Sapphir.v1-main\\SapphireApp.Data\\obj\\",
+        "outputPath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphireApp.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "e:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

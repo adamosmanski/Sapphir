@@ -11,7 +11,7 @@ public partial class Project
 
     public string? Description { get; set; }
 
-    public string CreatedAt { get; set; } = null!;
+    public DateTime? CreatedAt { get; set; }
 
     public int? ModUser { get; set; }
 

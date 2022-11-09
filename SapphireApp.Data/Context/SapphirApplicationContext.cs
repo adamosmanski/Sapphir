@@ -32,7 +32,7 @@ namespace SapphirApp.Data.Context
             {
                 entity.HasNoKey();
 
-                entity.Property(e => e.CreatedAt).IsUnicode(false);
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
                 entity.Property(e => e.Description).IsUnicode(false);
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd()
