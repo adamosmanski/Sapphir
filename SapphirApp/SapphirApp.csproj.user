@@ -25,6 +25,9 @@
     <Compile Update="Views\NotifyPopUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ProjectBoard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\ChangingPassword.xaml">
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NotifyPopUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ProjectBoard.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
