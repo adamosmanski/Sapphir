@@ -1,0 +1,89 @@
+﻿<Window x:Class="SapphirApp.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SapphirApp.Views"
+        xmlns:vm="clr-namespace:SapphirApp.ViewModels"
+        xmlns:convert="clr-namespace:SapphirApp.Converter"
+        mc:Ignorable="d"
+        Title="Logowanie do systemu Sapphir"
+        Height="600" Width="400"
+        ResizeMode="NoResize"
+        Icon="pack://application:,,,/Assets/Normal/World.ico">
+    <Window.DataContext>
+        <vm:LoginWindowVM/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>        
+    </Window.Resources>
+    <Window.Visibility>
+        <Binding Path="isVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+    </Window.Visibility>
+    <Grid>
+        <Border CornerRadius="0"                    
+            BorderThickness="0"
+            Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>  
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Width="220"
+                            Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="0,35,0,0">
+                    <Image Source="pack://application:,,,/Assets/Normal/World.ico"
+                           Width="100" Height="100"/>
+                    <TextBlock Text="Login:" Style="{StaticResource LogTextblock}"/>
+                    <TextBox x:Name="txtUser"
+                             Style="{StaticResource LogTextbox}"
+                             Text="{Binding LoginName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/Assets/Normal/customer_30px.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Text="Hasło:" Style="{StaticResource LogTextblock}" />
+                    <PasswordBox x:Name="txtPass"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="35,0,0,0" 
+                             convert:PasswordHelper.Attach="True" convert:PasswordHelper.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/Assets/Normal/password_30px.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </PasswordBox.Background>
+                    </PasswordBox>
+                    <Button x:Name="btnLogin"                          
+                            Style="{StaticResource LogButton}"
+                            Content="Zaloguj"                           
+                            Command="{Binding CmdSubmitLogin}">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

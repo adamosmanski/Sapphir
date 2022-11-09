@@ -1,0 +1,16 @@
+﻿<Application x:Class="SapphirApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SapphirApp"             
+             Startup="Start">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/Dictionary/LogWindowDict.xaml"/>
+                <ResourceDictionary Source="Views/Dictionary/Templates.xaml"/>
+                <ResourceDictionary Source="Views/Dictionary/ChangePasswordDict.xaml"/>
+                <ResourceDictionary Source="Views/Dictionary/NewProjectDict.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

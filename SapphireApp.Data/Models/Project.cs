@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace SapphirApp.Data.Models;
+
+public partial class Project
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string? Description { get; set; }
+
+    public string CreatedAt { get; set; } = null!;
+
+    public int? ModUser { get; set; }
+
+    public DateTime? ModDate { get; set; }
+}
