@@ -8,6 +8,7 @@ namespace SapphirApp.Models
 {
     public static class LoggedUser
     {
+        public static int ID { get; set; }
         public static string? Login { get; set; }
         public static string? LevelAcces { get; set; }
         public static string? Password { get; set; }
