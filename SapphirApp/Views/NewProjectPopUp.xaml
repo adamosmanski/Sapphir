@@ -62,7 +62,7 @@
 
                     Style="{StaticResource NewProjectButton}"
                  Margin="120,0,0,0"/>
-                <Button 
+                <Button Command="{Binding CmdAdd}"
                     Grid.Column="1"
                     Content="Stwórz"
                     Style="{StaticResource NewProjectButton}"
