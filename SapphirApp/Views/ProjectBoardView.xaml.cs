@@ -19,9 +19,9 @@ namespace SapphirApp.Views
     /// <summary>
     /// Interaction logic for ProjectBoard.xaml
     /// </summary>
-    public partial class ProjectBoard : UserControl
+    public partial class ProjectBoardView : UserControl
     {
-        public ProjectBoard()
+        public ProjectBoardView()
         {
             InitializeComponent();
             DataContext = new ProjectBoardVM();

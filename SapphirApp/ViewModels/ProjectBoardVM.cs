@@ -16,7 +16,7 @@ namespace SapphirApp.ViewModels
     {
         ProjectRepository ProjectDTO;
         SapphirApplicationContext context = new SapphirApplicationContext();
-        public ObservableCollection<Project> ListBoxSource { get; set; }
+        public List<Project> ListBoxSource { get; set; }
 
         private Project _selectedBoard = new Project();
         public Project SelectedBoard
@@ -31,7 +31,7 @@ namespace SapphirApp.ViewModels
         public ProjectBoardVM()
         {
             ProjectDTO = new ProjectRepository(context);
-            ListBoxSource = new ObservableCollection<Project>((IEnumerable<Project>)ProjectDTO.GetAll());
+            ListBoxSource = (List<Project>)ProjectDTO.GetAllProject();
         }
 
 

@@ -25,21 +25,16 @@ namespace SapphirApp.ViewModels
         public MainVM()
         {
             CurrentVM = _currentVM;
-            
             CmdChangePassword = new RelayCommand(ChangePassword);
             CmdOpenChat = new RelayCommand(OpenChat);
             CmdKanbanBoard = new RelayCommand(OpenKanabnBoard);
             CmdNewProject = new RelayCommand(CreateNewProject);
-            Tablica();
         }
         public ICommand CmdChangePassword { get; }
         public ICommand CmdOpenChat { get; }
         public ICommand CmdKanbanBoard { get; }
         public ICommand CmdNewProject { get; }
-        private void Tablica()
-        {
-            CurrentVM = new ProjectBoardVM();
-        }
+
         public void CreateNewProject(object obj)
         {
             NewProjectPopUp window = new NewProjectPopUp();

@@ -316,6 +316,7 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\LoginWindo
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Main.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NewProjectPopUp.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NotifyPopUp.g.cs
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\ProjectBoardView.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\App.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp_MarkupCompile.cache
@@ -327,6 +328,7 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\LoginWindo
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Main.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NewProjectPopUp.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NotifyPopUp.baml
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\ProjectBoardView.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.g.resources
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.AssemblyInfoInputs.cache
@@ -338,5 +340,3 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\refint\SapphirAp
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.pdb
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.genruntimeconfig.cache
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\ref\SapphirApp.dll
-D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\ProjectBoard.g.cs
-D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\ProjectBoard.baml
