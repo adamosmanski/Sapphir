@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SapphirApp.Data.Models;
 
-public partial class Project
+public class Project
 {
     public int Id { get; set; }
 
