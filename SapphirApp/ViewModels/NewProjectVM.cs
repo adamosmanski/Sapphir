@@ -24,7 +24,7 @@ namespace SapphirApp.ViewModels
             CmdClose = new RelayCommand(Close);
             CmdAdd = new RelayCommand(Add);
         }
-        private Project _project = new Project();
+        private ProjectModel _project = new ProjectModel();
         private bool _isVisible = true;
         public bool IsVisible
         {
@@ -35,7 +35,7 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(IsVisible));
             }
         }
-        public Project Project
+        public ProjectModel Project
         {
             get => _project;
             set
