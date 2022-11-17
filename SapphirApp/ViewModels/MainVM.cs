@@ -43,7 +43,7 @@ namespace SapphirApp.ViewModels
         }
         public void OpenKanabnBoard(object obj)
         {
-            //CurrentVM = new KanbanBoardVM();
+            CurrentVM = new ProjectBoardVM();
         }
         public void OpenChat(object obj)
         {
