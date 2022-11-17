@@ -26,7 +26,7 @@ namespace SapphirApp.Data.Repository
         }
         public IEnumerable<Project> GetAllProject()
         {
-            var projects = context.Projects.ToList(); ;
+            var projects = context.Projects.ToList(); 
             return projects;
         }
     }
