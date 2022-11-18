@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:SapphirApp"             
              Startup="Start">
     <Application.Resources>
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views/Dictionary/LogWindowDict.xaml"/>
