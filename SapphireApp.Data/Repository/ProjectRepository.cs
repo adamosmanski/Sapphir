@@ -29,5 +29,6 @@ namespace SapphirApp.Data.Repository
             var projects = context.Projects.ToList(); 
             return projects;
         }
+        
     }
 }
