@@ -10,7 +10,6 @@ using System.Windows;
 using SapphirApp.Views;
 using SapphirApp.Data.Repository;
 using SapphirApp.Data.Context;
-using SapphirApp.Data.Models;
 
 namespace SapphirApp.ViewModels
 {
