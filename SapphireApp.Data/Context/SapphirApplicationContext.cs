@@ -33,6 +33,7 @@ public partial class SapphirApplicationContext : DbContext
             entity.HasNoKey();
 
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.ShortName).HasColumnName("ShortName").IsUnicode(false);
             entity.Property(e => e.Description).IsUnicode(false);
             entity.Property(e => e.Id)
                 .ValueGeneratedOnAdd()
@@ -46,7 +47,7 @@ public partial class SapphirApplicationContext : DbContext
             entity
                 .HasNoKey()
                 .ToTable("TasksProject");
-
+            entity.Property(e => e.ShortNumber).IsUnicode(false).HasColumnName("ShortNumber");
             entity.Property(e => e.AssignedUser).IsUnicode(false);
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Description).IsUnicode(false);
