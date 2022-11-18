@@ -9,5 +9,9 @@ namespace SapphirApp.ViewModels
 {
     public class KanbanBoardVM : ObserveObject
     {
+        public KanbanBoardVM()
+        {
+            
+        }
     }
 }
