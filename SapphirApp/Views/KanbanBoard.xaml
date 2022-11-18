@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SapphirApp.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
-    <Grid>
+    <Grid Background="Red">
             
     </Grid>
 </UserControl>
