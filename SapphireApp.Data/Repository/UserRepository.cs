@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using bcrypt = BCrypt.Net;
 using SapphirApp.Data.Context;
-using SapphirApp.Data.Models;
 using SapphirApp.Data.Interface;
 
 namespace SapphirApp.Data.Repository
