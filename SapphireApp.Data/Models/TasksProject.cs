@@ -8,6 +8,7 @@ public partial class TasksProject
     public int Id { get; set; }
 
     public int IdProjects { get; set; }
+    public string ShortNumber { get; set; } = null!;
 
     public string Name { get; set; } = null!;
 
