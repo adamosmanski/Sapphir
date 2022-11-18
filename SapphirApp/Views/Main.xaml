@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SapphirApp.Views"        
         xmlns:vm="clr-namespace:SapphirApp.ViewModels"
+        xmlns:converter ="clr-namespace:SapphirApp.Converter"
         mc:Ignorable="d"
         Title="Safira" Height="450" Width="800"
         MinHeight="450" MinWidth="800" Closing="Window_Closing" >
@@ -12,12 +13,11 @@
         <DataTemplate DataType="{x:Type vm:ChatVM}">
             <local:ChatView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ProjectBoardVM}">
-            <local:ProjectBoardView/>
-        </DataTemplate>
-        <!--<DataTemplate DataType="{x:Type vm:KanbanBoardVM}">
+        <DataTemplate DataType="{x:Type vm:KanbanBoardVM}">
             <local:KanbanBoard/>
-        </DataTemplate>-->
+        </DataTemplate>
+        <converter:ButtonVisibilityConverter x:Key="ButtonVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainVM/>
@@ -63,7 +63,7 @@
                     </Menu.ItemsPanel>
                     <!-- PANEL GŁÓWNY -->
                     <MenuItem Header="Panel główny"
-                          Template="{StaticResource Menu}">
+                          Template="{StaticResource Menu}" Command="{Binding CmdOpenBoard}">
                         <MenuItem.Icon>
                             <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/squared_menu_30px.png"/>
                         </MenuItem.Icon>
@@ -93,7 +93,7 @@
                                 <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Tablica Kanban" Template="{StaticResource Item_Template}" Command="{Binding CmdKanbanBoard}">
+                        <MenuItem Header="Tablica Kanban" Template="{StaticResource Item_Template}" Command="{Binding CmdOpenKanban}">
                             <MenuItem.Icon>
                                 <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
                             </MenuItem.Icon>
@@ -123,6 +123,54 @@
             <ContentControl Grid.RowSpan="4" Grid.Row="0"
                             Grid.Column="1" Grid.ColumnSpan="2" 
                             Content="{Binding CurrentVM}" />
+            <ListBox Visibility="{Binding VisibilityListBox, Converter={StaticResource BoolToVisibility}}"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="2" Grid.RowSpan="4"
+                 ItemsSource="{Binding ListBoxSource}"
+                     SelectedItem="{Binding SelectedBoard}"
+                 BorderThickness="0 0 1 0"
+                 BorderBrush="DarkGray"
+                 HorizontalContentAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Transparent">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="4" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Name="TaskListItem">
+                            <Grid.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick"
+                                          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.CmdOpenKanban}" />
+                            </Grid.InputBindings>
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="AllowDrop" Value="False" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="AllowDrop" Value="True" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="{Binding Name}" FontWeight="Bold" />
+                                <Label Content="{Binding Description}" />
+                            </StackPanel>
+                            <Button HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Width="50"
+                                Height="50"
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.DeleteBoardCommand}"
+                                CommandParameter="{Binding}"
+                                Visibility="{Binding ElementName=TaskListItem, Path=AllowDrop, Converter={StaticResource ButtonVisibilityConverter}}">
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Border>
 </Window>
