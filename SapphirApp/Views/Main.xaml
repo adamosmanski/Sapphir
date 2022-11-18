@@ -124,15 +124,16 @@
                             Grid.Column="1" Grid.ColumnSpan="2" 
                             Content="{Binding CurrentVM}" />
             <ListBox Visibility="{Binding VisibilityListBox, Converter={StaticResource BoolToVisibility}}"
-                     Grid.Column="1"
-                     Grid.ColumnSpan="2" Grid.RowSpan="4"
-                 ItemsSource="{Binding ListBoxSource}"
-                     SelectedItem="{Binding SelectedBoard}"
-                 BorderThickness="0 0 1 0"
-                 BorderBrush="DarkGray"
-                 HorizontalContentAlignment="Stretch"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Transparent">
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2" Grid.RowSpan="4"
+                    ItemsSource="{Binding ListBoxSource}"
+                    SelectedItem="{Binding SelectedBoard}"
+                    BorderThickness="0 0 1 0"
+                    BorderBrush="DarkGray"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" Background="Transparent"
+                    Foreground="White">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="Padding" Value="4" />
@@ -156,8 +157,8 @@
                                 </Style>
                             </Grid.Style>
                             <StackPanel Orientation="Vertical">
-                                <Label Content="{Binding Name}" FontWeight="Bold" />
-                                <Label Content="{Binding Description}" />
+                                <Label Content="{Binding Name}" FontWeight="Bold" Foreground="White"/>
+                                <Label Content="{Binding Description}" Foreground="White"/>
                             </StackPanel>
                             <Button HorizontalAlignment="Right"
                                 VerticalAlignment="Center"

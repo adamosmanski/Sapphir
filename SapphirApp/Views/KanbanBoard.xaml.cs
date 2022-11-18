@@ -1,4 +1,5 @@
-﻿using SapphirApp.ViewModels;
+﻿using SapphirApp.Models;
+using SapphirApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace SapphirApp.Views
         {
             InitializeComponent();
             this.DataContext = new KanbanBoardVM();
+        }
+
+        private void SfKanban_CardTapped(object sender, Syncfusion.UI.Xaml.Kanban.KanbanTappedEventArgs e)
+        {
+            var viewModel = (KanbanBoardVM)DataContext;
+            viewModel.Tasks = (List<TaskProject>)e.SelectedCard.Content;
         }
     }
 }

@@ -18,6 +18,7 @@ public partial class TasksProject
     public string? AssignedUser { get; set; }
 
     public string? Tag { get; set; }
+    public string? Category { get; set; }
 
     public DateTime? ModDate { get; set; }
 

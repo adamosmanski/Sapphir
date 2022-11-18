@@ -57,6 +57,7 @@ public partial class SapphirApplicationContext : DbContext
             entity.Property(e => e.ModDate).HasColumnType("datetime");
             entity.Property(e => e.Name).IsUnicode(false);
             entity.Property(e => e.Tag).IsUnicode(false);
+            entity.Property(e => e.Category).HasColumnName("Category").IsUnicode(false);
         });
 
         modelBuilder.Entity<User>(entity =>
