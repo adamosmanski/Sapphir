@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Views/Dictionary/Templates.xaml"/>
                 <ResourceDictionary Source="Views/Dictionary/ChangePasswordDict.xaml"/>
                 <ResourceDictionary Source="Views/Dictionary/NewProjectDict.xaml"/>
+                <ResourceDictionary Source="Views/Dictionary/KanbanDict.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -31,7 +31,7 @@ namespace SapphirApp.Views
         private void SfKanban_CardTapped(object sender, Syncfusion.UI.Xaml.Kanban.KanbanTappedEventArgs e)
         {
             var viewModel = (KanbanBoardVM)DataContext;
-            viewModel.Tasks = (List<TaskProject>)e.SelectedCard.Content;
+            //viewModel.Tasks = (List<TaskProject>)e.SelectedCard.Content;
         }
     }
 }

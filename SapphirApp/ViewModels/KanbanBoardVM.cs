@@ -1,4 +1,7 @@
-﻿using SapphirApp.Core;
+﻿using SapphirApp.Converter;
+using SapphirApp.Core;
+using SapphirApp.Data.Context;
+using SapphirApp.Data.Repository;
 using SapphirApp.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +14,15 @@ namespace SapphirApp.ViewModels
 {
     public class KanbanBoardVM : ObserveObject
     {
+        SapphirApplicationContext context = new SapphirApplicationContext();
+        TaskRepository tasksRepository;
         public KanbanBoardVM()
         {
-            Tasks = new List<TaskProject>();
-            Tasks.Add(new TaskProject()
-            {
-                Name = "Pisda",
-                Category = "In Progress"
-            });
+            tasksRepository = new TaskRepository(context);
+            Tasks = DtoTasksToModel.Transform(tasksRepository.GetAllTasks(SelectedProject.ID));
         }
-
         public List<TaskProject> Tasks { get; set; }
+
+
     }
 }

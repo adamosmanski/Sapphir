@@ -39,6 +39,9 @@
     <Page Update="Views\Dictionary\ChangePasswordDict.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Dictionary\KanbanDict.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Dictionary\LogWindowDict.xaml">
       <SubType>Designer</SubType>
     </Page>

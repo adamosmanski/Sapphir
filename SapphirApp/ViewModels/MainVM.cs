@@ -101,7 +101,7 @@ namespace SapphirApp.ViewModels
                 VisibilityListBox = false;
                 CurrentVM = new KanbanBoardVM();
             }
-            else if (SelectedProject.ID == null)
+            else if (SelectedProject.ID < 0)
             {
                 NotifyPopUp window = new NotifyPopUp();
                 window.Show();

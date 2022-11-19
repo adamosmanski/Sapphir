@@ -19,9 +19,61 @@
             ColumnMappingPath="Category"
             CardTapped="SfKanban_CardTapped"
             ItemsSource="{Binding Tasks}">
+            <syncfusion:SfKanban.ColumnHeaderTemplate>
+                <DataTemplate DataType="syncfusion:ColumnTag">
+                    <Border>
+                        <StackPanel 
+                            Orientation="Horizontal"
+                            Margin="5,5,0,0">
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" 
+                                        Content="+" 
+                                        Height="20" Width="20"
+                                        Foreground="White"
+                                        Style="{StaticResource AddTasks}"/>
+                                <TextBlock Text="{Binding Header}"
+                                               FontSize="12" Margin="0,0,15,0"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </syncfusion:SfKanban.ColumnHeaderTemplate>
+            <syncfusion:SfKanban.CardTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1"
+                            CornerRadius="4"
+                            Background="White"
+                            Margin="0,5,0,5">
+                        <StackPanel Margin="10,5,5,10">
+                            <TextBox Text="{Binding ShortNumber}"
+                                     TextWrapping="Wrap"
+                                     IsEnabled="False"
+                                     BorderThickness="0"
+                                     FontSize="16"
+                                     FontWeight="Bold"
+                                     />
+                            <TextBox Text="{Binding Name}"
+                                     TextWrapping="Wrap"
+                                     IsEnabled="False"
+                                     BorderThickness="0"
+                                     FontSize="16"
+                                     FontWeight="Bold"
+                                     MaxLines="2"/>
+                            <TextBox FontSize="14"
+                                     BorderThickness="0"
+                                     IsEnabled="False"
+                                     HorizontalAlignment="Left"
+                                     Text="{Binding Description}"
+                                     MaxLines="3"
+                                     TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </syncfusion:SfKanban.CardTemplate>
             <syncfusion:KanbanColumn Categories="Backlog" Title="Backlog" Foreground="White"/>
             <syncfusion:KanbanColumn Categories="To Do" Title="To Do" Foreground="White"/>
             <syncfusion:KanbanColumn Categories="In Progress" Title="In Progress" Foreground="White"/>
+            <syncfusion:KanbanColumn Categories="In Test" Title="In Test" Foreground="White"/>
             <syncfusion:KanbanColumn Categories="Review" Title="Review" Foreground="White" />
             <syncfusion:KanbanColumn Categories="Completed" Title="Completed" Foreground="White" />
         </syncfusion:SfKanban>

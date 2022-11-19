@@ -90,12 +90,12 @@
                         </MenuItem.Icon>
                         <MenuItem Header="Nowy projekt" Template="{StaticResource Item_Template}" Command="{Binding CmdNewProject}">
                             <MenuItem.Icon>
-                                <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
+                                <Image Source="pack://application:,,,/Assets/Normal/add_new_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="Tablica Kanban" Template="{StaticResource Item_Template}" Command="{Binding CmdOpenKanban}">
                             <MenuItem.Icon>
-                                <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
+                                <Image Source="pack://application:,,,/Assets/Normal/dashboard_layout_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
