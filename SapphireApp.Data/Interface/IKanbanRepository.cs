@@ -13,5 +13,6 @@ namespace SapphirApp.Data.Interface
         void AddTask();
         void ArchiveTasks();
         void ShowTask();
+        int GetLastNumberTask(int ID);
     }
 }

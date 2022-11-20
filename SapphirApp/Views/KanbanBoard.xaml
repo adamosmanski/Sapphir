@@ -10,6 +10,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
     <Grid Background="Transparent">
+       
+        
         <syncfusion:SfKanban
             Background="Transparent"
             MinColumnWidth="200"
@@ -30,7 +32,9 @@
                                         Content="+" 
                                         Height="20" Width="20"
                                         Foreground="White"
-                                        Style="{StaticResource AddTasks}"/>
+                                        Style="{StaticResource AddTasks}"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.AddTask}"
+                                        CommandParameter="{Binding Header}"/>
                                 <TextBlock Text="{Binding Header}"
                                                FontSize="12" Margin="0,0,15,0"/>
                             </DockPanel>

@@ -95,6 +95,7 @@ namespace SapphirApp.ViewModels
         }
         private void OpenKanbanBoard(object obj)
         {
+            SelectedProject.Name = SelectedBoard.ShortNumber;
             SelectedProject.ID = SelectedBoard.Id;
             if (SelectedProject.ID == SelectedBoard.Id)
             {

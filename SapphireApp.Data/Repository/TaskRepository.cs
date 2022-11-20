@@ -37,5 +37,11 @@ namespace SapphirApp.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public int GetLastNumberTask(int ID)
+        {
+            var LastTask = context.TasksProjects.Where(x => x.IdProjects == ID).OrderByDescending(x => x.Id).FirstOrDefault();
+            return Convert.ToInt32(LastTask.ShortNumber.Substring(4));
+        }
     }
 }

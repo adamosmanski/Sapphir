@@ -6,9 +6,11 @@ using SapphirApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SapphirApp.ViewModels
 {
@@ -20,9 +22,15 @@ namespace SapphirApp.ViewModels
         {
             tasksRepository = new TaskRepository(context);
             Tasks = DtoTasksToModel.Transform(tasksRepository.GetAllTasks(SelectedProject.ID));
+            AddTask = new RelayCommand(AddTaskToProject);
         }
         public List<TaskProject> Tasks { get; set; }
-
+        public ICommand AddTask { get; }
+        public void AddTaskToProject(object obj)
+        {
+            SelectedProject.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID);
+            
+        }
 
     }
 }
