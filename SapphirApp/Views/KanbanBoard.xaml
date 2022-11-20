@@ -16,6 +16,7 @@
        
         
         <syncfusion:SfKanban
+            IsEnabled="{Binding IsKanbanEnabled}"
             Background="Transparent"
             MinColumnWidth="200"
             MaxColumnWidth="400"
@@ -84,7 +85,9 @@
             <syncfusion:KanbanColumn Categories="Review" Title="Review" Foreground="White" />
             <syncfusion:KanbanColumn Categories="Completed" Title="Completed" Foreground="White" />
         </syncfusion:SfKanban>
-        <Grid Background="Transparent" Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid}}">
+        <Grid Background="Transparent" 
+              Width="500" Height="400"
+            Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid}}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -99,23 +102,37 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border
+            <Border BorderThickness="2" BorderBrush="Black"
                 Background="DarkGray"
                 Grid.Column="1"
                 Grid.ColumnSpan="4"
                 Grid.RowSpan="4">
-                <StackPanel Background="Yellow"
-                            Margin="50">
+                <StackPanel Background="Transparent"
+                            Margin="50,0,50,50">
+                    <TextBlock Text="Nowe zgłoszenie"
+                               Margin="0,10,0,15"
+                               FontSize="16"
+                               FontWeight="Bold"/>
                     <TextBlock Text="Tytuł:"/>
                     <TextBox />
                     <TextBlock Text="Opis:"/>
-                    <TextBox TextWrapping="Wrap" MaxLines="10"
+                    <TextBox TextWrapping="Wrap" MaxLines="5"
                              VerticalScrollBarVisibility="Auto"/>
 
                 </StackPanel>
             </Border>
-            <StackPanel Background="Red" Grid.Column="2" Grid.Row="5">
-                <Button Width="100" Height="50"/>
+            <StackPanel Background="Transparent" 
+                        Grid.Column="2" Grid.Row="5"
+                        Grid.ColumnSpan="2">
+                <Button HorizontalAlignment="Center"
+                        Content="Dodaj zadanie" 
+                        Width="100" Height="50"
+                        Style="{StaticResource NewProjectButton}"/>
+                <Button HorizontalAlignment="Center"
+                        Content="Anuluj" 
+                        Width="100" Height="50"
+                        Style="{StaticResource NewProjectButton}"
+                        Command="{Binding CancelTask}"/>
             </StackPanel>
         </Grid>
     </Grid>
