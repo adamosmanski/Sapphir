@@ -18,17 +18,29 @@ namespace SapphirApp.ViewModels
     {
         SapphirApplicationContext context = new SapphirApplicationContext();
         TaskRepository tasksRepository;
+        private bool _IsGridVisible = false;
+        public bool IsGridVisible
+        {
+            get => _IsGridVisible;
+            set
+            {
+                _IsGridVisible = value;
+                OnPropertyChanged(nameof(IsGridVisible));
+            }
+        }
         public KanbanBoardVM()
         {
+            IsGridVisible = _IsGridVisible;
             tasksRepository = new TaskRepository(context);
             Tasks = DtoTasksToModel.Transform(tasksRepository.GetAllTasks(SelectedProject.ID));
-            AddTask = new RelayCommand(AddTaskToProject);
+            ShowGridToAddTask = new RelayCommand(ShowGridWithTask);
         }
         public List<TaskProject> Tasks { get; set; }
-        public ICommand AddTask { get; }
-        public void AddTaskToProject(object obj)
+        public ICommand ShowGridToAddTask { get; }
+        public void ShowGridWithTask(object obj)
         {
-            SelectedProject.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID);
+           // SelectedProject.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID);
+            IsGridVisible = true;
             
         }
 

@@ -9,6 +9,9 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:KanbanBoardVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="ShowGrid"/>
+    </UserControl.Resources>
     <Grid Background="Transparent">
        
         
@@ -33,10 +36,10 @@
                                         Height="20" Width="20"
                                         Foreground="White"
                                         Style="{StaticResource AddTasks}"
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.AddTask}"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.ShowGridToAddTask}"
                                         CommandParameter="{Binding Header}"/>
                                 <TextBlock Text="{Binding Header}"
-                                               FontSize="12" Margin="0,0,15,0"/>
+                                           FontSize="12" Margin="0,0,15,0"/>
                             </DockPanel>
                         </StackPanel>
                     </Border>
@@ -81,5 +84,40 @@
             <syncfusion:KanbanColumn Categories="Review" Title="Review" Foreground="White" />
             <syncfusion:KanbanColumn Categories="Completed" Title="Completed" Foreground="White" />
         </syncfusion:SfKanban>
+        <Grid Background="Transparent" Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid}}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border
+                Background="DarkGray"
+                Grid.Column="1"
+                Grid.ColumnSpan="4"
+                Grid.RowSpan="4">
+                <StackPanel Background="Yellow"
+                            Margin="50">
+                    <TextBlock Text="Tytuł:"/>
+                    <TextBox />
+                    <TextBlock Text="Opis:"/>
+                    <TextBox TextWrapping="Wrap" MaxLines="10"
+                             VerticalScrollBarVisibility="Auto"/>
+
+                </StackPanel>
+            </Border>
+            <StackPanel Background="Red" Grid.Column="2" Grid.Row="5">
+                <Button Width="100" Height="50"/>
+            </StackPanel>
+        </Grid>
     </Grid>
+    
 </UserControl>
