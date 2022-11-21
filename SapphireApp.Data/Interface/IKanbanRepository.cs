@@ -10,9 +10,10 @@ namespace SapphirApp.Data.Interface
     public interface IKanbanRepository
     {
         IEnumerable<TasksProject> GetAllTasks(int ProjectNumberID);
-        void AddTask();
+        void AddTask(TasksProject task);
         void ArchiveTasks();
         void ShowTask();
         int GetLastNumberTask(int ID);
+        string GetShortNameTask(int ID);
     }
 }
