@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SapphirApp.Data.Repository
 {
-    public class TaskRepository : IKanbanRepository
+    public class TaskRepository: IKanbanRepository
     {
         public TaskRepository(SapphirApplicationContext _context)
         {
@@ -17,9 +17,23 @@ namespace SapphirApp.Data.Repository
         }
         private SapphirApplicationContext context;
 
-        public void AddTask()
+        public void AddTask(TasksProject task)
         {
-            throw new NotImplementedException();
+            TasksProject project = new TasksProject()
+            {
+                Name = task.Name,
+                Description = task.Description,
+                ShortNumber = task.ShortNumber,
+                IdProjects = task.IdProjects,
+                CreatedAt = task.CreatedAt,
+                AssignedUser = task.AssignedUser,
+                Tag = task.Tag,
+                Category = task.Category,
+                ModDate = task.ModDate,
+                ModUser = task.ModUser,
+            };
+            context.Add(project);
+            context.SaveChanges();
         }
 
         public void ArchiveTasks()
@@ -42,6 +56,11 @@ namespace SapphirApp.Data.Repository
         {
             var LastTask = context.TasksProjects.Where(x => x.IdProjects == ID).OrderByDescending(x => x.Id).FirstOrDefault();
             return Convert.ToInt32(LastTask.ShortNumber.Substring(4));
+        }
+        public string GetShortNameTask(int ID)
+        {
+            var LastTask = context.Projects.Where(x => x.Id == ID).OrderByDescending(x => x.Id).FirstOrDefault();
+            return LastTask.ShortName;
         }
     }
 }
