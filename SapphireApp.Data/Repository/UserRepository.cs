@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using bcrypt = BCrypt.Net;
 using SapphirApp.Data.Context;
 using SapphirApp.Data.Interface;
+using SapphirApp.Data.Models;
 
 namespace SapphirApp.Data.Repository
 {
@@ -49,6 +50,12 @@ namespace SapphirApp.Data.Repository
         {
             var GetID = context.Users.Where(x => x.Login == Login).Select(x => x.Id).SingleOrDefault();
             return GetID;
+        }
+
+        public IEnumerable<string> GetAllLogins()
+        {
+            var GetLogins = context.Users.Select(x => x.Login).ToList();
+            return GetLogins;
         }
     }
 }
