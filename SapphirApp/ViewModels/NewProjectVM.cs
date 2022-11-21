@@ -15,15 +15,9 @@ namespace SapphirApp.ViewModels
 {
     public class NewProjectVM : ObserveObject
     {
+        #region Variables
         ProjectRepository ProjectDTO;
         SapphirApplicationContext context = new SapphirApplicationContext();
-        public NewProjectVM()
-        {
-            ProjectDTO = new ProjectRepository(context);
-            IsVisible = _isVisible;
-            CmdClose = new RelayCommand(Close);
-            CmdAdd = new RelayCommand(Add);
-        }
         private ProjectModel _project = new ProjectModel();
         private bool _isVisible = true;
         public bool IsVisible
@@ -35,6 +29,7 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(IsVisible));
             }
         }
+
         public ProjectModel Project
         {
             get => _project;
@@ -46,6 +41,15 @@ namespace SapphirApp.ViewModels
         }
         public ICommand CmdClose { get; }
         public ICommand CmdAdd { get; }
+        #endregion
+        public NewProjectVM()
+        {
+            ProjectDTO = new ProjectRepository(context);
+            IsVisible = _isVisible;
+            CmdClose = new RelayCommand(Close);
+            CmdAdd = new RelayCommand(Add);
+        }
+
         private void Add(object obj)
         {
             ProjectDTO.AddProject(Project.Name, Project.Description, LoggedUser.ID);
