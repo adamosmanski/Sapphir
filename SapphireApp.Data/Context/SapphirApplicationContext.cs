@@ -45,7 +45,7 @@ public partial class SapphirApplicationContext : DbContext
         modelBuilder.Entity<TasksProject>(entity =>
         {
             entity
-                .HasNoKey()
+                //.HasNoKey()
                 .ToTable("TasksProject");
             entity.Property(e => e.ShortNumber).IsUnicode(false).HasColumnName("ShortNumber");
             entity.Property(e => e.AssignedUser).IsUnicode(false);
