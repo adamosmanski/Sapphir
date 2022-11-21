@@ -1,4 +1,5 @@
 ﻿using SapphirApp.Data.Models;
+using System.Collections.Generic;
 
 namespace SapphirApp.Data.Interface
 {
@@ -7,5 +8,6 @@ namespace SapphirApp.Data.Interface
         bool IsUserExist(string InputPassword, string Login);
         string GetAccesUser(string Login);
         void UpdatePassword(string Password, string Login);
+        IEnumerable<string> GetAllLogins();
     }
 }
