@@ -14,7 +14,6 @@
     </UserControl.Resources>
     <Grid Background="Transparent">
         <syncfusion:SfKanban
-            
             IsEnabled="{Binding IsKanbanEnabled,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Background="Transparent"
             MinColumnWidth="200"
