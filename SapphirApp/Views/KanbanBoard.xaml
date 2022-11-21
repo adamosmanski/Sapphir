@@ -13,10 +13,9 @@
         <BooleanToVisibilityConverter x:Key="ShowGrid"/>
     </UserControl.Resources>
     <Grid Background="Transparent">
-       
-        
         <syncfusion:SfKanban
-            IsEnabled="{Binding IsKanbanEnabled}"
+            
+            IsEnabled="{Binding IsKanbanEnabled,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Background="Transparent"
             MinColumnWidth="200"
             MaxColumnWidth="400"
@@ -24,7 +23,7 @@
             AutoGenerateColumns="False"
             ColumnMappingPath="Category"
             CardTapped="SfKanban_CardTapped"
-            ItemsSource="{Binding Tasks}">
+            ItemsSource="{Binding Tasks, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <syncfusion:SfKanban.ColumnHeaderTemplate>
                 <DataTemplate DataType="syncfusion:ColumnTag">
                     <Border>
@@ -38,8 +37,8 @@
                                         Foreground="White"
                                         Style="{StaticResource AddTasks}"
                                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.ShowGridToAddTask}"
-                                        CommandParameter="{Binding Header}"/>
-                                <TextBlock Text="{Binding Header}"
+                                        CommandParameter="{Binding Header,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="{Binding Header,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                            FontSize="12" Margin="0,0,15,0"/>
                             </DockPanel>
                         </StackPanel>
@@ -53,14 +52,14 @@
                             Background="White"
                             Margin="0,5,0,5">
                         <StackPanel Margin="10,5,5,10">
-                            <TextBox Text="{Binding ShortNumber}"
+                            <TextBox Text="{Binding ShortNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      TextWrapping="Wrap"
                                      IsEnabled="False"
                                      BorderThickness="0"
                                      FontSize="16"
                                      FontWeight="Bold"
                                      />
-                            <TextBox Text="{Binding Name}"
+                            <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      TextWrapping="Wrap"
                                      IsEnabled="False"
                                      BorderThickness="0"
@@ -71,7 +70,7 @@
                                      BorderThickness="0"
                                      IsEnabled="False"
                                      HorizontalAlignment="Left"
-                                     Text="{Binding Description}"
+                                     Text="{Binding Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      MaxLines="3"
                                      TextWrapping="Wrap"/>
                         </StackPanel>
@@ -87,7 +86,7 @@
         </syncfusion:SfKanban>
         <Grid Background="Transparent" 
               Width="500" Height="400"
-            Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid}}">
+            Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -114,11 +113,16 @@
                                FontSize="16"
                                FontWeight="Bold"/>
                     <TextBlock Text="Tytuł:"/>
-                    <TextBox />
+                    <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Text="Opis:"/>
-                    <TextBox TextWrapping="Wrap" MaxLines="5"
-                             VerticalScrollBarVisibility="Auto"/>
-
+                    <TextBox TextWrapping="Wrap" MaxLines="10"
+                             VerticalScrollBarVisibility="Auto"
+                             Text="{Binding Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                    <TextBlock Text="Przypisz do:"/>
+                    <TextBox Text="{Binding AssignedUser,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Tagi:"/>
+                    <TextBox Text="{Binding Tag,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </Border>
             <StackPanel Background="Transparent" 
@@ -127,7 +131,8 @@
                 <Button HorizontalAlignment="Center"
                         Content="Dodaj zadanie" 
                         Width="100" Height="50"
-                        Style="{StaticResource NewProjectButton}"/>
+                        Style="{StaticResource NewProjectButton}"
+                        Command="{Binding AddTask}"/>
                 <Button HorizontalAlignment="Center"
                         Content="Anuluj" 
                         Width="100" Height="50"
