@@ -123,16 +123,19 @@
             <ContentControl Grid.RowSpan="4" Grid.Row="0"
                             Grid.Column="1" Grid.ColumnSpan="2" 
                             Content="{Binding CurrentVM}" />
-            <ListBox Visibility="{Binding VisibilityListBox, Converter={StaticResource BoolToVisibility}}"
+            <!--Visibility="{Binding VisibilityListBox, Converter={StaticResource BoolToVisibility}}"-->
+            <ListBox 
+                Visibility="Visible"                
                     Grid.Column="1"
                     Grid.ColumnSpan="2" Grid.RowSpan="4"
-                    ItemsSource="{Binding ListBoxSource}"
+                    ItemsSource="{Binding ListBoxSource,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     SelectedItem="{Binding SelectedBoard}"
                     BorderThickness="0 0 1 0"
                     BorderBrush="DarkGray"
                     HorizontalContentAlignment="Stretch"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Auto" Background="Transparent"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                Background="Transparent"
                     Foreground="White">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
@@ -157,16 +160,15 @@
                                 </Style>
                             </Grid.Style>
                             <StackPanel Orientation="Vertical">
-                                <Label Content="{Binding Name}" FontWeight="Bold" Foreground="White"/>
-                                <Label Content="{Binding Description}" Foreground="White"/>
+                                <Label Content="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="White"/>
+                                <Label Content="{Binding Description,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
                             </StackPanel>
-                            <Button HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Width="50"
-                                Height="50"
+                            <Button 
+                                Style="{StaticResource ArchiveProject}"
                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.DeleteBoardCommand}"
                                 CommandParameter="{Binding}"
                                 Visibility="{Binding ElementName=TaskListItem, Path=AllowDrop, Converter={StaticResource ButtonVisibilityConverter}}">
+                                <Image Source="pack://application:,,,/Assets/Normal/archive_30px.png"/>
                             </Button>
                         </Grid>
                     </DataTemplate>
