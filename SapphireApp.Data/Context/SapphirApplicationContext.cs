@@ -94,6 +94,6 @@ public partial class SapphirApplicationContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
-
+    
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -19,9 +19,9 @@
             MinColumnWidth="200"
             MaxColumnWidth="400"
             Margin="0"
+            
             AutoGenerateColumns="False"
             ColumnMappingPath="Category"
-            CardTapped="SfKanban_CardTapped"
             ItemsSource="{Binding Tasks, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <syncfusion:SfKanban.ColumnHeaderTemplate>
                 <DataTemplate DataType="syncfusion:ColumnTag">
@@ -56,8 +56,7 @@
                                      IsEnabled="False"
                                      BorderThickness="0"
                                      FontSize="16"
-                                     FontWeight="Bold"
-                                     />
+                                     FontWeight="Bold"/>
                             <TextBox Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      TextWrapping="Wrap"
                                      IsEnabled="False"
@@ -72,21 +71,25 @@
                                      Text="{Binding Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      MaxLines="3"
                                      TextWrapping="Wrap"/>
+                            <!-- IMPLEMENTACJA POKAZANIA TASKA ! -->
+                            <Button Content="Pokaż"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </syncfusion:SfKanban.CardTemplate>
-            <syncfusion:KanbanColumn Categories="Backlog" Title="Backlog" Foreground="White"/>
-            <syncfusion:KanbanColumn Categories="To Do" Title="To Do" Foreground="White"/>
-            <syncfusion:KanbanColumn Categories="In Progress" Title="In Progress" Foreground="White"/>
-            <syncfusion:KanbanColumn Categories="In Test" Title="In Test" Foreground="White"/>
-            <syncfusion:KanbanColumn Categories="Review" Title="Review" Foreground="White" />
-            <syncfusion:KanbanColumn Categories="Completed" Title="Completed" Foreground="White" />
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="UnAssigned" Title="Nieprzypisane" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="Backlog" Title="Backlog" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="To Do" Title="To Do" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="In Progress" Title="W trakcie" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="In Test" Title="W trakcie TST" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Review" Title="Review" Foreground="White" />
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Completed" Title="Gotowe" Foreground="White" />
         </syncfusion:SfKanban>
+        <!--Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
         <Grid Background="Transparent" 
               Width="500" Height="400"
-            Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-            <Grid.RowDefinitions>
+                Visibility="Hidden">
+        <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -117,7 +120,7 @@
                     <TextBox TextWrapping="Wrap" MaxLines="10"
                              VerticalScrollBarVisibility="Auto"
                              Text="{Binding Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                    
+
                     <TextBlock Text="Przypisz do:"/>
                     <TextBox Text="{Binding AssignedUser,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Text="Tagi:"/>
@@ -139,6 +142,35 @@
                         Command="{Binding CancelTask}"/>
             </StackPanel>
         </Grid>
+        <Grid Background="Transparent" 
+              Width="500" Height="400"
+                Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Background="White"
+                    Grid.Column="1" Grid.RowSpan="4"
+                    Grid.ColumnSpan="4">
+                <StackPanel Margin="5">
+                    <TextBlock TextWrapping="Wrap"
+                           Margin="5"
+                           FontSize="14"
+                           FontWeight="DemiBold"
+                           Text="a{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBlock>
+                </StackPanel>
+                
+            </Border>
+        </Grid>
     </Grid>
-    
 </UserControl>

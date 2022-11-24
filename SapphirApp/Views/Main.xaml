@@ -123,9 +123,9 @@
             <ContentControl Grid.RowSpan="4" Grid.Row="0"
                             Grid.Column="1" Grid.ColumnSpan="2" 
                             Content="{Binding CurrentVM}" />
-            <!--Visibility="{Binding VisibilityListBox, Converter={StaticResource BoolToVisibility}}"-->
+            <!---->
             <ListBox 
-                Visibility="Visible"                
+                Visibility="{Binding VisibilityListBox, Converter={StaticResource BoolToVisibility}}"                
                     Grid.Column="1"
                     Grid.ColumnSpan="2" Grid.RowSpan="4"
                     ItemsSource="{Binding ListBoxSource,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

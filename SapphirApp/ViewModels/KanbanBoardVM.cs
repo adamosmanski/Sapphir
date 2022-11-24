@@ -4,9 +4,11 @@ using SapphirApp.Data.Context;
 using SapphirApp.Data.Models;
 using SapphirApp.Data.Repository;
 using SapphirApp.Models;
+using Syncfusion.UI.Xaml.Kanban;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography.Xml;
@@ -149,30 +151,40 @@ namespace SapphirApp.ViewModels
         public KanbanBoardVM()
         {
             IsGridVisible = _IsGridVisible;
-            tasksRepository = new TaskRepository(context);
-            UpdateTasks();
+            tasksRepository = new TaskRepository(context);            
             ShowGridToAddTask = new RelayCommand(ShowGridWithTask);
             CancelTask = new RelayCommand(CancelAddTask);
             AddTask = new RelayCommand(AddTaskToDto);
+            UpdateTasks();
         }
 
         private void AddTaskToDto(object obj)
         {
-            SelectedProject.ShortName = tasksRepository.GetShortNameTask(SelectedProject.ID);
-            SelectedProject.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID)+1;
+            SelectedTask.ShortName = tasksRepository.GetShortNameTask(SelectedProject.ID);
+            SelectedTask.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID)+1;
             CreatedTime = DateTime.Now;
             ModDate = DateTime.Now;
-            Category = SelectedProject.SelectedColumn;
+            Category = SelectedTask.Column;
             ProjectID = SelectedProject.ID;
-            ShortNumber = $"{SelectedProject.ShortName}-{ SelectedProject.Number}";
+            ShortNumber = $"{SelectedTask.ShortName}-{SelectedTask.Number}";
             CreatedByID = LoggedUser.ID;
             tasksRepository.AddTask(ConvertTaskToDTO.Transform(newTask));
             UpdateTasks();
             HideGrid();
         }
+        public void UpdateTask()
+        {
+            var x1 = SelectedProject.Number;
+            var x2 = SelectedTask.ID;
+            var x3 = SelectedTask.Column;
+            var x4 = SelectedTask.ShortName;
+            var x5 = SelectedTask.Title;
+            Debug.Write($@"{x1} + {x2}+{x3}+{x4}+{x5}");
+            //tasksRepository.UpdateColumn();
+        }
         private void ShowGridWithTask(object obj)
         {
-            SelectedProject.SelectedColumn = obj.ToString();
+            SelectedTask.Column = obj.ToString();
             IsGridVisible = true;
             IsKanbanEnabled = false;
         }
@@ -189,6 +201,6 @@ namespace SapphirApp.ViewModels
             IsGridVisible = false;
             IsKanbanEnabled = true;
         }
-        
+
     }
 }

@@ -41,6 +41,20 @@ namespace SapphirApp.Data.Repository
             throw new NotImplementedException();
         }
 
+        public void UpdateColumn(string Name, string Column)
+        {
+            using( var context = new SapphirApplicationContext())
+            {
+                var result = context.TasksProjects.SingleOrDefault(x => x.Name == Name);
+                if(result != null)
+                {
+                    result.Category = Column;
+                    context.Update(result);
+                    context.SaveChanges();
+                }
+            }
+        }
+
         public IEnumerable<TasksProject> GetAllTasks(int ProjectNumberID)
         {
             var AllTasks = context.TasksProjects.Where(x => x.IdProjects == ProjectNumberID).ToList();
