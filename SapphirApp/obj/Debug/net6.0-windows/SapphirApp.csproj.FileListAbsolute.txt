@@ -61,6 +61,7 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\SapphirApp.Data.
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\SapphirApp.Data.pdb
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.csproj.AssemblyReference.cache
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Dictionary\ChangePasswordDict.baml
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Dictionary\KanbanDict.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Dictionary\LogWindowDict.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Dictionary\NewProjectDict.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Dictionary\Templates.baml
@@ -94,4 +95,3 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\refint\SapphirAp
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.pdb
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.genruntimeconfig.cache
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\ref\SapphirApp.dll
-D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Dictionary\KanbanDict.baml

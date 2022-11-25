@@ -72,7 +72,7 @@
                                      MaxLines="3"
                                      TextWrapping="Wrap"/>
                             <!-- IMPLEMENTACJA POKAZANIA TASKA ! -->
-                            <Button Content="Pokaż"/>
+                            <Button Content="Pokaż" Command="{Binding }"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
@@ -85,10 +85,10 @@
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Review" Title="Review" Foreground="White" />
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Completed" Title="Gotowe" Foreground="White" />
         </syncfusion:SfKanban>
-        <!--Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
+        <!--"-->
         <Grid Background="Transparent" 
               Width="500" Height="400"
-                Visibility="Hidden">
+                Visibility="{Binding IsGridVisible, Converter={StaticResource ShowGrid},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
         <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -142,9 +142,8 @@
                         Command="{Binding CancelTask}"/>
             </StackPanel>
         </Grid>
-        <Grid Background="Transparent" 
-              Width="500" Height="400"
-                Visibility="Visible">
+        <Grid Background="Transparent"               
+                Visibility="{Binding IsTaskVisible, Converter={StaticResource ShowGrid}}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -159,18 +158,28 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Background="White"
-                    Grid.Column="1" Grid.RowSpan="4"
-                    Grid.ColumnSpan="4">
-                <StackPanel Margin="5">
-                    <TextBlock TextWrapping="Wrap"
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          Grid.Column="1" Grid.RowSpan="4"
+                    Grid.ColumnSpan="4" Margin="100,50">
+                <Border Background="White" Margin="5">
+                    <StackPanel Margin="5">
+                        <TextBlock TextWrapping="Wrap"
                            Margin="5"
                            FontSize="14"
                            FontWeight="DemiBold"
-                           Text="a{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBlock>
-                </StackPanel>
-                
-            </Border>
+                           Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        <TextBlock Margin="0,10,0,0" Text="Opis:"/>
+                        <TextBox TextWrapping="Wrap" IsReadOnly="True" 
+                        Height="100"
+                        Text="{Binding Description}"/>
+                        <TextBlock Text="Board:"/>
+                        <ComboBox ItemsSource="{Binding Columns}" SelectedValue="{Binding SelectedColumn}"/>
+                        <TextBlock Text="Przypisz do:"/>
+                        <TextBox Text="{Binding OldAssignedUser}"/>
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+            
         </Grid>
     </Grid>
 </UserControl>

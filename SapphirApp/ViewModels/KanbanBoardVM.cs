@@ -144,17 +144,66 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Tasks));
             }
         }
+        private List<string> _columns = new List<string>()
+        {
+            "Nieprzypisane", "Backlog","To Do", "W trakcie","W trakcie TST", "Review", "Gotowe"
+        };
+        private string _selectedColumn;
+        private string _assignedUser;
+        private bool _isTaskVisible = false;
+
+        public bool IsTaskVisible
+        {
+            get => _isTaskVisible;
+            set
+            {
+                _isTaskVisible = value;
+                OnPropertyChanged(nameof(IsTaskVisible));
+            }
+        }
+        public string OldAssignedUser
+        {
+            get => _assignedUser;
+            set
+            {
+                _assignedUser = value;
+                OnPropertyChanged(nameof(OldAssignedUser));
+            }
+        }
+        public List<string> Columns
+        {
+            get => _columns;
+            set
+            {
+                _columns = value;
+                OnPropertyChanged(nameof(Columns));
+            }
+        }
+        public string SelectedColumn
+        {
+            get => _selectedColumn;
+            set
+            {
+                _selectedColumn = value;
+                OnPropertyChanged(nameof(SelectedColumn));
+            }
+        }
         public ICommand ShowGridToAddTask { get; }
         public ICommand CancelTask { get; }
         public ICommand AddTask { get; }
+        public ICommand TaskShow { get; set; }
         #endregion
         public KanbanBoardVM()
         {
+            IsTaskVisible = _isTaskVisible;
+            Columns = _columns;
+            Tasks = _task;
             IsGridVisible = _IsGridVisible;
             tasksRepository = new TaskRepository(context);            
             ShowGridToAddTask = new RelayCommand(ShowGridWithTask);
             CancelTask = new RelayCommand(CancelAddTask);
             AddTask = new RelayCommand(AddTaskToDto);
+            TaskShow = new RelayCommand(ShowInfoTask);
             UpdateTasks();
         }
 
@@ -182,6 +231,11 @@ namespace SapphirApp.ViewModels
             Debug.Write($@"{x1} + {x2}+{x3}+{x4}+{x5}");
             //tasksRepository.UpdateColumn();
         }
+        private void ShowInfoTask(object obj)
+        {
+            var ssss= obj as string;
+            IsTaskVisible = true;
+        }
         private void ShowGridWithTask(object obj)
         {
             SelectedTask.Column = obj.ToString();
@@ -200,6 +254,7 @@ namespace SapphirApp.ViewModels
         {
             IsGridVisible = false;
             IsKanbanEnabled = true;
+            IsTaskVisible=false;
         }
 
     }
