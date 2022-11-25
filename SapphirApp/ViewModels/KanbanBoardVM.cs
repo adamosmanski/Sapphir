@@ -207,6 +207,12 @@ namespace SapphirApp.ViewModels
             UpdateTasks();
         }
 
+        private void ShowInfoTask(object obj)
+        {
+            var ssss = obj as string;
+            IsTaskVisible = true;
+        }
+
         private void AddTaskToDto(object obj)
         {
             SelectedTask.ShortName = tasksRepository.GetShortNameTask(SelectedProject.ID);
@@ -231,11 +237,7 @@ namespace SapphirApp.ViewModels
             Debug.Write($@"{x1} + {x2}+{x3}+{x4}+{x5}");
             //tasksRepository.UpdateColumn();
         }
-        private void ShowInfoTask(object obj)
-        {
-            var ssss= obj as string;
-            IsTaskVisible = true;
-        }
+
         private void ShowGridWithTask(object obj)
         {
             SelectedTask.Column = obj.ToString();
