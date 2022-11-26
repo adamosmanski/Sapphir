@@ -72,10 +72,12 @@
                                      MaxLines="3"
                                      TextWrapping="Wrap"/>
                             <!-- IMPLEMENTACJA POKAZANIA TASKA ! -->
-                            <Button Content="Pokaż" Command="{Binding }"/>
+                            <Button Content="Pokaż" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.TaskShow}"
+                                    CommandParameter="{Binding ShortNumber}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
+                
             </syncfusion:SfKanban.CardTemplate>
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="UnAssigned" Title="Nieprzypisane" Foreground="White"/>
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="Backlog" Title="Backlog" Foreground="White"/>
@@ -167,7 +169,7 @@
                            Margin="5"
                            FontSize="14"
                            FontWeight="DemiBold"
-                           Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                           Text="{Binding Name}"/>
                         <TextBlock Margin="0,10,0,0" Text="Opis:"/>
                         <TextBox TextWrapping="Wrap" IsReadOnly="True" 
                         Height="100"
@@ -179,7 +181,6 @@
                     </StackPanel>
                 </Border>
             </ScrollViewer>
-            
         </Grid>
     </Grid>
 </UserControl>

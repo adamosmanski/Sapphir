@@ -10,7 +10,6 @@ namespace SapphirApp.Data.Interface
     public interface IProjectRepository
     {
         void AddProject(string NameProject, string DescriptionProject, int ID);
-        IEnumerable<Project> GetAllProject();
-        
+        IEnumerable<Project> GetAllProject();        
     }
 }

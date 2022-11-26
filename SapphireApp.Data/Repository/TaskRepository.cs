@@ -61,11 +61,6 @@ namespace SapphirApp.Data.Repository
             return AllTasks;
         }
 
-        public void ShowTask()
-        {
-            throw new NotImplementedException();
-        }
-
         public int GetLastNumberTask(int ID)
         {
             var LastTask = context.TasksProjects.Where(x => x.IdProjects == ID).OrderByDescending(x => x.Id).FirstOrDefault();
@@ -75,6 +70,12 @@ namespace SapphirApp.Data.Repository
         {
             var LastTask = context.Projects.Where(x => x.Id == ID).OrderByDescending(x => x.Id).FirstOrDefault();
             return LastTask.ShortName;
+        }
+
+        public TasksProject ShowTask(string ShortName)
+        {
+            var InfoTask = context.TasksProjects.Where(x => x.ShortNumber == ShortName).FirstOrDefault();
+            return InfoTask;
         }
     }
 }

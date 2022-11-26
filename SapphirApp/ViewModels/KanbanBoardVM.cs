@@ -25,7 +25,17 @@ namespace SapphirApp.ViewModels
         TaskRepository tasksRepository;
         private bool _IsGridVisible = false;
         private bool _isKanbanEnabled = true;
-        public NewTask newTask = new NewTask();
+        private NewTask _newTask = new NewTask();
+        public NewTask newTask
+        {
+            get => _newTask;
+            set
+            {
+                _newTask = value;
+                OnPropertyChanged(nameof(newTask));
+            }
+        }
+        
         public string Name
         {
             get=>newTask.Name;
@@ -195,6 +205,16 @@ namespace SapphirApp.ViewModels
         #endregion
         public KanbanBoardVM()
         {
+            Name = newTask.Name;
+            Description = newTask.Description;
+            AssignedUser = newTask.AssignedUser;
+            CreatedTime = newTask.CreatedTime;
+            ProjectID = newTask.ProjectID;
+            ShortNumber = newTask.ShortNumber;
+            Category = newTask.Category;
+            CreatedByID = newTask.CreatedByID;
+            ModDate = newTask.ModDate;
+            Tag = newTask.Tag;
             IsTaskVisible = _isTaskVisible;
             Columns = _columns;
             Tasks = _task;
@@ -207,9 +227,14 @@ namespace SapphirApp.ViewModels
             UpdateTasks();
         }
 
+        /// <summary>
+        /// //////////////////////////////////////////////////////////////// poprawić pokazywanie
+        /// </summary>
+        /// <param name="obj"></param>
         private void ShowInfoTask(object obj)
         {
-            var ssss = obj as string;
+            var shortName = obj as string;
+            newTask = DtoTasksToModel.Converter(tasksRepository.ShowTask(shortName));
             IsTaskVisible = true;
         }
 

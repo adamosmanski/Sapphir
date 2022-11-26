@@ -12,7 +12,7 @@ namespace SapphirApp.Data.Interface
         IEnumerable<TasksProject> GetAllTasks(int ProjectNumberID);
         void AddTask(TasksProject task);
         void ArchiveTasks();
-        void ShowTask();
+        TasksProject ShowTask(string ShortName);
         int GetLastNumberTask(int ID);
         string GetShortNameTask(int ID);
     }
