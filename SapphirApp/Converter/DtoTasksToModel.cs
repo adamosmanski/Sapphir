@@ -43,7 +43,7 @@ namespace SapphirApp.Converter
             task.CreatedTime = model.CreatedAt;
             task.CreatedByID = model.IdProjects;
             task.Name = model.Name;
-            task.Description = task.Description;
+            task.Description = model.Description;
             task.Tag = model.Tag;
 
             return task;

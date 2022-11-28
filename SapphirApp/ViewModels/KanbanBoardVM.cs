@@ -227,15 +227,12 @@ namespace SapphirApp.ViewModels
             UpdateTasks();
         }
 
-        /// <summary>
-        /// //////////////////////////////////////////////////////////////// poprawić pokazywanie
-        /// </summary>
-        /// <param name="obj"></param>
         private void ShowInfoTask(object obj)
         {
+            IsTaskVisible = true;
             var shortName = obj as string;
             newTask = DtoTasksToModel.Converter(tasksRepository.ShowTask(shortName));
-            IsTaskVisible = true;
+            SelectedColumn = newTask.Category;
         }
 
         private void AddTaskToDto(object obj)

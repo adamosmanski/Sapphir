@@ -162,22 +162,24 @@
             </Grid.ColumnDefinitions>
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                           Grid.Column="1" Grid.RowSpan="4"
-                    Grid.ColumnSpan="4" Margin="100,50">
+                    Grid.ColumnSpan="4" Margin="10,50">
                 <Border Background="White" Margin="5">
                     <StackPanel Margin="5">
                         <TextBlock TextWrapping="Wrap"
                            Margin="5"
                            FontSize="14"
                            FontWeight="DemiBold"
-                           Text="{Binding Name}"/>
+                           Text="{Binding newTask.Name}"/>
                         <TextBlock Margin="0,10,0,0" Text="Opis:"/>
                         <TextBox TextWrapping="Wrap" IsReadOnly="True" 
                         Height="100"
-                        Text="{Binding Description}"/>
+                        Text="{Binding newTask.Description}"/>
                         <TextBlock Text="Board:"/>
                         <ComboBox ItemsSource="{Binding Columns}" SelectedValue="{Binding SelectedColumn}"/>
                         <TextBlock Text="Przypisz do:"/>
-                        <TextBox Text="{Binding OldAssignedUser}"/>
+                        <TextBox Text="{Binding newTask.AssignedUser}"/>
+                        <TextBlock Text="Komentarz:"/>
+                        <TextBox TextWrapping="Wrap" MaxLines="5"/>                        
                     </StackPanel>
                 </Border>
             </ScrollViewer>
