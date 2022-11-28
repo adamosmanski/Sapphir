@@ -71,7 +71,6 @@
                                      Text="{Binding Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      MaxLines="3"
                                      TextWrapping="Wrap"/>
-                            <!-- IMPLEMENTACJA POKAZANIA TASKA ! -->
                             <Button Content="Pokaż" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.TaskShow}"
                                     CommandParameter="{Binding ShortNumber}"/>
                         </StackPanel>
@@ -179,7 +178,8 @@
                         <TextBlock Text="Przypisz do:"/>
                         <TextBox Text="{Binding newTask.AssignedUser}"/>
                         <TextBlock Text="Komentarz:"/>
-                        <TextBox TextWrapping="Wrap" MaxLines="5"/>                        
+                        <TextBox TextWrapping="Wrap" MaxLines="10"/>
+                        <Button Content="jebać" HorizontalAlignment="Right" />
                     </StackPanel>
                 </Border>
             </ScrollViewer>
