@@ -37,7 +37,6 @@ namespace SapphirApp.Converter
             NewTask task = new NewTask();
 
             task.AssignedUser = model.AssignedUser;
-            task.ModDate = (DateTime)model.ModDate;
             task.Category = model.Category;
             task.ShortNumber = model.ShortNumber;
             task.CreatedTime = model.CreatedAt;

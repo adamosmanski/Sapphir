@@ -72,19 +72,19 @@
                                      MaxLines="3"
                                      TextWrapping="Wrap"/>
                             <Button Content="Pokaż" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type syncfusion:SfKanban}}, Path=DataContext.TaskShow}"
-                                    CommandParameter="{Binding ShortNumber}"/>
+                                    CommandParameter="{Binding ShortNumber, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
                 
             </syncfusion:SfKanban.CardTemplate>
-            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="UnAssigned" Title="Nieprzypisane" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="Unassigned" Title="Unassigned" Foreground="White"/>
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="True" Categories="Backlog" Title="Backlog" Foreground="White"/>
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="To Do" Title="To Do" Foreground="White"/>
-            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="In Progress" Title="W trakcie" Foreground="White"/>
-            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="In Test" Title="W trakcie TST" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="In Progress" Title="In Progress" Foreground="White"/>
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="In Test" Title="In Test" Foreground="White"/>
             <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Review" Title="Review" Foreground="White" />
-            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Completed" Title="Gotowe" Foreground="White" />
+            <syncfusion:KanbanColumn AllowDrag="False" AllowDrop="False" IsExpanded="False" Categories="Completed" Title="Completed" Foreground="White" />
         </syncfusion:SfKanban>
         <!--"-->
         <Grid Background="Transparent" 
@@ -164,23 +164,53 @@
                     Grid.ColumnSpan="4" Margin="10,50">
                 <Border Background="White" Margin="5">
                     <StackPanel Margin="5">
+                        <Button Content="X" 
+                                Style="{StaticResource AddTasks}" 
+                                HorizontalAlignment="Right"
+                                Command="{Binding CloseTask}"/>
                         <TextBlock TextWrapping="Wrap"
                            Margin="5"
                            FontSize="14"
                            FontWeight="DemiBold"
-                           Text="{Binding newTask.Name}"/>
+                           Text="{Binding newTask.Name, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <TextBlock Margin="0,10,0,0" Text="Opis:"/>
                         <TextBox TextWrapping="Wrap" IsReadOnly="True" 
                         Height="100"
-                        Text="{Binding newTask.Description}"/>
+                        Text="{Binding newTask.Description, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <TextBlock Text="Board:"/>
-                        <ComboBox ItemsSource="{Binding Columns}" SelectedValue="{Binding SelectedColumn}"/>
+                        <ComboBox ItemsSource="{Binding Columns, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedValue="{Binding SelectedColumn, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <TextBlock Text="Przypisz do:"/>
-                        <TextBox Text="{Binding newTask.AssignedUser}"/>
+                        <TextBox Text="{Binding newTask.AssignedUser, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <TextBlock Text="Komentarz:"/>
                         <TextBox TextWrapping="Wrap" MaxLines="10"/>
-                        <Button Content="jebać" HorizontalAlignment="Right" />
-                    </StackPanel>
+                        <Button Content="Dodaj komentarz" Margin="0,10,0,0" HorizontalAlignment="Right" Style="{StaticResource NewProjectButton}"/>
+                        <ItemsControl ItemsSource="{Binding ListMessages, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            BorderThickness="0 0 1 0"
+                            BorderBrush="DarkGray"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                            Background="LightGray"
+                            Foreground="Black"
+                            Margin="0,15,0,0">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="5,0,5,0"/>
+                                                <TextBlock Text="{Binding Time, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Message, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="5,0,5,15"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>    
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Button Style="{StaticResource NewProjectButton}" 
+                                Content="Aktualizauj"
+                                Command="{Binding UpdateTask}"/>
+                    </StackPanel>                    
                 </Border>
             </ScrollViewer>
         </Grid>

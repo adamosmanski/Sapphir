@@ -25,7 +25,18 @@ namespace SapphirApp.ViewModels
         TaskRepository tasksRepository;
         private bool _IsGridVisible = false;
         private bool _isKanbanEnabled = true;
+
         private NewTask _newTask = new NewTask();
+        private List<MessagesInTask> _messagesInTask = new List<MessagesInTask>();
+        public List<MessagesInTask> ListMessages
+        {
+            get => _messagesInTask;
+            set
+            {
+                _messagesInTask = value;
+                OnPropertyChanged(nameof(ListMessages));
+            }
+        }
         public NewTask newTask
         {
             get => _newTask;
@@ -35,7 +46,15 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(newTask));
             }
         }
-        
+        public int ID
+        {
+            get => newTask.ID;
+            set
+            {
+                newTask.ID = value;
+                OnPropertyChanged(nameof(ID));
+            }
+        }
         public string Name
         {
             get=>newTask.Name;
@@ -154,14 +173,14 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Tasks));
             }
         }
+       
         private List<string> _columns = new List<string>()
         {
-            "Nieprzypisane", "Backlog","To Do", "W trakcie","W trakcie TST", "Review", "Gotowe"
+            "Unassigned", "Backlog","To Do","In Progress" ,"In Test", "Review", "Completed"
         };
         private string _selectedColumn;
         private string _assignedUser;
         private bool _isTaskVisible = false;
-
         public bool IsTaskVisible
         {
             get => _isTaskVisible;
@@ -201,10 +220,14 @@ namespace SapphirApp.ViewModels
         public ICommand ShowGridToAddTask { get; }
         public ICommand CancelTask { get; }
         public ICommand AddTask { get; }
-        public ICommand TaskShow { get; set; }
+        public ICommand TaskShow { get; }
+        public ICommand CloseTask { get; }
+        public ICommand UpdateTask { get; }
         #endregion
         public KanbanBoardVM()
         {
+            ListMessages = _messagesInTask;
+            
             Name = newTask.Name;
             Description = newTask.Description;
             AssignedUser = newTask.AssignedUser;
@@ -224,14 +247,21 @@ namespace SapphirApp.ViewModels
             CancelTask = new RelayCommand(CancelAddTask);
             AddTask = new RelayCommand(AddTaskToDto);
             TaskShow = new RelayCommand(ShowInfoTask);
-            UpdateTasks();
+            CloseTask = new RelayCommand(CloseTaskGrid);
+
+            UpdateTask = new RelayCommand(UpdateTaskDto);
+            ShowTasksInMainWindow();
+        }
+        private void CloseTaskGrid(object obj)
+        {
+            IsTaskVisible = false;
         }
 
         private void ShowInfoTask(object obj)
         {
             IsTaskVisible = true;
-            var shortName = obj as string;
-            newTask = DtoTasksToModel.Converter(tasksRepository.ShowTask(shortName));
+            SelectedTask.ShortName = obj as string;
+            newTask = DtoTasksToModel.Converter(tasksRepository.ShowTask(SelectedTask.ShortName));
             SelectedColumn = newTask.Category;
         }
 
@@ -246,18 +276,15 @@ namespace SapphirApp.ViewModels
             ShortNumber = $"{SelectedTask.ShortName}-{SelectedTask.Number}";
             CreatedByID = LoggedUser.ID;
             tasksRepository.AddTask(ConvertTaskToDTO.Transform(newTask));
-            UpdateTasks();
+            ShowTasksInMainWindow();
             HideGrid();
         }
-        public void UpdateTask()
+        public void UpdateTaskDto(object obj)
         {
-            var x1 = SelectedProject.Number;
-            var x2 = SelectedTask.ID;
-            var x3 = SelectedTask.Column;
-            var x4 = SelectedTask.ShortName;
-            var x5 = SelectedTask.Title;
-            Debug.Write($@"{x1} + {x2}+{x3}+{x4}+{x5}");
-            //tasksRepository.UpdateColumn();
+            tasksRepository.UpdateColumn(SelectedTask.ShortName, SelectedColumn, newTask.AssignedUser);
+            ShowTasksInMainWindow();
+            HideGrid();
+            ShowTasksInMainWindow();
         }
 
         private void ShowGridWithTask(object obj)
@@ -270,7 +297,7 @@ namespace SapphirApp.ViewModels
         {
             HideGrid();
         }
-        private void UpdateTasks()
+        private void ShowTasksInMainWindow()
         {
             Tasks = DtoTasksToModel.Transform(tasksRepository.GetAllTasks(SelectedProject.ID));
         }

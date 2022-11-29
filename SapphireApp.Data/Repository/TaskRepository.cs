@@ -41,14 +41,15 @@ namespace SapphirApp.Data.Repository
             throw new NotImplementedException();
         }
 
-        public void UpdateColumn(string Name, string Column)
+        public void UpdateColumn(string ShortName, string Column, string User)
         {
             using( var context = new SapphirApplicationContext())
             {
-                var result = context.TasksProjects.SingleOrDefault(x => x.Name == Name);
+                var result = context.TasksProjects.SingleOrDefault(x => x.ShortNumber == ShortName);
                 if(result != null)
                 {
                     result.Category = Column;
+                    result.AssignedUser = User; 
                     context.Update(result);
                     context.SaveChanges();
                 }
@@ -71,7 +72,6 @@ namespace SapphirApp.Data.Repository
             var LastTask = context.Projects.Where(x => x.Id == ID).OrderByDescending(x => x.Id).FirstOrDefault();
             return LastTask.ShortName;
         }
-
         public TasksProject ShowTask(string ShortName)
         {
             var InfoTask = context.TasksProjects.Where(x => x.ShortNumber == ShortName).FirstOrDefault();
