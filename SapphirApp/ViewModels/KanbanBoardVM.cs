@@ -15,6 +15,7 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace SapphirApp.ViewModels
 {
@@ -267,8 +268,15 @@ namespace SapphirApp.ViewModels
 
         private void AddTaskToDto(object obj)
         {
-            SelectedTask.ShortName = tasksRepository.GetShortNameTask(SelectedProject.ID);
-            SelectedTask.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID)+1;
+            if (Tasks.Count<1)
+            {
+                SelectedTask.Number = 0;
+            }
+            else
+            {
+                SelectedTask.Number = tasksRepository.GetLastNumberTask(SelectedProject.ID) + 1;
+            }
+            SelectedTask.ShortName = tasksRepository.GetShortNameTask(SelectedProject.ID);            
             CreatedTime = DateTime.Now;
             ModDate = DateTime.Now;
             Category = SelectedTask.Column;
@@ -278,6 +286,7 @@ namespace SapphirApp.ViewModels
             tasksRepository.AddTask(ConvertTaskToDTO.Transform(newTask));
             ShowTasksInMainWindow();
             HideGrid();
+            ClearNewTask();
         }
         public void UpdateTaskDto(object obj)
         {
@@ -300,6 +309,13 @@ namespace SapphirApp.ViewModels
         private void ShowTasksInMainWindow()
         {
             Tasks = DtoTasksToModel.Transform(tasksRepository.GetAllTasks(SelectedProject.ID));
+        }
+        private void ClearNewTask()
+        {
+            Name = String.Empty;
+            Description = String.Empty;
+            AssignedUser = String.Empty;
+            Tag = String.Empty;
         }
         private void HideGrid()
         {
