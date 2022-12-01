@@ -6,7 +6,8 @@ namespace SapphirApp.Data.Models;
 public partial class Project
 {
     public int Id { get; set; }
-    public string ShortName { get; set;} = null!;
+
+    public string ShortName { get; set; } = null!;
 
     public string Name { get; set; } = null!;
 

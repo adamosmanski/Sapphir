@@ -8,6 +8,7 @@ namespace SapphirApp.Models
 {
     public class MessagesInTask
     {
+        public string ShortTaskName { get; set; }
         public string UserName { get; set; }
         public string Message { get; set; }
         public DateTime Time { get; set; }

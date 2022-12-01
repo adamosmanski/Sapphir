@@ -1,6 +1,7 @@
 ﻿using SapphirApp.Converter;
 using SapphirApp.Core;
 using SapphirApp.Data.Context;
+using SapphirApp.Data.Interface;
 using SapphirApp.Data.Models;
 using SapphirApp.Data.Repository;
 using SapphirApp.Models;
@@ -24,10 +25,12 @@ namespace SapphirApp.ViewModels
         #region Variables
         SapphirApplicationContext context = new SapphirApplicationContext();
         TaskRepository tasksRepository;
+        CommentsRepository commentsRepository;
         private bool _IsGridVisible = false;
         private bool _isKanbanEnabled = true;
 
         private NewTask _newTask = new NewTask();
+        MessagesInTask message = new MessagesInTask();
         private List<MessagesInTask> _messagesInTask = new List<MessagesInTask>();
         public List<MessagesInTask> ListMessages
         {
@@ -174,7 +177,7 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Tasks));
             }
         }
-       
+        
         private List<string> _columns = new List<string>()
         {
             "Unassigned", "Backlog","To Do","In Progress" ,"In Test", "Review", "Completed"
@@ -218,17 +221,27 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(SelectedColumn));
             }
         }
+        public string Comment
+        {
+            get => message.Message;
+            set
+            {
+                message.Message = value;
+                OnPropertyChanged(nameof(Comment));
+            }
+        }
         public ICommand ShowGridToAddTask { get; }
         public ICommand CancelTask { get; }
         public ICommand AddTask { get; }
         public ICommand TaskShow { get; }
         public ICommand CloseTask { get; }
         public ICommand UpdateTask { get; }
+        public ICommand AddComments { get; }
         #endregion
         public KanbanBoardVM()
         {
             ListMessages = _messagesInTask;
-            
+            Comment = message.Message;
             Name = newTask.Name;
             Description = newTask.Description;
             AssignedUser = newTask.AssignedUser;
@@ -243,13 +256,14 @@ namespace SapphirApp.ViewModels
             Columns = _columns;
             Tasks = _task;
             IsGridVisible = _IsGridVisible;
+            commentsRepository = new CommentsRepository(context);
             tasksRepository = new TaskRepository(context);            
             ShowGridToAddTask = new RelayCommand(ShowGridWithTask);
             CancelTask = new RelayCommand(CancelAddTask);
             AddTask = new RelayCommand(AddTaskToDto);
             TaskShow = new RelayCommand(ShowInfoTask);
             CloseTask = new RelayCommand(CloseTaskGrid);
-
+            AddComments = new RelayCommand(AddCommentsToTask);
             UpdateTask = new RelayCommand(UpdateTaskDto);
             ShowTasksInMainWindow();
         }
@@ -288,6 +302,7 @@ namespace SapphirApp.ViewModels
             HideGrid();
             ClearNewTask();
         }
+       
         public void UpdateTaskDto(object obj)
         {
             tasksRepository.UpdateColumn(SelectedTask.ShortName, SelectedColumn, newTask.AssignedUser);
@@ -296,6 +311,14 @@ namespace SapphirApp.ViewModels
             ShowTasksInMainWindow();
         }
 
+        private void AddCommentsToTask(object obj)
+        {
+            message.ShortTaskName = SelectedTask.ShortName;
+            message.UserName = LoggedUser.Login;
+            message.Time = DateTime.Now;            
+            commentsRepository.AddComment(message);
+
+        }
         private void ShowGridWithTask(object obj)
         {
             SelectedTask.Column = obj.ToString();

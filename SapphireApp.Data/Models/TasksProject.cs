@@ -8,6 +8,7 @@ public partial class TasksProject
     public int Id { get; set; }
 
     public int IdProjects { get; set; }
+
     public string ShortNumber { get; set; } = null!;
 
     public string Name { get; set; } = null!;
@@ -19,7 +20,8 @@ public partial class TasksProject
     public string? AssignedUser { get; set; }
 
     public string? Tag { get; set; }
-    public string? Category { get; set; }
+
+    public string Category { get; set; } = null!;
 
     public DateTime? ModDate { get; set; }
 

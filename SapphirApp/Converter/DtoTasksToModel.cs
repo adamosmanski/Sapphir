@@ -32,6 +32,29 @@ namespace SapphirApp.Converter
             }
             return result;
         }
+        public static List<MessagesInTask> TransformComment(IEnumerable<Comment> collection)
+        {
+            List<MessagesInTask> result = new List<MessagesInTask>();
+            foreach (var item in collection)
+            {
+                MessagesInTask model = new MessagesInTask();
+                model.UserName = item.User;
+                model.Time = item.CreatedAt;
+                model.Message = item.Comments;
+                model.ShortTaskName = item.ShortTaskName;
+                result.Add(model);
+            }
+            return result;
+        }
+        public static MessagesInTask ConverterComments(Comment model)
+        {
+            MessagesInTask result = new MessagesInTask();
+            result.UserName = model.User;
+            result.Time = model.CreatedAt;
+            result.Message = model.Comments;
+            result.ShortTaskName = model.ShortTaskName;
+            return result;
+        }
         public static NewTask Converter(TasksProject model)
         {
             NewTask task = new NewTask();

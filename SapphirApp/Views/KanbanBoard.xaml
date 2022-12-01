@@ -182,8 +182,12 @@
                         <TextBlock Text="Przypisz do:"/>
                         <TextBox Text="{Binding newTask.AssignedUser, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <TextBlock Text="Komentarz:"/>
-                        <TextBox TextWrapping="Wrap" MaxLines="10"/>
-                        <Button Content="Dodaj komentarz" Margin="0,10,0,0" HorizontalAlignment="Right" Style="{StaticResource NewProjectButton}"/>
+                        <TextBox TextWrapping="Wrap" MaxLines="10"
+                                 Text="{Binding Comment}"/>
+                        <Button Content="Dodaj komentarz" 
+                                Margin="0,10,0,0" HorizontalAlignment="Right" 
+                                Style="{StaticResource NewProjectButton}"
+                                Command="{Binding AddComments}"/>
                         <ItemsControl ItemsSource="{Binding ListMessages, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                             BorderThickness="0 0 1 0"
                             BorderBrush="DarkGray"
