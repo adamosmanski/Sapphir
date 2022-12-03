@@ -46,12 +46,12 @@ namespace SapphirApp.Converter
             }
             return result;
         }
-        public static MessagesInTask ConverterComments(Comment model)
+        public static Comment ConverterComments(MessagesInTask model)
         {
-            MessagesInTask result = new MessagesInTask();
-            result.UserName = model.User;
-            result.Time = model.CreatedAt;
-            result.Message = model.Comments;
+            Comment result = new Comment();
+            result.User = model.UserName;
+            result.CreatedAt = model.Time;
+            result.Comments = model.Message;
             result.ShortTaskName = model.ShortTaskName;
             return result;
         }

@@ -278,6 +278,7 @@ namespace SapphirApp.ViewModels
             SelectedTask.ShortName = obj as string;
             newTask = DtoTasksToModel.Converter(tasksRepository.ShowTask(SelectedTask.ShortName));
             SelectedColumn = newTask.Category;
+            GetAllComments();
         }
 
         private void AddTaskToDto(object obj)
@@ -316,8 +317,8 @@ namespace SapphirApp.ViewModels
             message.ShortTaskName = SelectedTask.ShortName;
             message.UserName = LoggedUser.Login;
             message.Time = DateTime.Now;            
-            commentsRepository.AddComment(message);
-
+            commentsRepository.AddComment(DtoTasksToModel.ConverterComments(message));
+            GetAllComments();
         }
         private void ShowGridWithTask(object obj)
         {
@@ -345,6 +346,10 @@ namespace SapphirApp.ViewModels
             IsGridVisible = false;
             IsKanbanEnabled = true;
             IsTaskVisible=false;
+        }
+        private void GetAllComments()
+        {
+            ListMessages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(SelectedTask.ShortName));
         }
 
     }

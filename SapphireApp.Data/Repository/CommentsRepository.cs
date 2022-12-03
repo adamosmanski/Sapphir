@@ -33,7 +33,7 @@ namespace SapphirApp.Data.Repository
 
         public IEnumerable<Comment> ShowAllComment(string ShortNameTask)
         {
-            var AllComents = context.Comments.ToList();
+            var AllComents = context.Comments.Where(x=>x.ShortTaskName == ShortNameTask).OrderByDescending(x=>x.CreatedAt).ToList();
             return AllComents;
         }
     }
