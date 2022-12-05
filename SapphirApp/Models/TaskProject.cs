@@ -27,5 +27,6 @@ namespace SapphirApp.Models
         public int? ModUser { get; set; }
         public string Category { get; set; }
         public string ShortNumber { get; set; }
+       
     }
 }

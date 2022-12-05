@@ -63,13 +63,18 @@ namespace SapphirApp.ViewModels
             ListBoxSource = ConverterProjectModelToProjectDTO.Transform(ProjectDTO.GetAllProject());
             CmdOpenKanban = new RelayCommand(OpenKanbanBoard);
             CmdOpenBoard = new RelayCommand(OpenBoard);
+            CmdOpenMyTask = new RelayCommand(OpenMyTask);
         }
         public ICommand CmdChangePassword { get; }
         public ICommand CmdOpenChat { get; }
         public ICommand CmdNewProject { get; }
         public ICommand CmdOpenBoard { get; }
         public ICommand CmdOpenKanban { get; }
-
+        public ICommand CmdOpenMyTask { get; }
+        private void OpenMyTask(object obj)
+        {
+            CurrentVM = new MyTaskVM();
+        }
         private void CreateNewProject(object obj)
         {
             NewProjectPopUp window = new NewProjectPopUp();

@@ -22,6 +22,7 @@
     <None Remove="Assets\Normal\right_30px.png" />
     <None Remove="Assets\Normal\settings_30px.png" />
     <None Remove="Assets\Normal\squared_menu_30px.png" />
+    <None Remove="Assets\Normal\tasklist_30px.png" />
     <None Remove="Assets\Normal\todo_list_30px.png" />
     <None Remove="Assets\Normal\World.ico" />
   </ItemGroup>
@@ -80,6 +81,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\squared_menu_30px.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Normal\tasklist_30px.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\todo_list_30px.png">

@@ -5,6 +5,7 @@ using SapphirApp.Data.Interface;
 using SapphirApp.Data.Models;
 using SapphirApp.Data.Repository;
 using SapphirApp.Models;
+using SapphirApp.Views;
 using Syncfusion.UI.Xaml.Kanban;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -28,7 +30,7 @@ namespace SapphirApp.ViewModels
         CommentsRepository commentsRepository;
         private bool _IsGridVisible = false;
         private bool _isKanbanEnabled = true;
-
+        UserRepository userRepository;
         private NewTask _newTask = new NewTask();
         MessagesInTask message = new MessagesInTask();
         private List<MessagesInTask> _messagesInTask = new List<MessagesInTask>();
@@ -256,6 +258,7 @@ namespace SapphirApp.ViewModels
             Columns = _columns;
             Tasks = _task;
             IsGridVisible = _IsGridVisible;
+            userRepository = new UserRepository(context);
             commentsRepository = new CommentsRepository(context);
             tasksRepository = new TaskRepository(context);            
             ShowGridToAddTask = new RelayCommand(ShowGridWithTask);
@@ -306,10 +309,21 @@ namespace SapphirApp.ViewModels
        
         public void UpdateTaskDto(object obj)
         {
-            tasksRepository.UpdateColumn(SelectedTask.ShortName, SelectedColumn, newTask.AssignedUser);
-            ShowTasksInMainWindow();
-            HideGrid();
-            ShowTasksInMainWindow();
+            var isExistUser = userRepository.isExist(AssignedUser);
+            if(isExistUser == true)
+            {
+                tasksRepository.UpdateColumn(SelectedTask.ShortName, SelectedColumn, newTask.AssignedUser);
+                ShowTasksInMainWindow();
+                HideGrid();
+                ShowTasksInMainWindow();
+            }
+            else
+            {
+                NotifyPopUp window = new NotifyPopUp();
+                NotifyPopUpVM model = new NotifyPopUpVM("Podany użytkownik nie istnieje.");
+                window.DataContext = model;
+            }
+
         }
 
         private void AddCommentsToTask(object obj)

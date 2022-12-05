@@ -213,7 +213,8 @@
                         </ItemsControl>
                         <Button Margin="0,10,0,0" Style="{StaticResource NewProjectButton}" 
                                 Content="Aktualizauj"
-                                Command="{Binding UpdateTask}"/>
+                                Command="{Binding UpdateTask}"
+                                CommandParameter="{Binding newTask.AssignedUser}"/>
                     </StackPanel>                    
                 </Border>
             </ScrollViewer>

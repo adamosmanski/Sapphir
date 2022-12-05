@@ -16,6 +16,9 @@
         <DataTemplate DataType="{x:Type vm:KanbanBoardVM}">
             <local:KanbanBoard/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MyTaskVM}">
+            <local:MyTask/>
+        </DataTemplate>
         <converter:ButtonVisibilityConverter x:Key="ButtonVisibilityConverter"/>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
     </Window.Resources>
@@ -81,6 +84,11 @@
                         <MenuItem.Icon>
                             <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/todo_list_30px.png"/>
                         </MenuItem.Icon>
+                        <MenuItem Header="Moje zadania" Template="{StaticResource Item_Template}" Command="{Binding CmdOpenMyTask}">
+                            <MenuItem.Icon>
+                                <Image Source="pack://application:,,,/Assets/Normal/tasklist_30px.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
                     <!-- PROJEKTY -->
                     <MenuItem Header="Projekty"

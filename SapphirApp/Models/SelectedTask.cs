@@ -13,6 +13,5 @@ namespace SapphirApp.Models
         public static string Column { get; set; }
         public static int Number { get; set; }
         public static string ShortName { get; set; }
-
     }
 }

@@ -57,5 +57,17 @@ namespace SapphirApp.Data.Repository
             var GetLogins = context.Users.Select(x => x.Login).ToList();
             return GetLogins;
         }
+        public bool isExist(string AssignedUser)
+        {
+            var isExist = context.Users.Where(u => u.Login == AssignedUser).SingleOrDefault();
+            if(isExist == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
