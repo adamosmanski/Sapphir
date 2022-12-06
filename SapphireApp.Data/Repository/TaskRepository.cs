@@ -16,7 +16,6 @@ namespace SapphirApp.Data.Repository
             context = _context;
         }
         private SapphirApplicationContext context;
-
         public void AddTask(TasksProject task)
         {
             TasksProject project = new TasksProject()
@@ -35,12 +34,10 @@ namespace SapphirApp.Data.Repository
             context.Add(project);
             context.SaveChanges();
         }
-
         public void ArchiveTasks()
         {
             throw new NotImplementedException();
         }
-
         public void UpdateColumn(string ShortName, string Column, string User)
         {
             using( var context = new SapphirApplicationContext())
@@ -55,13 +52,11 @@ namespace SapphirApp.Data.Repository
                 }
             }
         }
-
         public IEnumerable<TasksProject> GetAllTasks(int ProjectNumberID)
         {
             var AllTasks = context.TasksProjects.Where(x => x.IdProjects == ProjectNumberID).ToList();
             return AllTasks;
         }
-
         public int GetLastNumberTask(int ID)
         {
             var LastTask = context.TasksProjects.Where(x => x.IdProjects == ID).OrderByDescending(x => x.Id).FirstOrDefault();
@@ -76,6 +71,11 @@ namespace SapphirApp.Data.Repository
         {
             var InfoTask = context.TasksProjects.Where(x => x.ShortNumber == ShortName).FirstOrDefault();
             return InfoTask;
+        }
+        public List<TasksProject> GetUserTasks(string Login)
+        {
+            var Tasks = context.TasksProjects.Where(x=>x.AssignedUser== Login).ToList();
+            return Tasks;
         }
     }
 }

@@ -10,7 +10,82 @@
     <UserControl.DataContext>
         <vm:MyTaskVM/>
     </UserControl.DataContext>
-    <Grid Background="Yellow">
-          
+    <Grid Background="Transparent">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0"
+                 Background="Transparent"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 BorderThickness="0 0 1 0"
+                 BorderBrush="DarkGray"
+                 Foreground="White"
+                 HorizontalContentAlignment="Stretch"
+                 ItemsSource="{Binding MyTaskList,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedItem="{Binding TaskSelected}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    
+                    <Setter Property="BorderThickness" Value="0,0,0,0.5"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Name="TaskList">
+                        <Grid.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick"
+                                          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.ShowDetailsTask}" />
+                        </Grid.InputBindings>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="AllowDrop" Value="False" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="AllowDrop" Value="True" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding ShortNumber, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
+                                <Label Content="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Foreground="White"/>
+                            </StackPanel>
+                            <Label Content="{Binding Description,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Border Grid.Column="1"
+                Visibility="Visible">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Column="5">
+                    <Button Margin="10"
+                            HorizontalAlignment="Right"
+                            Content="x" Style="{StaticResource AddTasks}"/>
+                </StackPanel>
+                <TextBlock Text="Binidng shortnumbera" Foreground="White"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

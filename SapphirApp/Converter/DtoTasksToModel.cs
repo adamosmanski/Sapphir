@@ -70,6 +70,27 @@ namespace SapphirApp.Converter
 
             return task;
         }
+        public static List<TaskProject> TransformToMyTask(List<TasksProject> collection)
+        {
+            var result = new List<TaskProject>();
+            foreach (var task in collection)
+            {
+                var project = new TaskProject();
+                project.Name = task.Name;
+                project.Description = task.Description;
+                project.Tag = task.Tag;
+                project.Id = task.Id;
+                project.IdProjects = task.IdProjects;
+                project.ShortNumber = task.ShortNumber;
+                project.AssignedUser = task.AssignedUser;
+                project.Category = task.Category;
+                project.CreatedAt = task.CreatedAt;
+                project.ModDate = task.ModDate;
+                project.ModUser= task.ModUser;
+                result.Add(project);
+            }
+            return result;
+        }
     }
     
 }

@@ -19,7 +19,7 @@ namespace SapphirApp.ViewModels
         private ObserveObject _currentVM;
         ProjectRepository ProjectDTO;
         SapphirApplicationContext context = new SapphirApplicationContext();
-        public List<ProjectModel> ListBoxSource { get; set; }
+        public static List<ProjectModel> ListBoxSource { get; set; }
         
         public ObserveObject CurrentVM
         {
@@ -41,7 +41,6 @@ namespace SapphirApp.ViewModels
             }
         }
         private bool _visibilityListBox;
-
         public bool VisibilityListBox
         {
             get => _visibilityListBox;
@@ -73,6 +72,7 @@ namespace SapphirApp.ViewModels
         public ICommand CmdOpenMyTask { get; }
         private void OpenMyTask(object obj)
         {
+            VisibilityListBox = false;
             CurrentVM = new MyTaskVM();
         }
         private void CreateNewProject(object obj)

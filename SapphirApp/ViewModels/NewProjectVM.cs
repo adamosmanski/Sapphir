@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using SapphirApp.Data.Context;
 using SapphirApp.Data.Repository;
+using SapphirApp.Converter;
 
 namespace SapphirApp.ViewModels
 {
@@ -52,7 +53,9 @@ namespace SapphirApp.ViewModels
 
         private void Add(object obj)
         {
-            ProjectDTO.AddProject(Project.Name, Project.Description, LoggedUser.ID);
+            Project.ShortNumber = Project.Name.Substring(0, 3);
+            ProjectDTO.AddProject(Project.Name, Project.Description, LoggedUser.ID, Project.ShortNumber);
+            MainVM.ListBoxSource = ConverterProjectModelToProjectDTO.Transform(ProjectDTO.GetAllProject());
             IsVisible = false;
         }
         private void Close(object obj)

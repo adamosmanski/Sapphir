@@ -18,9 +18,17 @@ namespace SapphirApp.Data.Repository
         }
         private SapphirApplicationContext context;
 
-        public void AddProject(string NameProject, string DescriptionProject, int ID)
+        public void AddProject(string NameProject, string DescriptionProject, int ID, string ShortNumber)
         {
-            var dataProject = new Project { Name = NameProject, Description = DescriptionProject, CreatedAt = DateTime.Now, ModDate = DateTime.Now, ModUser = ID };
+            var dataProject = new Project 
+            {
+                Name = NameProject, 
+                Description = DescriptionProject, 
+                CreatedAt = DateTime.Now, 
+                ModDate = DateTime.Now, 
+                ModUser = ID,
+                ShortName = ShortNumber
+            };
             context.Projects.Add(dataProject);
             context.SaveChanges();
         }
