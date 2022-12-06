@@ -100,10 +100,10 @@
                            Grid.ColumnSpan="5"
                            Margin="10"
                            Foreground="White"/>
-                    <TextBlock Text="a{Binding TaskFromDB.ShortNumber}"
+                    <TextBlock Text="{Binding TaskFromDB.ShortNumber}"
                                Margin="10"
                                Foreground="White"/>
-                    <TextBox Text="a{BindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangdescriptionaaaaaaaaaaaaaaaaaaa}" 
+                    <TextBox Text="{Binding TaskFromDB.Name}" 
                              IsReadOnly="True" 
                              TextWrapping="Wrap"
                              IsEnabled="False"
@@ -117,14 +117,15 @@
                          Grid.ColumnSpan="5" 
                          Grid.RowSpan="2"
                          Margin="10,0,0,0"
-                         Text="zbinduj tu swój komentarz !!! "
+                         Text="{Binding Comment}"
                          MaxLines="10"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          TextWrapping="Wrap"
                          ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                 <StackPanel Grid.Column="6"
                             Grid.Row="3">
-                    <TextBox Margin="10,0,10,0" FontSize="15"/>
+                    <TextBox Margin="10,0,10,0" FontSize="15"
+                             Text="{Binding TaskFromDB.AssignedUser}"/>
                     <Button Content="Przypisz" Margin="5" Style="{StaticResource ChangePassButton}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="6"
@@ -139,7 +140,7 @@
                               Background="Blue"
                               Margin="10,0,10,0">
                     <Border>
-                        <ItemsControl>
+                        <ItemsControl ItemsSource="{Binding Messages}">
                             
                         </ItemsControl>
                     </Border>                 

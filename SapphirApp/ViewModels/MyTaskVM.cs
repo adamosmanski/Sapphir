@@ -39,7 +39,27 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(TaskFromDB));
             }
         }
+        private List<MessagesInTask> _messagesInTask;
+        public List<MessagesInTask> Messages
+        {
+            get=> _messagesInTask;
+            set
+            {
+                _messagesInTask = value;
+                OnPropertyChanged(nameof(Messages));
+            }
+        }
         private bool _isVisible = false;
+        private string _comment;
+        public string Comment
+        {
+            get => _comment;
+            set
+            {
+                _comment = value;
+                OnPropertyChanged(nameof(Comment));
+            }
+        }
         public bool IsVisible
         {
             get => _isVisible;
