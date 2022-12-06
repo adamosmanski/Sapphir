@@ -39,6 +39,16 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(TaskFromDB));
             }
         }
+        private bool _isVisible = false;
+        public bool IsVisible
+        {
+            get => _isVisible;
+            set
+            {
+                IsVisible= value;
+                OnPropertyChanged(nameof(IsVisible));
+            }
+        }
         public ICommand ShowDetailsTask { get; }
         #endregion
         public MyTaskVM()

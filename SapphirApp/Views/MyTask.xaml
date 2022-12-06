@@ -6,10 +6,13 @@
              xmlns:local="clr-namespace:SapphirApp.Views"
              xmlns:vm="clr-namespace:SapphirApp.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="600">
+             d:DesignHeight="800" d:DesignWidth="1300">
     <UserControl.DataContext>
         <vm:MyTaskVM/>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </UserControl.Resources>
     <Grid Background="Transparent">
 
         <Grid.ColumnDefinitions>
@@ -29,7 +32,6 @@
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Padding" Value="0"/>
-                    
                     <Setter Property="BorderThickness" Value="0,0,0,0.5"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="Cursor" Value="Hand"/>
@@ -63,8 +65,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border Grid.Column="1"
-                Visibility="Visible">
+        <Border Grid.Column="1">
+            <!--Visibility="{Binding IsVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibility}}">-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -78,13 +80,70 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Grid.Column="5">
                     <Button Margin="10"
                             HorizontalAlignment="Right"
-                            Content="x" Style="{StaticResource AddTasks}"/>
+                            Content="x" Style="{StaticResource AddTasks}"
+                            Command="" CommandParameter="{Binding IsVisible}"/>
                 </StackPanel>
-                <TextBlock Text="Binidng shortnumbera" Foreground="White"/>
+                <StackPanel Grid.ColumnSpan="5" Grid.RowSpan="6" >
+                    <TextBlock Text="a{Binding TaskFromDB.ShortNumber}"
+                           Grid.ColumnSpan="5"
+                           Margin="10"
+                           Foreground="White"/>
+                    <TextBlock Text="a{Binding TaskFromDB.ShortNumber}"
+                               Margin="10"
+                               Foreground="White"/>
+                    <TextBox Text="a{BindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangBindiaaaaaaaaaaaaaaaaaaaaaaaangdescriptionaaaaaaaaaaaaaaaaaaa}" 
+                             IsReadOnly="True" 
+                             TextWrapping="Wrap"
+                             IsEnabled="False"
+                             MaxLines="15"
+                             HorizontalAlignment="Left"
+                             Margin="10,0,0,0"
+                             Foreground="White"
+                             Background="Transparent"/>
+                </StackPanel>
+                <TextBox Grid.Row="5" 
+                         Grid.ColumnSpan="5" 
+                         Grid.RowSpan="2"
+                         Margin="10,0,0,0"
+                         Text="zbinduj tu swój komentarz !!! "
+                         MaxLines="10"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         TextWrapping="Wrap"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <StackPanel Grid.Column="6"
+                            Grid.Row="3">
+                    <TextBox Margin="10,0,10,0" FontSize="15"/>
+                    <Button Content="Przypisz" Margin="5" Style="{StaticResource ChangePassButton}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="6"
+                            Grid.Row="6">
+                    <Button Content="Dodaj komentarz" Margin="5" Style="{StaticResource LogButton}"/>
+                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                              VerticalScrollBarVisibility="Auto"
+                              Grid.Row="7"
+                              Grid.ColumnSpan="6"
+                              Grid.RowSpan="4"
+                              Background="Blue"
+                              Margin="10,0,10,0">
+                    <Border>
+                        <ItemsControl>
+                            
+                        </ItemsControl>
+                    </Border>                 
+                </ScrollViewer>
             </Grid>
         </Border>
     </Grid>

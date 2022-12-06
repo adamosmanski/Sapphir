@@ -7,8 +7,9 @@
         xmlns:vm="clr-namespace:SapphirApp.ViewModels"
         xmlns:converter ="clr-namespace:SapphirApp.Converter"
         mc:Ignorable="d"
-        Title="Safira" Height="450" Width="800"
-        MinHeight="450" MinWidth="800" Closing="Window_Closing" >
+        Title="Safira" Height="800" Width="1400"
+        MinHeight="800" MinWidth="1400" Closing="Window_Closing"
+        >
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:ChatVM}">
             <local:ChatView/>
