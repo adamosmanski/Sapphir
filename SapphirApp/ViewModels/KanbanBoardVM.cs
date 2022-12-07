@@ -179,7 +179,6 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Tasks));
             }
         }
-        
         private List<string> _columns = new List<string>()
         {
             "Unassigned", "Backlog","To Do","In Progress" ,"In Test", "Review", "Completed"
@@ -270,11 +269,11 @@ namespace SapphirApp.ViewModels
             UpdateTask = new RelayCommand(UpdateTaskDto);
             ShowTasksInMainWindow();
         }
+        #region Methods
         private void CloseTaskGrid(object obj)
         {
             IsTaskVisible = false;
         }
-
         private void ShowInfoTask(object obj)
         {
             IsTaskVisible = true;
@@ -283,7 +282,6 @@ namespace SapphirApp.ViewModels
             SelectedColumn = newTask.Category;
             GetAllComments();
         }
-
         private void AddTaskToDto(object obj)
         {
             if (Tasks.Count<1)
@@ -305,8 +303,7 @@ namespace SapphirApp.ViewModels
             ShowTasksInMainWindow();
             HideGrid();
             ClearNewTask();
-        }
-       
+        }       
         public void UpdateTaskDto(object obj)
         {
             var isExistUser = userRepository.isExist(AssignedUser);
@@ -325,7 +322,6 @@ namespace SapphirApp.ViewModels
             }
 
         }
-
         private void AddCommentsToTask(object obj)
         {
             message.ShortTaskName = SelectedTask.ShortName;
@@ -365,6 +361,6 @@ namespace SapphirApp.ViewModels
         {
             ListMessages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(SelectedTask.ShortName));
         }
-
+        #endregion
     }
 }

@@ -1,8 +1,10 @@
 ﻿using SapphirApp.Converter;
 using SapphirApp.Core;
 using SapphirApp.Data.Context;
+using SapphirApp.Data.Interface;
 using SapphirApp.Data.Repository;
 using SapphirApp.Models;
+using SapphirApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace SapphirApp.ViewModels
         #region Variables
         private SapphirApplicationContext context = new SapphirApplicationContext();
         private TaskRepository taskRepository;
+        private UserRepository userRepository;
         private CommentsRepository commentsRepository;
         public List<TaskProject> MyTaskList { get; set; }
         private TaskProject _taskSelected = new TaskProject();
@@ -51,14 +54,14 @@ namespace SapphirApp.ViewModels
             }
         }
         private bool _isVisible = false;
-        private string _comment;
-        public string Comment
+        private MessagesInTask _message = new MessagesInTask();
+        public MessagesInTask Message
         {
-            get => _comment;
+            get => _message;
             set
             {
-                _comment = value;
-                OnPropertyChanged(nameof(Comment));
+                _message = value;
+                OnPropertyChanged(nameof(Message));
             }
         }
         public bool IsShowed
@@ -73,6 +76,8 @@ namespace SapphirApp.ViewModels
         #endregion
         #region Commands
         public ICommand ShowDetailsTask { get; }
+        public ICommand ChangeAssignedUser { get; }
+        public ICommand AddComment { get; }
         public ICommand CloseDetailsTask { get; }
         #endregion
         public MyTaskVM()
@@ -80,12 +85,40 @@ namespace SapphirApp.ViewModels
             IsShowed = _isVisible;
             TaskFromDB = _taskFromDB;
             taskRepository = new TaskRepository(context);
+            userRepository = new UserRepository(context);
             MyTaskList = DtoTasksToModel.TransformToMyTask(taskRepository.GetUserTasks(LoggedUser.Login));
             commentsRepository = new CommentsRepository(context);
             ShowDetailsTask = new RelayCommand(ShowTask);
             CloseDetailsTask = new RelayCommand(CloseTask);
+            ChangeAssignedUser = new RelayCommand(ChangeUser);
+            AddComment = new RelayCommand(AddCommentToTask);
         }
 
+
+        #region Methods
+        private void ChangeUser(object obj)
+        {
+            var isExistUser = userRepository.isExist(TaskFromDB.AssignedUser);
+            if (isExistUser == true)
+            {
+                taskRepository.UpdateColumn(SelectedTask.ShortName,TaskFromDB.Category ,TaskFromDB.AssignedUser);               
+            }
+            else
+            {
+                NotifyPopUp window = new NotifyPopUp();
+                NotifyPopUpVM model = new NotifyPopUpVM("Podany użytkownik nie istnieje.");
+                window.DataContext = model;
+            }
+        }
+        private void AddCommentToTask(object obj)
+        {
+            var shortName = obj.ToString();
+            Message.ShortTaskName = shortName;
+            Message.UserName = LoggedUser.Login;
+            Message.Time = DateTime.Now;
+            commentsRepository.AddComment(DtoTasksToModel.ConverterComments(Message));
+            Messages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(shortName));
+        }
         private void CloseTask(object obj)
         {
             IsShowed = false;
@@ -97,5 +130,6 @@ namespace SapphirApp.ViewModels
             TaskFromDB = DtoTasksToModel.ConverterTask(taskRepository.ShowTask(TaskSelected.ShortNumber));
             Messages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(TaskSelected.ShortNumber));
         }
+        #endregion
     }
 }

@@ -15,5 +15,6 @@ namespace SapphirApp.Data.Interface
         TasksProject ShowTask(string ShortName);
         int GetLastNumberTask(int ID);
         string GetShortNameTask(int ID);
+        void UpdateAssign(string ShortName, string User);
     }
 }
