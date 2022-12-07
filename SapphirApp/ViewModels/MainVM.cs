@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -16,11 +17,21 @@ namespace SapphirApp.ViewModels
 {
     public class MainVM : ObserveObject
     {
+        #region Variables
         private ObserveObject _currentVM;
         ProjectRepository ProjectDTO;
+        private VisibilityByPermission _visibility = new VisibilityByPermission();
+        public VisibilityByPermission Visibile
+        {
+            get=> _visibility;
+            set
+            {
+                _visibility = value;
+                OnPropertyChanged(nameof(Visibile));
+            }
+        }
         SapphirApplicationContext context = new SapphirApplicationContext();
-        public static List<ProjectModel> ListBoxSource { get; set; }
-        
+        public static List<ProjectModel> ListBoxSource { get; set; }        
         public ObserveObject CurrentVM
         {
             get => _currentVM;
@@ -50,6 +61,7 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(VisibilityListBox));
             }
         }
+        #endregion
         public MainVM()
         {
             SelectedBoard = _selectedBoard;
@@ -63,13 +75,17 @@ namespace SapphirApp.ViewModels
             CmdOpenKanban = new RelayCommand(OpenKanbanBoard);
             CmdOpenBoard = new RelayCommand(OpenBoard);
             CmdOpenMyTask = new RelayCommand(OpenMyTask);
+            SetPermission();
         }
+        #region Command
         public ICommand CmdChangePassword { get; }
         public ICommand CmdOpenChat { get; }
         public ICommand CmdNewProject { get; }
         public ICommand CmdOpenBoard { get; }
         public ICommand CmdOpenKanban { get; }
         public ICommand CmdOpenMyTask { get; }
+        #endregion
+        #region Methods
         private void OpenMyTask(object obj)
         {
             VisibilityListBox = false;
@@ -81,7 +97,6 @@ namespace SapphirApp.ViewModels
             window.DataContext = new NewProjectVM();
             window.Show();
         }
-       
         private void OpenChat(object obj)
         {
             CurrentVM = new ChatVM();
@@ -92,7 +107,6 @@ namespace SapphirApp.ViewModels
             window.DataContext = new ChangePasswordVM();
             window.Show();
         }
-
         private void OpenBoard(object obj)
         {
             VisibilityListBox = true;
@@ -114,6 +128,20 @@ namespace SapphirApp.ViewModels
                 window.DataContext = new NotifyPopUpVM("Nie odnaleziono projektu");
             }            
         }
+        private void SetPermission()
+        {
+            var PermissionLevel = int.Parse(LoggedUser.LevelAcces);
+            if (PermissionLevel >= 10)
+            {
+                Visibile.IsAddProjectVisible = true;
+            }
+            else if(PermissionLevel >= 5)
+            {
+                Visibile.IsArchivalProjectsVisible = true;
+            }
+           
 
+        }
+#endregion
     }
 }

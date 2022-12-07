@@ -15,17 +15,9 @@ namespace SapphirApp.ViewModels
 {
     public class LoginWindowVM : ObserveObject
     {
+        #region Variables
         UserRepository UserRepository;
         SapphirApplicationContext context = new SapphirApplicationContext();
-        public LoginWindowVM()
-        {
-            UserRepository = new UserRepository(context);
-            LoginName = LoggedUser.Login;
-            Password = LoggedUser.Password;
-            LevelAccess = LoggedUser.LevelAcces;
-            CmdSubmitLogin = new RelayCommand(SubmitLogin, CanExecuteSubmitLogin);
-            isVisible = _isVisible;
-        }
         private bool _isVisible = true;
         public bool isVisible
         {
@@ -63,8 +55,20 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(LevelAccess));
             }
         }
-
+        #endregion;
+        public LoginWindowVM()
+        {
+            UserRepository = new UserRepository(context);
+            LoginName = LoggedUser.Login;
+            Password = LoggedUser.Password;
+            LevelAccess = LoggedUser.LevelAcces;
+            CmdSubmitLogin = new RelayCommand(SubmitLogin, CanExecuteSubmitLogin);
+            isVisible = _isVisible;
+        }
+        #region Commands
         public ICommand CmdSubmitLogin { get; }
+        #endregion
+        #region Methods
         private bool CanExecuteSubmitLogin(object obj)
         {
             bool Can = false;
@@ -91,5 +95,6 @@ namespace SapphirApp.ViewModels
                 LoginName = String.Empty;
             }
         }
+        #endregion
     }
 }
