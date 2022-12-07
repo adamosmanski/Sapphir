@@ -113,7 +113,7 @@
                         <MenuItem Header="Archiwum"
                                   Visibility="{Binding Visibile.IsArchivalProjectsVisible, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibility}}"
                                   Template="{StaticResource Item_Template}" 
-                                  Command="">
+                                  Command="{Binding CmdChangePassword}">
                             <MenuItem.Icon>
                                 <Image Source="pack://application:,,,/Assets/Normal/archivemenu_30px.png"/>
                             </MenuItem.Icon>
