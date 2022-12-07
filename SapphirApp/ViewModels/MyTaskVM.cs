@@ -17,7 +17,8 @@ namespace SapphirApp.ViewModels
     {
         #region Variables
         private SapphirApplicationContext context = new SapphirApplicationContext();
-        private TaskRepository Repository;
+        private TaskRepository taskRepository;
+        private CommentsRepository commentsRepository;
         public List<TaskProject> MyTaskList { get; set; }
         private TaskProject _taskSelected = new TaskProject();
         public TaskProject TaskSelected
@@ -60,27 +61,41 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Comment));
             }
         }
-        public bool IsVisible
+        public bool IsShowed
         {
             get => _isVisible;
             set
             {
-                IsVisible= value;
-                OnPropertyChanged(nameof(IsVisible));
+                _isVisible = value;
+                OnPropertyChanged(nameof(IsShowed));
             }
         }
+        #endregion
+        #region Commands
         public ICommand ShowDetailsTask { get; }
+        public ICommand CloseDetailsTask { get; }
         #endregion
         public MyTaskVM()
         {
+            IsShowed = _isVisible;
             TaskFromDB = _taskFromDB;
-            Repository = new TaskRepository(context);
-            MyTaskList = DtoTasksToModel.TransformToMyTask(Repository.GetUserTasks(LoggedUser.Login));
+            taskRepository = new TaskRepository(context);
+            MyTaskList = DtoTasksToModel.TransformToMyTask(taskRepository.GetUserTasks(LoggedUser.Login));
+            commentsRepository = new CommentsRepository(context);
             ShowDetailsTask = new RelayCommand(ShowTask);
+            CloseDetailsTask = new RelayCommand(CloseTask);
         }
+
+        private void CloseTask(object obj)
+        {
+            IsShowed = false;
+        }
+
         private void ShowTask(object obj)
         {
-            
+            IsShowed = true;
+            TaskFromDB = DtoTasksToModel.ConverterTask(taskRepository.ShowTask(TaskSelected.ShortNumber));
+            Messages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(TaskSelected.ShortNumber));
         }
     }
 }

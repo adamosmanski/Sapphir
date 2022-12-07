@@ -42,7 +42,7 @@
                     <Grid Name="TaskList">
                         <Grid.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick"
-                                          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.ShowDetailsTask}" />
+                                          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.ShowDetailsTask}" CommandParameter="{Binding ShortNumber}"/>
                         </Grid.InputBindings>
                         <Grid.Style>
                             <Style TargetType="Grid">
@@ -65,8 +65,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border Grid.Column="1">
-            <!--Visibility="{Binding IsVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibility}}">-->
+        <Border Grid.Column="1"
+            Visibility="{Binding IsShowed, Converter={StaticResource BoolToVisibility}}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -93,17 +93,18 @@
                     <Button Margin="10"
                             HorizontalAlignment="Right"
                             Content="x" Style="{StaticResource AddTasks}"
-                            Command="" CommandParameter="{Binding IsVisible}"/>
+                            Command="{Binding CloseDetailsTask
+                        }" CommandParameter="{Binding IsShowed}"/>
                 </StackPanel>
                 <StackPanel Grid.ColumnSpan="5" Grid.RowSpan="6" >
-                    <TextBlock Text="a{Binding TaskFromDB.ShortNumber}"
+                    <TextBlock Text="{Binding TaskFromDB.ShortNumber}"
                            Grid.ColumnSpan="5"
                            Margin="10"
                            Foreground="White"/>
-                    <TextBlock Text="{Binding TaskFromDB.ShortNumber}"
+                    <TextBlock Text="{Binding TaskFromDB.Name}"
                                Margin="10"
                                Foreground="White"/>
-                    <TextBox Text="{Binding TaskFromDB.Name}" 
+                    <TextBox Text="{Binding TaskFromDB.Description}" 
                              IsReadOnly="True" 
                              TextWrapping="Wrap"
                              IsEnabled="False"
@@ -140,8 +141,27 @@
                               Background="Blue"
                               Margin="10,0,10,0">
                     <Border>
-                        <ItemsControl ItemsSource="{Binding Messages}">
-                            
+                        <ItemsControl ItemsSource="{Binding Messages,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      BorderThickness="0 0 1 0"
+                                      BorderBrush="DarkGray"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                      Background="LightGray"
+                                      Foreground="Black">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="5,0,5,0"/>
+                                                <TextBlock Text="{Binding Time, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Message, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="5,0,5,15"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </Border>                 
                 </ScrollViewer>

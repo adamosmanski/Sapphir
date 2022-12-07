@@ -91,6 +91,25 @@ namespace SapphirApp.Converter
             }
             return result;
         }
+        public static TaskProject ConverterTask(TasksProject model)
+        {
+            TaskProject task = new TaskProject();
+
+            task.AssignedUser = model.AssignedUser;
+            task.Category = model.Category;
+            task.ShortNumber = model.ShortNumber;
+            task.IdProjects = model.IdProjects;
+            task.ModUser = model.ModUser;
+            task.Name = model.Name;
+            task.Description = model.Description;
+            task.Tag = model.Tag;
+            task.Id = model.Id;
+            task.Category = model.Category;
+            task.CreatedAt = model.CreatedAt;
+            task.ModDate = model.ModDate;
+            
+            return task;
+        }
     }
     
 }
