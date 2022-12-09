@@ -63,6 +63,29 @@ namespace SapphirApp.ViewModels
             }
         }
         #endregion
+        #region
+        private List<MessagesInTask> messagesInTasks = new List<MessagesInTask>();
+        public List<MessagesInTask> MessagesInTasks
+        {
+            get => messagesInTasks;
+            set
+            {
+                messagesInTasks = value;
+                OnPropertyChanged(nameof(MessagesInTasks));
+            }
+        }
+
+        private List<TaskProject> taskProjects = new List<TaskProject>();
+        public List<TaskProject> TaskProjects
+        {
+            get => taskProjects;
+            set
+            {
+                taskProjects = value;
+                OnPropertyChanged(nameof(TaskProjects));
+            }
+        }      
+        #endregion
         public MainVM()
         {
             SelectedBoard = _selectedBoard;
@@ -133,7 +156,7 @@ namespace SapphirApp.ViewModels
         }
         private void ArchiveBoard(object obj)
         {
-            
+         MessageBox.Show($"{SelectedBoard.Name} + {SelectedBoard.ShortNumber}");
         }
         private void SetPermission()
         {

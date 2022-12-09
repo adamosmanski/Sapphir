@@ -186,7 +186,6 @@
                             <Button 
                                 Style="{StaticResource ArchiveProject}"
                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.DeleteBoardCommand}"
-                                CommandParameter="{Binding}"
                                 Visibility="{Binding ElementName=TaskListItem, Path=AllowDrop, Converter={StaticResource ButtonVisibilityConverter}}">
                                 <Image Source="pack://application:,,,/Assets/Normal/archive_30px.png"/>
                             </Button>
