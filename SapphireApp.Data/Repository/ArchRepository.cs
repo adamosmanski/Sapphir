@@ -74,6 +74,10 @@ namespace SapphirApp.Data.Repository
                 context.SaveChanges();
             }
         }
+        private void DeleteFromMainDatabase()
+        {
+
+        }
         #endregion
     }
 }

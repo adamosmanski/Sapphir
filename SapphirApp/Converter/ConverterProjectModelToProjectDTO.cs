@@ -28,5 +28,18 @@ namespace SapphirApp.Converter
             }
             return list;
         }
+        public static Project TransformModel(ProjectModel projectModel)
+        {
+            var newProject = new Project();
+            newProject.Name = projectModel.Name;
+            newProject.Description = projectModel.Description;
+            newProject.CreatedAt = projectModel.CreatedAt;
+            newProject.Description = projectModel.Description;
+            newProject.ShortName = projectModel.ShortNumber;
+            newProject.ModUser = projectModel.ModUser;
+            newProject.ModUser = newProject.ModUser;
+
+            return newProject;
+        }
     }
 }

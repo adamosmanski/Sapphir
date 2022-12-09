@@ -25,7 +25,7 @@ public partial class ArchivesContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var configuration = new ConfigurationBuilder().AddNewtonsoftJsonFile("appsettings.json").Build();
+        var configuration = new ConfigurationBuilder().AddNewtonsoftJsonFile("appconfig.json").Build();
         
         optionsBuilder.UseSqlServer(configuration.GetConnectionString("Archives"));
     }
@@ -34,7 +34,7 @@ public partial class ArchivesContext : DbContext
         modelBuilder.Entity<CommentsArch>(entity =>
         {
             entity
-                .HasNoKey()
+                //.HasNoKey()
                 .ToTable("CommentsArch");
 
             entity.Property(e => e.Comment).IsUnicode(false);
@@ -53,7 +53,7 @@ public partial class ArchivesContext : DbContext
         modelBuilder.Entity<ProjectsArch>(entity =>
         {
             entity
-                .HasNoKey()
+                //.HasNoKey()
                 .ToTable("ProjectsArch");
 
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
@@ -71,7 +71,7 @@ public partial class ArchivesContext : DbContext
         modelBuilder.Entity<TasksProjectArch>(entity =>
         {
             entity
-                .HasNoKey()
+                //.HasNoKey()
                 .ToTable("TasksProjectArch");
 
             entity.Property(e => e.AssignedUser).IsUnicode(false);

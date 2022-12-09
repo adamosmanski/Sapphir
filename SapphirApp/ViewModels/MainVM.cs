@@ -32,6 +32,8 @@ namespace SapphirApp.ViewModels
         }
         ArchivesContext archives = new ArchivesContext();
         SapphirApplicationContext context = new SapphirApplicationContext();
+        ArchivesContext contextArchive = new ArchivesContext();
+        ArchRepository archRepository;
         public static List<ProjectModel> ListBoxSource { get; set; }        
         public ObserveObject CurrentVM
         {
@@ -88,6 +90,7 @@ namespace SapphirApp.ViewModels
         #endregion
         public MainVM()
         {
+            archRepository = new ArchRepository(contextArchive);
             SelectedBoard = _selectedBoard;
             VisibilityListBox = false;
             ProjectDTO = new ProjectRepository(context);
@@ -156,7 +159,7 @@ namespace SapphirApp.ViewModels
         }
         private void ArchiveBoard(object obj)
         {
-         MessageBox.Show($"{SelectedBoard.Name} + {SelectedBoard.ShortNumber}");
+            archRepository.InsertProject(ConverterProjectModelToProjectDTO.TransformModel(SelectedBoard));
         }
         private void SetPermission()
         {
