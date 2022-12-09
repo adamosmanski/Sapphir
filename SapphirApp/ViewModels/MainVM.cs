@@ -30,6 +30,7 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Visibile));
             }
         }
+        ArchivesContext archives = new ArchivesContext();
         SapphirApplicationContext context = new SapphirApplicationContext();
         public static List<ProjectModel> ListBoxSource { get; set; }        
         public ObserveObject CurrentVM
@@ -75,6 +76,7 @@ namespace SapphirApp.ViewModels
             CmdOpenKanban = new RelayCommand(OpenKanbanBoard);
             CmdOpenBoard = new RelayCommand(OpenBoard);
             CmdOpenMyTask = new RelayCommand(OpenMyTask);
+            DeleteBoardCommand = new RelayCommand(ArchiveBoard);
             SetPermission();
         }
         #region Command
@@ -84,6 +86,7 @@ namespace SapphirApp.ViewModels
         public ICommand CmdOpenBoard { get; }
         public ICommand CmdOpenKanban { get; }
         public ICommand CmdOpenMyTask { get; }
+        public ICommand DeleteBoardCommand { get; }
         #endregion
         #region Methods
         private void OpenMyTask(object obj)
@@ -127,6 +130,10 @@ namespace SapphirApp.ViewModels
                 window.Show();
                 window.DataContext = new NotifyPopUpVM("Nie odnaleziono projektu");
             }            
+        }
+        private void ArchiveBoard(object obj)
+        {
+            
         }
         private void SetPermission()
         {

@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "Sapphir": "Server=.\\SQLExpress;Database=SapphirApplication;Trusted_Connection=True;TrustServerCertificate=True",
+    "Archives": "Server=.\\SQLExpress;Database=Archives;Trusted_Connection=True;TrustServerCertificate=True"
+  }
+}

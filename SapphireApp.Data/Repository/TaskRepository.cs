@@ -77,7 +77,6 @@ namespace SapphirApp.Data.Repository
             var Tasks = context.TasksProjects.Where(x=>x.AssignedUser== Login).ToList();
             return Tasks;
         }
-
         public void UpdateAssign(string ShortName, string User)
         {
             using (var context = new SapphirApplicationContext())

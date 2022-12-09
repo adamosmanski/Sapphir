@@ -97,3 +97,10 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.genru
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\ref\SapphirApp.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\MyTask.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\MyTask.baml
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.NewtonsoftJson.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
