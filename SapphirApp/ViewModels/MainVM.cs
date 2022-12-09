@@ -139,8 +139,6 @@ namespace SapphirApp.ViewModels
             {
                 Visibile.IsArchivalProjectsVisible = true;
             }
-           
-
         }
 #endregion
     }
