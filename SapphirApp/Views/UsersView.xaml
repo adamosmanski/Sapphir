@@ -19,16 +19,49 @@
             
         </StackPanel>
         <StackPanel Grid.Column="1" Background="Blue">
-            <DataGrid Background="Transparent" 
-                      AutoGenerateColumns="True"
-                      ItemsSource="{Binding UsersLists, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                      CanUserAddRows="False"
-                      CanUserDeleteRows="False"
-                      IsReadOnly="True"
-                      HorizontalScrollBarVisibility="Disabled"
-                      VerticalScrollBarVisibility="Auto">
-               
-            </DataGrid>
+            <ListBox          
+                    Grid.Column="1"
+                    ItemsSource="{Binding UsersLists,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding User.FullName}"
+                    BorderThickness="0 0 1 0"
+                    BorderBrush="DarkGray"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                    Background="Transparent"
+                    Foreground="White">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="4" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Name="UsersListbox">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="AllowDrop" Value="False" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="AllowDrop" Value="True" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="{Binding FullName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="White"/>
+                                <Label Content="Wybierz a następnie kliknij przycisk po prawej stronie aby edytować." FontWeight="Bold" Foreground="White"/>
+                            </StackPanel>
+                            <Button 
+                                Style="{StaticResource ArchiveProject}"
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.DeleteBoardCommand}">
+                                <Image Source="pack://application:,,,/Assets/Normal/archive_30px.png"/>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
+        <Button Content=" oooo" Command="{Binding EditUser}" CommandParameter="{Binding User}"/>
     </Grid>
 </UserControl>

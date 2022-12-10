@@ -18,6 +18,7 @@ namespace SapphirApp.Converter
                 User.SecondName = item.SecondName;
                 User.LevelAccess = item.LevelAccess;
                 User.Mail = item.Mail;
+                User.FullName = item.FullName;
                 result.Add(User);
             }
             return result;

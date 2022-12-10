@@ -28,4 +28,6 @@ public partial class User
     public int ModUser { get; set; }
 
     public DateTime ModDate { get; set; }
+
+    public string FullName { get; set; } = null!;
 }

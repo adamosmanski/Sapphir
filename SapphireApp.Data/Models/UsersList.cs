@@ -16,4 +16,6 @@ public partial class UsersList
     public string PhoneNumber { get; set; } = null!;
 
     public string LevelAccess { get; set; } = null!;
+    public string FullName { get; set; } = null!;
+
 }

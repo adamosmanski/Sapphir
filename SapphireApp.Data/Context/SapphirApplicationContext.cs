@@ -120,6 +120,7 @@ namespace SapphirApp.Data.Context
                 entity.Property(e => e.Surname)
                     .HasMaxLength(100)
                     .IsUnicode(false);
+                entity.Property(e => e.FullName).IsUnicode(false);
             });
             modelBuilder.Entity<UsersList>(entity =>
             {
@@ -143,6 +144,7 @@ namespace SapphirApp.Data.Context
                 entity.Property(e => e.Surname)
                     .HasMaxLength(100)
                     .IsUnicode(false);
+                entity.Property(e => e.FullName).IsUnicode(false);
             });
             OnModelCreatingPartial(modelBuilder);
         }
