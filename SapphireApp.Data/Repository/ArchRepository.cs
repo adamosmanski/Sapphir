@@ -1,4 +1,5 @@
 ﻿using SapphirApp.Data.Context;
+using SapphirApp.Data.Converter;
 using SapphirApp.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -20,63 +21,30 @@ namespace SapphirApp.Data.Repository
        
         private ArchivesContext context;
         #region Methods
-        public void InsertProject(Project project)
-        {
-            var archivesProject = new ProjectsArch
-            {
-                CreatedAt = DateTime.Now,
-                ShortName = project.ShortName,
-                Name = project.Name,
-                Description = project.Description,
-                ModDate = DateTime.Now,
-                ModUser = project.ModUser
-            };
-
-            using (var context = new ArchivesContext())
-            {
-                context.ProjectsArches.Add(archivesProject);
-                context.SaveChanges();
-            }
-        }
-        public void InsertComment(Comment comment)
-        {
-            var archivesComment = new CommentsArch
-            {
-                CreatedAt = DateTime.Now,
-                Comment = comment.Comments,
-                ShortTaskName = comment.ShortTaskName,
-                User = comment.User,
-            };
-            using (var context = new ArchivesContext())
-            {
-                context.CommentsArches.Add(archivesComment);
-                context.SaveChanges();
-            }
-        }
-        public void InsertTasks(TasksProject tasksProject)
-        {
-            var archivesTask = new TasksProjectArch
-            {
-                CreatedAt = DateTime.Now,
-                ShortNumber = tasksProject.ShortNumber,
-                Name = tasksProject.Name,
-                Description = tasksProject.Description,
-                AssignedUser = tasksProject.AssignedUser,
-                Category = tasksProject.Category,
-                IdProjects = tasksProject.IdProjects,
-                ModDate = DateTime.Now,
-                ModUser = tasksProject.ModUser,
-                Tag = tasksProject.Tag
-            };
-            using (var context = new ArchivesContext())
-            {
-                context.TasksProjectArches.Add(archivesTask);
-                context.SaveChanges();
-            }
-        }
-        private void DeleteFromMainDatabase()
+        public void InsertAndDeleteProject(string NameProject)
         {
 
+            using (var SapphirContext = new SapphirApplicationContext())
+            using (var archiveContext = new ArchivesContext())
+            {
+                var Project = SapphirContext.Projects.AsEnumerable();
+                var SelectedProject = Project.Where(x => x.Name == NameProject);
+
+                foreach (var item in SelectedProject)
+                {
+                    archiveContext.ProjectsArches.Add(ProjectConverter.ProjectConvert(item));
+                }
+
+                var ProjectID = Project.Where(x => x.Name == NameProject).Select(x => x.Id).SingleOrDefault();
+                SapphirContext.Projects.RemoveRange(SelectedProject);
+                var Task = SapphirContext.TasksProjects.AsEnumerable();
+                var SelectedTask = Task.Where(x => x.IdProjects == ProjectID);
+                archiveContext.TasksProjectArches.AddRange(SelectedTask);
+                SapphirContext.TasksProjects.RemoveRange(SelectedTask);
+                SapphirContext.SaveChanges();
+                archiveContext.SaveChanges();
+            }
+            
         }
         #endregion
     }

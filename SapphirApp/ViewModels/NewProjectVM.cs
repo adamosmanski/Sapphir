@@ -55,7 +55,7 @@ namespace SapphirApp.ViewModels
         {
             Project.ShortNumber = Project.Name.Substring(0, 3);
             ProjectDTO.AddProject(Project.Name, Project.Description, LoggedUser.ID, Project.ShortNumber);
-            MainVM.ListBoxSource = ConverterProjectModelToProjectDTO.Transform(ProjectDTO.GetAllProject());
+            //MainVM.ListBoxSource = ConverterProjectModelToProjectDTO.Transform(ProjectDTO.GetAllProject());
             IsVisible = false;
         }
         private void Close(object obj)
