@@ -21,6 +21,7 @@
     <None Remove="Assets\Normal\password_30px.png" />
     <None Remove="Assets\Normal\password_key_30px.png" />
     <None Remove="Assets\Normal\right_30px.png" />
+    <None Remove="Assets\Normal\search_30px.png" />
     <None Remove="Assets\Normal\settings_30px.png" />
     <None Remove="Assets\Normal\squared_menu_30px.png" />
     <None Remove="Assets\Normal\tasklist_30px.png" />
@@ -40,6 +41,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Slack.NetStandard" Version="5.2.2" />
     <PackageReference Include="Syncfusion.SfKanban.WPF" Version="20.3.0.60" />
   </ItemGroup>
 
@@ -79,6 +81,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\right_30px.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Normal\search_30px.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\settings_30px.png">

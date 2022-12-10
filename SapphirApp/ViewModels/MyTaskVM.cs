@@ -113,7 +113,8 @@ namespace SapphirApp.ViewModels
             {
                 SelectedTask.ShortName = obj.ToString();
                 var taskCategory = TaskFromDB.Category.Substring(38);
-                taskRepository.UpdateColumn(SelectedTask.ShortName, taskCategory, TaskFromDB.AssignedUser);               
+                taskRepository.UpdateColumn(SelectedTask.ShortName, taskCategory, TaskFromDB.AssignedUser);
+                Categories = TaskFromDB.Category.Substring(38);
             }
             else
             {
@@ -121,7 +122,7 @@ namespace SapphirApp.ViewModels
                 NotifyPopUpVM model = new NotifyPopUpVM("Podany użytkownik nie istnieje.");
                 window.DataContext = model;
             }
-            Categories = TaskFromDB.Category;
+            
             MyTaskList = DtoTasksToModel.TransformToMyTask(taskRepository.GetUserTasks(LoggedUser.Login));
             TaskFromDB = DtoTasksToModel.ConverterTask(taskRepository.ShowTask(TaskSelected.ShortNumber));
             Messages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(TaskSelected.ShortNumber));

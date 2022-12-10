@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x4IsibhP4egsW5Qi1SKQMv9ZxHd3717/ZZlTg//iislO1lw4dqbKf5Hu0phvWcoRbQ7/g2xyiR7pnrpkAf30Dg==",
+  "dgSpecHash": "gn+fmwYi5j+QIjlC0s8Swt/ZUGcAiJoYOEkfdLd+Q8WXKUkROYdDzHc2RIdok77q0P2vuKXLvoshi+oryI4M0g==",
   "success": true,
   "projectFilePath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\SapphirApp.csproj",
   "expectedPackageFiles": [
@@ -50,11 +50,12 @@
     "C:\\Users\\adamo\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
-    "C:\\Users\\adamo\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\adamo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\adamo\\.nuget\\packages\\slack.netstandard\\5.2.2\\slack.netstandard.5.2.2.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\syncfusion.licensing\\20.3.0.60\\syncfusion.licensing.20.3.0.60.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\syncfusion.sfkanban.wpf\\20.3.0.60\\syncfusion.sfkanban.wpf.20.3.0.60.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
