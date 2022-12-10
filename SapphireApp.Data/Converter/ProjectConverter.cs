@@ -60,5 +60,20 @@ namespace SapphirApp.Data.Converter
             }
             return result;
         }
+        //Comments
+        public static IEnumerable<CommentsArch> CommentsConvert(IEnumerable<Comment> collection)
+        {
+            var result = new List<CommentsArch>();
+            foreach(var item in collection)
+            {
+                var comment = new CommentsArch();
+                comment.User = item.User;
+                comment.Comment = item.User;
+                comment.CreatedAt = item.CreatedAt;
+                comment.ShortTaskName = item.ShortTaskName;
+                result.Add(comment);
+            }
+            return result;
+        }
     }
 }

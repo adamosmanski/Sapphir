@@ -39,8 +39,13 @@ namespace SapphirApp.Data.Repository
                 SapphirContext.Projects.RemoveRange(SelectedProject);
                 var Task = SapphirContext.TasksProjects.AsEnumerable();
                 var SelectedTask = Task.Where(x => x.IdProjects == ProjectID);
-                archiveContext.TasksProjectArches.AddRange(SelectedTask);
+                var ShortTaskNumber = Task.Where(x=>x.IdProjects==ProjectID).Select(x=>x.ShortNumber).SingleOrDefault();
+                
+                var Comments = SapphirContext.Comments.Where(x => x.ShortTaskName.Contains(ShortTaskNumber));
+                
                 SapphirContext.TasksProjects.RemoveRange(SelectedTask);
+                
+                SapphirContext.Comments.RemoveRange(Comments);
                 SapphirContext.SaveChanges();
                 archiveContext.SaveChanges();
             }
