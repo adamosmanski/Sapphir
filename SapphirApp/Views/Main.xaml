@@ -143,6 +143,11 @@
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
+                    <MenuItem Header="Użytkownicy" Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource Item_Template}" Command="">
+                        <MenuItem.Icon>
+                            <Image Source="pack://application:,,,/Assets/Normal/users_30px.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </Menu>
             </StackPanel>
             <ContentControl Grid.RowSpan="4" Grid.Row="0"

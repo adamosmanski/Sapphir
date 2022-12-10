@@ -10,5 +10,6 @@ namespace SapphirApp.Models
     {
         public bool IsAddProjectVisible { get; set; }
         public bool IsArchivalProjectsVisible { get; set; }
+        public bool IsUsersVisible { get; set; }
     }
 }

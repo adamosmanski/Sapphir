@@ -211,11 +211,9 @@ namespace SapphirApp.ViewModels
             {
                 Visibile.IsAddProjectVisible = true;
                 Visibile.IsArchivalProjectsVisible = true;
+                Visibile.IsUsersVisible = true;
             }
-            else if(PermissionLevel >= 5)
-            {
-                
-            }
+           
         }
 #endregion
     }
