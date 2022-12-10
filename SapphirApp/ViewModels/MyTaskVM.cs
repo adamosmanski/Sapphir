@@ -43,6 +43,16 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(TaskFromDB));
             }
         }
+        private string _categories;
+        public string Categories
+        {
+            get => _categories;
+            set
+            {
+                _categories = value;
+                OnPropertyChanged(nameof(Categories));
+            }
+        }
         private List<MessagesInTask> _messagesInTask;
         public List<MessagesInTask> Messages
         {
@@ -101,7 +111,9 @@ namespace SapphirApp.ViewModels
             var isExistUser = userRepository.isExist(TaskFromDB.AssignedUser);
             if (isExistUser == true)
             {
-                taskRepository.UpdateColumn(SelectedTask.ShortName,TaskFromDB.Category ,TaskFromDB.AssignedUser);               
+                SelectedTask.ShortName = obj.ToString();
+                var taskCategory = TaskFromDB.Category.Substring(38);
+                taskRepository.UpdateColumn(SelectedTask.ShortName, taskCategory, TaskFromDB.AssignedUser);               
             }
             else
             {
@@ -109,6 +121,10 @@ namespace SapphirApp.ViewModels
                 NotifyPopUpVM model = new NotifyPopUpVM("Podany użytkownik nie istnieje.");
                 window.DataContext = model;
             }
+            Categories = TaskFromDB.Category;
+            MyTaskList = DtoTasksToModel.TransformToMyTask(taskRepository.GetUserTasks(LoggedUser.Login));
+            TaskFromDB = DtoTasksToModel.ConverterTask(taskRepository.ShowTask(TaskSelected.ShortNumber));
+            Messages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(TaskSelected.ShortNumber));
         }
         private void AddCommentToTask(object obj)
         {
@@ -128,6 +144,7 @@ namespace SapphirApp.ViewModels
         {
             IsShowed = true;
             TaskFromDB = DtoTasksToModel.ConverterTask(taskRepository.ShowTask(TaskSelected.ShortNumber));
+            Categories = TaskFromDB.Category;
             Messages = DtoTasksToModel.TransformComment(commentsRepository.ShowAllComment(TaskSelected.ShortNumber));
         }
         #endregion

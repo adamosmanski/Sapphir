@@ -65,10 +65,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <!--Visibility="{Binding IsShowed, Converter={StaticResource BoolToVisibility}}"-->
+        <!--V"-->
         <Border Grid.Column="1"
             
-                Visibility="Visible">
+                Visibility="{Binding IsShowed, Converter={StaticResource BoolToVisibility}}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -174,8 +174,10 @@
                         </ItemsControl>
                     </Border>                 
                 </ScrollViewer>
-                <TextBlock Text="{Binding TaskFromDB.Category}"
+                <Label Content="{Binding Categories, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                           
                            Grid.Column="6" 
+                          
                            Grid.Row="2"
                            Margin="10,0"
                            Height="30"
@@ -186,8 +188,8 @@
                           Height="30" 
                           Margin="10,0,10,10" 
                           VerticalAlignment="Bottom" 
-                          FontSize="16"
-                          SelectedValue="{Binding TaskFromDB.Category}">
+                          FontSize="16"                          
+                          SelectedValue="{Binding TaskFromDB.Category, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <ComboBoxItem>Unassigned</ComboBoxItem>
                     <ComboBoxItem>Backlog</ComboBoxItem>
                     <ComboBoxItem>To Do</ComboBoxItem>

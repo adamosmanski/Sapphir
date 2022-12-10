@@ -1,4 +1,5 @@
-﻿using SapphirApp.Views;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SapphirApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

@@ -40,7 +40,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Syncfusion.SfKanban.WPF" Version="20.3.0.57" />
+    <PackageReference Include="Syncfusion.SfKanban.WPF" Version="20.3.0.60" />
   </ItemGroup>
 
   <ItemGroup>

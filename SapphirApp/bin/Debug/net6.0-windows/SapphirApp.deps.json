@@ -14,7 +14,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.0",
           "SapphirApp.Data": "1.0.0",
-          "Syncfusion.SfKanban.WPF": "20.3.0.57"
+          "Syncfusion.SfKanban.WPF": "20.3.0.60"
         },
         "runtime": {
           "SapphirApp.dll": {}
@@ -579,22 +579,22 @@
           }
         }
       },
-      "Syncfusion.Licensing/20.3.0.57": {
+      "Syncfusion.Licensing/20.3.0.60": {
         "runtime": {
           "lib/net6.0/Syncfusion.Licensing.dll": {
-            "assemblyVersion": "20.3.0.57",
-            "fileVersion": "20.3.0.57"
+            "assemblyVersion": "20.3.0.60",
+            "fileVersion": "20.3.0.60"
           }
         }
       },
-      "Syncfusion.SfKanban.WPF/20.3.0.57": {
+      "Syncfusion.SfKanban.WPF/20.3.0.60": {
         "dependencies": {
-          "Syncfusion.Licensing": "20.3.0.57"
+          "Syncfusion.Licensing": "20.3.0.60"
         },
         "runtime": {
           "lib/net5.0-windows7.0/Syncfusion.SfKanban.WPF.dll": {
-            "assemblyVersion": "20.3500.0.57",
-            "fileVersion": "20.3500.0.57"
+            "assemblyVersion": "20.3500.0.60",
+            "fileVersion": "20.3500.0.60"
           }
         }
       },
@@ -1186,19 +1186,19 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "Syncfusion.Licensing/20.3.0.57": {
+    "Syncfusion.Licensing/20.3.0.60": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-l/V7HuB/ZgYaSP0+hfvULMKfn5tJxITv6qCj1bwhAcIjKpHcf2wzQ3FHb/IdD5iCnzvAFdubRddJyHbzG+6ieA==",
-      "path": "syncfusion.licensing/20.3.0.57",
-      "hashPath": "syncfusion.licensing.20.3.0.57.nupkg.sha512"
+      "sha512": "sha512-CqgwRK4uKKx/2i9FRzM/N+sym1PqFBeWJglcXsREEQliLaesjsb/++ebSn81MVuoKWusTFNv5TlrqThnXXeUxA==",
+      "path": "syncfusion.licensing/20.3.0.60",
+      "hashPath": "syncfusion.licensing.20.3.0.60.nupkg.sha512"
     },
-    "Syncfusion.SfKanban.WPF/20.3.0.57": {
+    "Syncfusion.SfKanban.WPF/20.3.0.60": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6kW9VcaqS+/fWaPLcrV9X8yj4A6h7BwTRiOcKpBT0n4+65yQEqElm7xlIXh3wQOwhjcFaIUuwNeB4sUBH45nkA==",
-      "path": "syncfusion.sfkanban.wpf/20.3.0.57",
-      "hashPath": "syncfusion.sfkanban.wpf.20.3.0.57.nupkg.sha512"
+      "sha512": "sha512-7YG8JagEYa9tukr3uz6nbfRBvnDL8QcmNYED1RuqyPJv3APElzhzTa/1LU+zrgO21iLrlGnplDMD+ioMwsNIVA==",
+      "path": "syncfusion.sfkanban.wpf/20.3.0.60",
+      "hashPath": "syncfusion.sfkanban.wpf.20.3.0.60.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

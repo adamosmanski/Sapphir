@@ -859,7 +859,7 @@
           }
         }
       },
-      "Syncfusion.Licensing/20.3.0.57": {
+      "Syncfusion.Licensing/20.3.0.60": {
         "type": "package",
         "compile": {
           "lib/net6.0/Syncfusion.Licensing.dll": {}
@@ -868,10 +868,10 @@
           "lib/net6.0/Syncfusion.Licensing.dll": {}
         }
       },
-      "Syncfusion.SfKanban.WPF/20.3.0.57": {
+      "Syncfusion.SfKanban.WPF/20.3.0.60": {
         "type": "package",
         "dependencies": {
-          "Syncfusion.Licensing": "20.3.0.57"
+          "Syncfusion.Licensing": "20.3.0.60"
         },
         "compile": {
           "lib/net5.0-windows7.0/Syncfusion.SfKanban.WPF.dll": {
@@ -2706,10 +2706,10 @@
         "version.txt"
       ]
     },
-    "Syncfusion.Licensing/20.3.0.57": {
-      "sha512": "l/V7HuB/ZgYaSP0+hfvULMKfn5tJxITv6qCj1bwhAcIjKpHcf2wzQ3FHb/IdD5iCnzvAFdubRddJyHbzG+6ieA==",
+    "Syncfusion.Licensing/20.3.0.60": {
+      "sha512": "CqgwRK4uKKx/2i9FRzM/N+sym1PqFBeWJglcXsREEQliLaesjsb/++ebSn81MVuoKWusTFNv5TlrqThnXXeUxA==",
       "type": "package",
-      "path": "syncfusion.licensing/20.3.0.57",
+      "path": "syncfusion.licensing/20.3.0.60",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2733,15 +2733,15 @@
         "lib/netstandard2.0/Syncfusion.Licensing.dll",
         "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Licensing.dll",
         "lib/uap10.0/Syncfusion.Licensing.dll",
-        "syncfusion.licensing.20.3.0.57.nupkg.sha512",
+        "syncfusion.licensing.20.3.0.60.nupkg.sha512",
         "syncfusion.licensing.nuspec",
         "syncfusion_logo.png"
       ]
     },
-    "Syncfusion.SfKanban.WPF/20.3.0.57": {
-      "sha512": "6kW9VcaqS+/fWaPLcrV9X8yj4A6h7BwTRiOcKpBT0n4+65yQEqElm7xlIXh3wQOwhjcFaIUuwNeB4sUBH45nkA==",
+    "Syncfusion.SfKanban.WPF/20.3.0.60": {
+      "sha512": "7YG8JagEYa9tukr3uz6nbfRBvnDL8QcmNYED1RuqyPJv3APElzhzTa/1LU+zrgO21iLrlGnplDMD+ioMwsNIVA==",
       "type": "package",
-      "path": "syncfusion.sfkanban.wpf/20.3.0.57",
+      "path": "syncfusion.sfkanban.wpf/20.3.0.60",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2774,7 +2774,7 @@
         "lib/netcoreapp3.1/Design/Syncfusion.SfKanban.WPF.DesignTools.dll",
         "lib/netcoreapp3.1/Syncfusion.SfKanban.WPF.dll",
         "lib/netcoreapp3.1/Syncfusion.SfKanban.WPF.xml",
-        "syncfusion.sfkanban.wpf.20.3.0.57.nupkg.sha512",
+        "syncfusion.sfkanban.wpf.20.3.0.60.nupkg.sha512",
         "syncfusion.sfkanban.wpf.nuspec",
         "syncfusion_logo.png",
         "tools/VisualStudioToolsManifest.xml"
@@ -4343,7 +4343,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
       "SapphirApp.Data >= 1.0.0",
-      "Syncfusion.SfKanban.WPF >= 20.3.0.57"
+      "Syncfusion.SfKanban.WPF >= 20.3.0.60"
     ]
   },
   "packageFolders": {
@@ -4420,7 +4420,7 @@
           },
           "Syncfusion.SfKanban.WPF": {
             "target": "Package",
-            "version": "[20.3.0.57, )"
+            "version": "[20.3.0.60, )"
           }
         },
         "imports": [
