@@ -30,7 +30,7 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(Visibile));
             }
         }
-        ArchivesContext archives = new ArchivesContext();
+        
         SapphirApplicationContext context = new SapphirApplicationContext();
         ArchivesContext contextArchive = new ArchivesContext();
         ArchRepository archRepository;
@@ -43,7 +43,17 @@ namespace SapphirApp.ViewModels
                 listBoxSource= value;
                 OnPropertyChanged(nameof(ListBoxSource));
             }
-        }        
+        }
+        private List<ProjectModel> archBox = new List<ProjectModel>();
+        public List<ProjectModel> ArchivesProject
+        {
+            get => archBox;
+            set
+            {
+                archBox = value;
+                OnPropertyChanged(nameof(ArchivesProject));
+            }
+        }
         public ObserveObject CurrentVM
         {
             get => _currentVM;
@@ -71,6 +81,16 @@ namespace SapphirApp.ViewModels
             {
                 _visibilityListBox = value;
                 OnPropertyChanged(nameof(VisibilityListBox));
+            }
+        }
+        private bool _visibilityArchivesBox = false;
+        public bool VisibilityArchivesBox
+        {
+            get => _visibilityArchivesBox;
+            set
+            {
+                _visibilityArchivesBox = value;
+                OnPropertyChanged(nameof(VisibilityArchivesBox));
             }
         }
         #endregion
@@ -102,6 +122,7 @@ namespace SapphirApp.ViewModels
             archRepository = new ArchRepository(contextArchive);
             SelectedBoard = _selectedBoard;
             VisibilityListBox = false;
+            VisibilityArchivesBox = false;
             ProjectDTO = new ProjectRepository(context);
             CurrentVM = _currentVM;
             CmdChangePassword = new RelayCommand(ChangePassword);
@@ -112,9 +133,12 @@ namespace SapphirApp.ViewModels
             CmdOpenBoard = new RelayCommand(OpenBoard);
             CmdOpenMyTask = new RelayCommand(OpenMyTask);
             DeleteBoardCommand = new RelayCommand(ArchiveBoard);
+            ShowArchives = new RelayCommand(ShowArchiveBoard);
             SetPermission();
+            ArchivesProject = ArchivesConverter.ConverterProject(archRepository.ArchivesProject());
         }
         #region Command
+        public ICommand ShowArchives { get; }
         public ICommand CmdChangePassword { get; }
         public ICommand CmdOpenChat { get; }
         public ICommand CmdNewProject { get; }
@@ -127,6 +151,7 @@ namespace SapphirApp.ViewModels
         private void OpenMyTask(object obj)
         {
             VisibilityListBox = false;
+            VisibilityArchivesBox= false;
             CurrentVM = new MyTaskVM();
         }
         private void CreateNewProject(object obj)
@@ -148,6 +173,8 @@ namespace SapphirApp.ViewModels
         private void OpenBoard(object obj)
         {
             VisibilityListBox = true;
+            VisibilityArchivesBox = false;
+            ListBoxSource = ConverterProjectModelToProjectDTO.Transform(ProjectDTO.GetAllProject());
             CurrentVM = null;
         }
         private void OpenKanbanBoard(object obj)
@@ -171,16 +198,23 @@ namespace SapphirApp.ViewModels
             archRepository.InsertAndDeleteProject(SelectedBoard.Name);
             ListBoxSource = ConverterProjectModelToProjectDTO.Transform(ProjectDTO.GetAllProject());
         }
+        private void ShowArchiveBoard(object obj)
+        {
+            VisibilityListBox = false;
+            VisibilityArchivesBox = true;
+            ArchivesProject = ArchivesConverter.ConverterProject(archRepository.ArchivesProject());
+        }
         private void SetPermission()
         {
             var PermissionLevel = int.Parse(LoggedUser.LevelAcces);
             if (PermissionLevel >= 10)
             {
                 Visibile.IsAddProjectVisible = true;
+                Visibile.IsArchivalProjectsVisible = true;
             }
             else if(PermissionLevel >= 5)
             {
-                Visibile.IsArchivalProjectsVisible = true;
+                
             }
         }
 #endregion

@@ -51,6 +51,12 @@ namespace SapphirApp.Data.Repository
             }
             
         }
+
+        public IEnumerable<ProjectsArch> ArchivesProject()
+        {
+            var result = context.ProjectsArches.ToList();
+            return result;
+        }
         #endregion
     }
 }

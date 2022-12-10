@@ -38,42 +38,5 @@ namespace SapphirApp.Data.Converter
             result.ShortName = project.ShortName;
             return result;
         }
-
-        //Task
-        public static IEnumerable<TasksProjectArch> TasksConvert(IEnumerable<TasksProject> collection)
-        {
-            var result = new List<TasksProjectArch>();
-            foreach (var item in collection)
-            {
-                var taskArch = new TasksProjectArch();
-                taskArch.Name = item.Name;
-                taskArch.CreatedAt = item.CreatedAt;
-                taskArch.ModDate = item.ModDate;
-                taskArch.Description = item.Description;
-                taskArch.ModUser = item.ModUser;
-                taskArch.ModDate = item.ModDate;
-                taskArch.IdProjects = item.IdProjects;
-                taskArch.AssignedUser = item.AssignedUser;
-                taskArch.Category = item.Category;
-                taskArch.Tag = item.Tag;
-                result.Add(taskArch);
-            }
-            return result;
-        }
-        //Comments
-        public static IEnumerable<CommentsArch> CommentsConvert(IEnumerable<Comment> collection)
-        {
-            var result = new List<CommentsArch>();
-            foreach(var item in collection)
-            {
-                var comment = new CommentsArch();
-                comment.User = item.User;
-                comment.Comment = item.User;
-                comment.CreatedAt = item.CreatedAt;
-                comment.ShortTaskName = item.ShortTaskName;
-                result.Add(comment);
-            }
-            return result;
-        }
     }
 }

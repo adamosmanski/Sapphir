@@ -113,7 +113,7 @@
                         <MenuItem Header="Archiwum"
                                   Visibility="{Binding Visibile.IsArchivalProjectsVisible, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibility}}"
                                   Template="{StaticResource Item_Template}" 
-                                  Command="{Binding CmdChangePassword}">
+                                  Command="{Binding ShowArchives}">
                             <MenuItem.Icon>
                                 <Image Source="pack://application:,,,/Assets/Normal/archivemenu_30px.png"/>
                             </MenuItem.Icon>
@@ -189,6 +189,46 @@
                                 Visibility="{Binding ElementName=TaskListItem, Path=AllowDrop, Converter={StaticResource ButtonVisibilityConverter}}">
                                 <Image Source="pack://application:,,,/Assets/Normal/archive_30px.png"/>
                             </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox 
+                Visibility="{Binding VisibilityArchivesBox, Converter={StaticResource BoolToVisibility}}"                
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2" Grid.RowSpan="4"
+                    ItemsSource="{Binding ArchivesProject,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding SelectedBoard}"
+                    BorderThickness="0 0 1 0"
+                    BorderBrush="DarkGray"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                Background="Transparent"
+                    Foreground="White">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="4" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Name="TaskListItem">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="AllowDrop" Value="False" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="AllowDrop" Value="True" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="White"/>
+                                <Label Content="{Binding Description,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
+                            </StackPanel>
+                           
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
