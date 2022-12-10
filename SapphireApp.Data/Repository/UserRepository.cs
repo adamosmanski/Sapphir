@@ -44,7 +44,6 @@ namespace SapphirApp.Data.Repository
                 context.Update(entity);
                 context.SaveChanges();
             }
-            ///////////////////////////////////////////////// FLUENT STYLE 
         }
         public int GetID(string Login)
         {
@@ -68,6 +67,24 @@ namespace SapphirApp.Data.Repository
             {
                 return true;
             }
+        }
+        public void UpdateLastLogin(string login)
+        {
+            using(var context = new SapphirApplicationContext())
+            {
+                var result = context.Users.Where(x => x.Login == login).SingleOrDefault();
+                if (result != null)
+                {
+                    result.LastLoginDate= DateTime.Now;
+                    context.Users.Update(result);
+                    context.SaveChanges();
+                }
+            }
+        }
+        public List<UsersList> GetAll()
+        {
+            var result = context.UsersLists.ToList();
+            return result;
         }
     }
 }

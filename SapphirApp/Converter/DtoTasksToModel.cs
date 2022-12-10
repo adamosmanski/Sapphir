@@ -111,5 +111,4 @@ namespace SapphirApp.Converter
             return task;
         }
     }
-    
 }

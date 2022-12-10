@@ -24,6 +24,7 @@ namespace SapphirApp.Data.Context
         public virtual DbSet<TasksProject> TasksProjects { get; set; }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UsersList> UsersLists { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +35,7 @@ namespace SapphirApp.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
             modelBuilder.Entity<Comment>(entity =>
             {
                 //entity.HasNoKey();
@@ -119,7 +121,29 @@ namespace SapphirApp.Data.Context
                     .HasMaxLength(100)
                     .IsUnicode(false);
             });
+            modelBuilder.Entity<UsersList>(entity =>
+            {
+                entity
+                    .HasNoKey()
+                    .ToView("UsersList");
 
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+                entity.Property(e => e.LevelAccess).IsUnicode(false);
+                entity.Property(e => e.Mail)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+                entity.Property(e => e.PhoneNumber)
+                    .HasMaxLength(9)
+                    .IsUnicode(false);
+                entity.Property(e => e.SecondName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+                entity.Property(e => e.Surname)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
             OnModelCreatingPartial(modelBuilder);
         }
 

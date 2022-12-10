@@ -43,6 +43,7 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Identi
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.SqlServer.Server.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Slack.NetStandard.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Syncfusion.Licensing.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Syncfusion.SfKanban.WPF.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
@@ -80,6 +81,7 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Main.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\MyTask.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NewProjectPopUp.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NotifyPopUp.g.cs
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\UsersView.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\App.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp_MarkupCompile.cache
@@ -93,6 +95,7 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\Main.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\MyTask.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NewProjectPopUp.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\NotifyPopUp.baml
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\UsersView.baml
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.g.resources
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.AssemblyInfoInputs.cache

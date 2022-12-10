@@ -134,6 +134,7 @@ namespace SapphirApp.ViewModels
             CmdOpenMyTask = new RelayCommand(OpenMyTask);
             DeleteBoardCommand = new RelayCommand(ArchiveBoard);
             ShowArchives = new RelayCommand(ShowArchiveBoard);
+            ShowUser = new RelayCommand(ShowUsersGrid);
             SetPermission();
             ArchivesProject = ArchivesConverter.ConverterProject(archRepository.ArchivesProject());
         }
@@ -146,10 +147,19 @@ namespace SapphirApp.ViewModels
         public ICommand CmdOpenKanban { get; }
         public ICommand CmdOpenMyTask { get; }
         public ICommand DeleteBoardCommand { get; }
+        public ICommand ShowUser { get; }
         #endregion
         #region Methods
+        private void ShowUsersGrid(object obj)
+        {
+            VisibilityListBox = false;
+            VisibilityArchivesBox = false;
+            CurrentVM = new UsersVM();
+        }
         private void OpenMyTask(object obj)
         {
+            VisibilityListBox = false;
+            VisibilityArchivesBox = false;
             VisibilityListBox = false;
             VisibilityArchivesBox= false;
             CurrentVM = new MyTaskVM();

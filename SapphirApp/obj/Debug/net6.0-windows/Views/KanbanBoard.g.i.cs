@@ -55,7 +55,7 @@ namespace SapphirApp.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SapphirApp;V1.0.0.0;component/views/kanbanboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SapphirApp;component/views/kanbanboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\KanbanBoard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

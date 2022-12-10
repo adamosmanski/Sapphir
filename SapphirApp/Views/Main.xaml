@@ -20,6 +20,9 @@
         <DataTemplate DataType="{x:Type vm:MyTaskVM}">
             <local:MyTask/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UsersVM}">
+            <local:UsersView/>
+        </DataTemplate>
         <converter:ButtonVisibilityConverter x:Key="ButtonVisibilityConverter"/>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
     </Window.Resources>
@@ -142,11 +145,11 @@
                                 <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                    </MenuItem>
-                    <MenuItem Header="Użytkownicy" Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource Item_Template}" Command="">
-                        <MenuItem.Icon>
-                            <Image Source="pack://application:,,,/Assets/Normal/users_30px.png"/>
-                        </MenuItem.Icon>
+                        <MenuItem Header="Użytkownicy" Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource Item_Template}" Command="{Binding ShowUser}">
+                            <MenuItem.Icon>
+                                <Image Source="pack://application:,,,/Assets/Normal/users_30px.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
                 </Menu>
             </StackPanel>

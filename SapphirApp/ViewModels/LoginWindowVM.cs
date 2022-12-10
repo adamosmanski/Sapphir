@@ -84,6 +84,7 @@ namespace SapphirApp.ViewModels
                 LoggedUser.Password = Password;
                 LoggedUser.ID = UserRepository.GetID(LoggedUser.Login);
                 LoggedUser.LevelAcces = UserRepository.GetAccesUser(LoginName);
+                UserRepository.UpdateLastLogin(LoggedUser.Login);
                 isVisible = false;
             }
             else if (UserRepository.IsUserExist(Password, LoginName) != true)
