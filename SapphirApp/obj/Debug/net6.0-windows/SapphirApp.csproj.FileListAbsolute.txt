@@ -43,7 +43,6 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.Identi
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Microsoft.SqlServer.Server.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Slack.NetStandard.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Syncfusion.Licensing.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\Syncfusion.SfKanban.WPF.dll
 D:\Projekty\Sapphir\Sapphir\SapphirApp\bin\Debug\net6.0-windows\System.Data.SqlClient.dll

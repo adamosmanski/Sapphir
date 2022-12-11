@@ -79,6 +79,7 @@ namespace SapphirApp.ViewModels
         }
         private void UpdateUser(object obj)
         {
+            var fullName = User.FullName;
             Repository.UpdateExistingUser(User.FullName, UserConverter.ConvertChangedUserToDTO(UserChanged));
             UsersLists = UserListConverter.Converter(Repository.GetAll());
         }

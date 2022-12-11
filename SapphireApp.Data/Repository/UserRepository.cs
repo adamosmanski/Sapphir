@@ -104,6 +104,7 @@ namespace SapphirApp.Data.Repository
                     result.FirstName = User.FirstName;
                     result.SecondName = User.SecondName;
                     result.Mail = User.Mail;
+                    result.FullName = $"{User.FirstName} {User.SecondName} {User.Surname}";
                     context.Users.Update(result);
                     context.SaveChanges();
                 }

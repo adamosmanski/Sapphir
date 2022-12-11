@@ -66,7 +66,7 @@
                             </StackPanel>
                             <Button 
                                 Style="{StaticResource ArchiveProject}"
-                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.EditUser}">
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.EditUser}" CommandParameter="{Binding User.FullName}">
                                 <Image Source="pack://application:,,,/Assets/Normal/edit_30px.png"/>
                             </Button>
                         </Grid>
