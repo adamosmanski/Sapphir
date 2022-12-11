@@ -9,12 +9,14 @@
 
   <ItemGroup>
     <None Remove="Assets\IsOver\squared_menu_30px.png" />
+    <None Remove="Assets\Normal\AddUserGroup_30px.png" />
     <None Remove="Assets\Normal\add_new_30px.png" />
     <None Remove="Assets\Normal\archivemenu_30px.png" />
     <None Remove="Assets\Normal\archive_30px.png" />
     <None Remove="Assets\Normal\customer_30px.png" />
     <None Remove="Assets\Normal\dashboard_layout_30px.png" />
     <None Remove="Assets\Normal\edit_30px.png" />
+    <None Remove="Assets\Normal\edit_profile_30px.png" />
     <None Remove="Assets\Normal\envelope_30px.png" />
     <None Remove="Assets\Normal\group_of_projects_30px.png" />
     <None Remove="Assets\Normal\holiday_30px.png" />
@@ -54,6 +56,9 @@
     <Resource Include="Assets\IsOver\squared_menu_30px.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Normal\AddUserGroup_30px.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Normal\add_new_30px.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -67,6 +72,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\edit_30px.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Normal\edit_profile_30px.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\envelope_30px.png">

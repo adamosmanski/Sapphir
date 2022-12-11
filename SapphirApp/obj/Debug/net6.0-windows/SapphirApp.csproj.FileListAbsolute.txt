@@ -106,3 +106,5 @@ D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\refint\SapphirAp
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.pdb
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\SapphirApp.genruntimeconfig.cache
 D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\ref\SapphirApp.dll
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\AddUser.g.cs
+D:\Projekty\Sapphir\Sapphir\SapphirApp\obj\Debug\net6.0-windows\Views\AddUser.baml

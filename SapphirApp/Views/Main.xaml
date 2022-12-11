@@ -23,6 +23,9 @@
         <DataTemplate DataType="{x:Type vm:UsersVM}">
             <local:UsersView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AddingUserVM}">
+            <local:AddUser/>
+        </DataTemplate>
         <converter:ButtonVisibilityConverter x:Key="ButtonVisibilityConverter"/>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
     </Window.Resources>
@@ -145,14 +148,27 @@
                                 <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Użytkownicy" Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource Item_Template}" Command="{Binding ShowUser}">
+                    </MenuItem>
+                    <!-- UZYTKOWNICY -->
+                    <MenuItem Header="Użytkownicy"  Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource MenuWithSub}">
+                        <MenuItem.Icon>
+                            <Image Source="pack://application:,,,/Assets/Normal/users_30px.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="Edytuj" Template="{StaticResource Item_Template}" Command="{Binding ShowUser}">
                             <MenuItem.Icon>
-                                <Image Source="pack://application:,,,/Assets/Normal/users_30px.png"/>
+                                <Image Source="pack://application:,,,/Assets/Normal/edit_profile_30px.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Dodaj" Template="{StaticResource Item_Template}" Command="{Binding AddUser}">
+                            <MenuItem.Icon>
+                                <Image Source="pack://application:,,,/Assets/Normal/AddUserGroup_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
                 </Menu>
             </StackPanel>
+            
+            
             <ContentControl Grid.RowSpan="4" Grid.Row="0"
                             Grid.Column="1" Grid.ColumnSpan="2" 
                             Content="{Binding CurrentVM}" />

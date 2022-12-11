@@ -135,10 +135,12 @@ namespace SapphirApp.ViewModels
             DeleteBoardCommand = new RelayCommand(ArchiveBoard);
             ShowArchives = new RelayCommand(ShowArchiveBoard);
             ShowUser = new RelayCommand(ShowUsersGrid);
+            AddUser = new RelayCommand(ShowAddUserGrid);
             SetPermission();
             ArchivesProject = ArchivesConverter.ConverterProject(archRepository.ArchivesProject());
         }
         #region Command
+        public ICommand AddUser { get; }
         public ICommand ShowArchives { get; }
         public ICommand CmdChangePassword { get; }
         public ICommand CmdOpenChat { get; }
@@ -150,6 +152,12 @@ namespace SapphirApp.ViewModels
         public ICommand ShowUser { get; }
         #endregion
         #region Methods
+        private void ShowAddUserGrid(object obj)
+        {
+            VisibilityListBox = false;
+            VisibilityArchivesBox = false;
+            CurrentVM = new AddingUserVM();
+        }
         private void ShowUsersGrid(object obj)
         {
             VisibilityListBox = false;

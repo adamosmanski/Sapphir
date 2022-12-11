@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SapphirApp.Views.AddUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SapphirApp.Views"
+              xmlns:vm="clr-namespace:SapphirApp.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1300">
+    <UserControl.DataContext>
+        <vm:AddingUserVM/>
+    </UserControl.DataContext>
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Background="Transparent">
+            <DataGrid ItemsSource="{Binding UsersList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="True"
+                      IsReadOnly="True"
+                      Background="Transparent"
+                      VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Imię: " Foreground="White" Margin="10,10,10,5"/>
+            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Name}"/>
+            <TextBlock Text="Drugie imię: " Foreground="White" Margin="10,10,10,5"/>
+            <TextBox Margin="10,5,10,5" Text="{Binding addUser.SecondName}"/>
+            <TextBlock Text="Naziwsko: " Foreground="White" Margin="10,10,10,5"/>
+            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Surname}"/>
+            <TextBlock Text="Numer telefonu: " Foreground="White" Margin="10,10,10,5"/>
+            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Phone}"/>
+            <TextBlock Text="Mail: " Foreground="White" Margin="10,10,10,5"/>
+            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Email}"/>
+            <TextBlock Text="Poziom uprawnień: " Foreground="White" Margin="10,10,10,5"/>
+            <TextBox Margin="10,5,10,5" Text="{Binding addUser.LevelPermission}"/>
+            <Button Style="{StaticResource LogButton}" Content="Dodaj Użytkownika"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
