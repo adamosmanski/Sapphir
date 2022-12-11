@@ -12,17 +12,29 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Name="DataColumn" Width="{Binding WidthGrid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="Yellow">
-            
+        <StackPanel Background="Transparent" Orientation="Vertical">
+            <Label Content="Imię: " FontSize="12" Margin="10" Foreground="White"/>
+            <TextBox Margin="10,0,10,0" FontSize="12" />
+            <Label Content="Drugie imię: " Margin="10" Foreground="White"/>
+            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <Label Content="Nazwisko: " FontSize="12" Margin="10" Foreground="White"/>
+            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <Label Content="Mail: " Margin="10" Foreground="White"/>
+            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <Label Content="Telefon: " FontSize="12" Margin="10" Foreground="White"/>
+            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <Label Content="Poziom dostępu: " Margin="10"  Foreground="White"/>
+            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <Button Style="{StaticResource LogButton}" Content="Zaktualizuj" FontSize="18"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Background="Blue">
+        <StackPanel Grid.Column="1" Background="Transparent">
             <ListBox          
                     Grid.Column="1"
                     ItemsSource="{Binding UsersLists,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    SelectedItem="{Binding User.FullName}"
+                    SelectedItem="{Binding User}"
                     BorderThickness="0 0 1 0"
                     BorderBrush="DarkGray"
                     HorizontalContentAlignment="Stretch"
@@ -50,18 +62,17 @@
                             </Grid.Style>
                             <StackPanel Orientation="Vertical">
                                 <Label Content="{Binding FullName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="White"/>
-                                <Label Content="Wybierz a następnie kliknij przycisk po prawej stronie aby edytować." FontWeight="Bold" Foreground="White"/>
+                                <Label Content="Wybierz a następnie kliknij przycisk po prawej stronie aby edytować." FontSize="9" FontWeight="Bold" Foreground="White"/>
                             </StackPanel>
                             <Button 
                                 Style="{StaticResource ArchiveProject}"
-                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.DeleteBoardCommand}">
-                                <Image Source="pack://application:,,,/Assets/Normal/archive_30px.png"/>
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.EditUser}">
+                                <Image Source="pack://application:,,,/Assets/Normal/edit_30px.png"/>
                             </Button>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        <Button Content=" oooo" Command="{Binding EditUser}" CommandParameter="{Binding User}"/>
     </Grid>
 </UserControl>

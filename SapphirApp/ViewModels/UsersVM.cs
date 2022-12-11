@@ -15,10 +15,12 @@ namespace SapphirApp.ViewModels
 {
     public class UsersVM : ObserveObject
     {
+        #region Variables
         private SapphirApplicationContext context = new SapphirApplicationContext();
         private UserRepository Repository;
         private List<UsersLists> _usersList = new List<UsersLists>();
         private UsersLists _user = new UsersLists();
+        private GridLength _widthGrid = new GridLength(0);
         public UsersLists User
         {
             get => _user;
@@ -28,8 +30,6 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(User));
             }
         }
-   
-       
         public List<UsersLists> UsersLists
         {
             get=> _usersList;
@@ -39,17 +39,37 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(UsersLists));
             }
         }
+        public GridLength WidthGrid
+        {
+            get => _widthGrid;
+            set
+            {
+                _widthGrid = value;
+                OnPropertyChanged(nameof(WidthGrid));
+            }
+        }
+        #endregion
+        #region Commmands
         public ICommand EditUser { get; }
+        public ICommand UpdateDataUser { get; }
+        #endregion
         public UsersVM()
         {
-            
+            WidthGrid = new GridLength(0);
             Repository = new UserRepository(context);
             UsersLists = UserListConverter.Converter(Repository.GetAll());
             EditUser = new RelayCommand(EditSelectUser);
+            UpdateDataUser = new RelayCommand(UpdateUser);
         }
+        #region Methods
         private void EditSelectUser(object obj)
         {
-            MessageBox.Show(User.FullName);
+            WidthGrid = new GridLength(500);
         }
+        private void UpdateUser(object obj)
+        {
+
+        }
+        #endregion
     }
 }
