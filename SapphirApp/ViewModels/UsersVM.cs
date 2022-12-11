@@ -21,6 +21,16 @@ namespace SapphirApp.ViewModels
         private List<UsersLists> _usersList = new List<UsersLists>();
         private UsersLists _user = new UsersLists();
         private GridLength _widthGrid = new GridLength(0);
+        private UserDataChanged _userDataChanged = new UserDataChanged();
+        public UserDataChanged UserChanged
+        {
+            get => _userDataChanged;
+            set
+            {
+                _userDataChanged= value;
+                OnPropertyChanged(nameof(UserChanged));
+            }
+        }
         public UsersLists User
         {
             get => _user;
@@ -65,10 +75,12 @@ namespace SapphirApp.ViewModels
         private void EditSelectUser(object obj)
         {
             WidthGrid = new GridLength(500);
+            UserChanged = UserConverter.GetInfoUserConverter(Repository.GetUser(User.FullName));
         }
         private void UpdateUser(object obj)
         {
-
+            Repository.UpdateExistingUser(User.FullName, UserConverter.ConvertChangedUserToDTO(UserChanged));
+            UsersLists = UserListConverter.Converter(Repository.GetAll());
         }
         #endregion
     }

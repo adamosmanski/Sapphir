@@ -54,7 +54,7 @@ namespace SapphirApp.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SapphirApp;component/views/mytask.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SapphirApp;V1.0.0.0;component/views/mytask.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\MyTask.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -86,5 +86,28 @@ namespace SapphirApp.Data.Repository
             var result = context.UsersLists.ToList();
             return result;
         }
+
+        public User GetUser(string FullName)
+        {
+            return context.Users.Where(x => x.FullName == FullName).FirstOrDefault();
+        }
+        public void UpdateExistingUser(string FullName, User User)
+        {
+            using(var context = new SapphirApplicationContext())
+            {
+                var result = context.Users.Where(x=>x.FullName == FullName).FirstOrDefault();
+                if (result != null)
+                {
+                    result.LevelAccess = User.LevelAccess;
+                    result.PhoneNumber = User.PhoneNumber;
+                    result.Surname = User.Surname;
+                    result.FirstName = User.FirstName;
+                    result.SecondName = User.SecondName;
+                    result.Mail = User.Mail;
+                    context.Users.Update(result);
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

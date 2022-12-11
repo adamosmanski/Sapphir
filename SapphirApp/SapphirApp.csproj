@@ -43,7 +43,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Slack.NetStandard" Version="5.2.2" />
     <PackageReference Include="Syncfusion.SfKanban.WPF" Version="20.3.0.60" />
   </ItemGroup>
 

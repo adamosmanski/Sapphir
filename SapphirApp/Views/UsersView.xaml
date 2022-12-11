@@ -17,18 +17,18 @@
         </Grid.ColumnDefinitions>
         <StackPanel Background="Transparent" Orientation="Vertical">
             <Label Content="Imię: " FontSize="12" Margin="10" Foreground="White"/>
-            <TextBox Margin="10,0,10,0" FontSize="12" />
+            <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Drugie imię: " Margin="10" Foreground="White"/>
-            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.SecondName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Nazwisko: " FontSize="12" Margin="10" Foreground="White"/>
-            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.Surname, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Mail: " Margin="10" Foreground="White"/>
-            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.Mail, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Telefon: " FontSize="12" Margin="10" Foreground="White"/>
-            <TextBox Margin="10,0,10,0" FontSize="12"/>
+            <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.PhoneNumber, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Poziom dostępu: " Margin="10"  Foreground="White"/>
-            <TextBox Margin="10,0,10,0" FontSize="12"/>
-            <Button Style="{StaticResource LogButton}" Content="Zaktualizuj" FontSize="18"/>
+            <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.PermissionLevel, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Style="{StaticResource LogButton}" Content="Zaktualizuj" FontSize="18" Command="{Binding UpdateDataUser}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Background="Transparent">
             <ListBox          
