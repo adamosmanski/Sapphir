@@ -110,5 +110,25 @@ namespace SapphirApp.Data.Repository
                 }
             }
         }
+
+        public void InsertUsers(User User, string Login)
+        {
+            using (var context = new SapphirApplicationContext())
+            {
+                var newUser = new User
+                {
+                    ModUser = GetID(Login),
+                    ModDate = DateTime.Now,
+                    FirstName = User.FirstName,
+                    SecondName = User.SecondName,
+                    Surname = User.Surname,
+                    FullName = User.FullName,
+                    Mail = User.Mail,
+                    Password = User.Password,
+                    LevelAccess = User.LevelAccess,
+                    LastLoginDate = DateTime.Now
+                };
+            }
+        }
     }
 }

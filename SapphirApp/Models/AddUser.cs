@@ -17,5 +17,8 @@ namespace SapphirApp.Models
         public string LevelPermission { get; set; }
         public string Login { get; set; }
         public string FullName { get; set; }
+        public DateTime LastLoginTime { get; set; }
+        public int ModUser { get;set; }
+        public DateTime ModDate { get; set; }
     }
 }

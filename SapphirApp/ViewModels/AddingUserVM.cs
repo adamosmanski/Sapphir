@@ -1,4 +1,5 @@
-﻿using SapphirApp.Converter;
+﻿using Microsoft.IdentityModel.Tokens;
+using SapphirApp.Converter;
 using SapphirApp.Core;
 using SapphirApp.Data.Context;
 using SapphirApp.Data.Repository;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SapphirApp.ViewModels
@@ -50,8 +52,10 @@ namespace SapphirApp.ViewModels
         #region Methods
         private void Add(object obj)
         {
-            ;
+            Repository.InsertUsers(UserConverter.ConvertAddUser(addUser), LoggedUser.Login);
+            UsersList = UserListConverter.Converter(Repository.GetAll());
         }
+
         #endregion
     }
 }

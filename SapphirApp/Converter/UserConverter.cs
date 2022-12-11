@@ -32,5 +32,22 @@ namespace SapphirApp.Converter
             user.Mail = UserChanged.Mail;
             return user;
         }
+        public static User ConvertAddUser(AddUser User)
+        {
+            var user = new User();
+            user.LevelAccess = User.LevelPermission;
+            user.PhoneNumber = User.Phone;
+            user.Surname = User.Surname;
+            user.FirstName = User.Name;
+            user.SecondName = User.SecondName;
+            user.Mail = User.Email;
+            user.ModUser = User.ModUser;
+            user.Password = User.Password;
+            user.ModDate = User.ModDate;
+            user.FullName= User.FullName;
+            user.Login = User.Login;
+
+            return user;
+        }
     }
 }

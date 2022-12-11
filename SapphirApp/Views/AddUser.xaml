@@ -35,7 +35,7 @@
             <TextBox Margin="10,5,10,5" Text="{Binding addUser.Email}"/>
             <TextBlock Text="Poziom uprawnień: " Foreground="White" Margin="10,10,10,5"/>
             <TextBox Margin="10,5,10,5" Text="{Binding addUser.LevelPermission}"/>
-            <Button Style="{StaticResource LogButton}" Content="Dodaj Użytkownika"/>
+            <Button Style="{StaticResource LogButton}" Content="Dodaj Użytkownika" Command="{Binding AddUserToDTO}"/>
         </StackPanel>
     </Grid>
 </UserControl>
