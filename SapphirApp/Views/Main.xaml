@@ -137,18 +137,6 @@
                             <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/holiday_30px.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <!-- USTAWIENIA -->
-                    <MenuItem Header="Ustawienia"
-                          Template="{StaticResource MenuWithSub}">
-                        <MenuItem.Icon>
-                            <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/settings_30px.png"/>
-                        </MenuItem.Icon>
-                        <MenuItem Header="Zmiana hasła" Template="{StaticResource Item_Template}" Command="{Binding CmdChangePassword}">
-                            <MenuItem.Icon>
-                                <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </MenuItem>
                     <!-- UZYTKOWNICY -->
                     <MenuItem Header="Osoby"  Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource MenuWithSub}">
                         <MenuItem.Icon>
@@ -165,6 +153,19 @@
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
+                    <!-- USTAWIENIA -->
+                    <MenuItem Header="Ustawienia"
+                          Template="{StaticResource MenuWithSub}">
+                        <MenuItem.Icon>
+                            <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/settings_30px.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="Zmiana hasła" Template="{StaticResource Item_Template}" Command="{Binding CmdChangePassword}">
+                            <MenuItem.Icon>
+                                <Image Source="pack://application:,,,/Assets/Normal/password_key_30px.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+
                 </Menu>
             </StackPanel>
             
