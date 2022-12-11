@@ -64,6 +64,7 @@ namespace SapphirApp.ViewModels
             LevelAccess = LoggedUser.LevelAcces;
             CmdSubmitLogin = new RelayCommand(SubmitLogin, CanExecuteSubmitLogin);
             isVisible = _isVisible;
+           
         }
         #region Commands
         public ICommand CmdSubmitLogin { get; }

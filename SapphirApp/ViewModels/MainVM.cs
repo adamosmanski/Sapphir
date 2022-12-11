@@ -138,6 +138,7 @@ namespace SapphirApp.ViewModels
             AddUser = new RelayCommand(ShowAddUserGrid);
             SetPermission();
             ArchivesProject = ArchivesConverter.ConverterProject(archRepository.ArchivesProject());
+            
         }
         #region Command
         public ICommand AddUser { get; }

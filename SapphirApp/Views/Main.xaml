@@ -96,7 +96,7 @@
                                 <Image Source="pack://application:,,,/Assets/Normal/tasklist_30px.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Wyszukiwarka" Template="{StaticResource Item_Template}" Command="{Binding CmdOpenMyTask}">
+                        <MenuItem Header="Wyszukiwarka" Template="{StaticResource Item_Template}" >
                             <MenuItem.Icon>
                                 <Image Source="pack://application:,,,/Assets/Normal/search_30px.png"/>
                             </MenuItem.Icon>
@@ -150,7 +150,7 @@
                         </MenuItem>
                     </MenuItem>
                     <!-- UZYTKOWNICY -->
-                    <MenuItem Header="Użytkownicy"  Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource MenuWithSub}">
+                    <MenuItem Header="Osoby"  Visibility="{Binding Visibile.IsUsersVisible}" Template="{StaticResource MenuWithSub}">
                         <MenuItem.Icon>
                             <Image Source="pack://application:,,,/Assets/Normal/users_30px.png"/>
                         </MenuItem.Icon>

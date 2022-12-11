@@ -10,13 +10,13 @@ namespace SapphirApp.Models
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
         public string SecondName { get; set; }
         public string Surname { get; set; }
         public string Phone { get; set; }
         public string LevelPermission { get; set; }
         public string Login { get; set; }
         public string FullName { get; set; }
+        public string Password { get; set; }
         public DateTime LastLoginTime { get; set; }
         public int ModUser { get;set; }
         public DateTime ModDate { get; set; }

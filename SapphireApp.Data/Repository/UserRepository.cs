@@ -125,9 +125,13 @@ namespace SapphirApp.Data.Repository
                     FullName = User.FullName,
                     Mail = User.Mail,
                     Password = User.Password,
+                    Login = User.Login,
                     LevelAccess = User.LevelAccess,
-                    LastLoginDate = DateTime.Now
+                    LastLoginDate = DateTime.Now,
+                    PhoneNumber = User.PhoneNumber,
                 };
+                context.Users.Add(newUser);
+                context.SaveChanges();
             }
         }
     }
