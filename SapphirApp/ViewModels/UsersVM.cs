@@ -3,6 +3,7 @@ using SapphirApp.Core;
 using SapphirApp.Data.Context;
 using SapphirApp.Data.Repository;
 using SapphirApp.Models;
+using SapphirApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,8 +75,18 @@ namespace SapphirApp.ViewModels
         #region Methods
         private void EditSelectUser(object obj)
         {
-            WidthGrid = new GridLength(500);
-            UserChanged = UserConverter.GetInfoUserConverter(Repository.GetUser(User.FullName));
+            try
+            {
+                WidthGrid = new GridLength(500);
+                UserChanged = UserConverter.GetInfoUserConverter(Repository.GetUser(User.FullName));
+            }
+            catch (Exception ex)
+            {
+                NotifyPopUpVM viewModel = new NotifyPopUpVM("Zaznacz odpowiedniego użytkownika aby edytować!");
+                NotifyPopUp window = new NotifyPopUp();
+                window.DataContext = viewModel;
+                window.Show();
+            }
         }
         private void UpdateUser(object obj)
         {
