@@ -15,6 +15,7 @@
     <None Remove="Assets\Normal\archive_30px.png" />
     <None Remove="Assets\Normal\customer_30px.png" />
     <None Remove="Assets\Normal\dashboard_layout_30px.png" />
+    <None Remove="Assets\Normal\documents_30px.png" />
     <None Remove="Assets\Normal\edit_30px.png" />
     <None Remove="Assets\Normal\edit_profile_30px.png" />
     <None Remove="Assets\Normal\envelope_30px.png" />
@@ -69,6 +70,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\dashboard_layout_30px.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Normal\documents_30px.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Normal\edit_30px.png">

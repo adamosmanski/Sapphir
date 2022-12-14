@@ -157,7 +157,7 @@
                     <MenuItem Header="Dokumentacja"
                           Template="{StaticResource Menu}" Command="{Binding}">
                         <MenuItem.Icon>
-                            <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/squared_menu_30px.png"/>
+                            <Image Stretch="None" Source="pack://application:,,,/Assets/Normal/documents_30px.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <!-- USTAWIENIA -->
