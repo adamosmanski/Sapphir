@@ -21,6 +21,9 @@
     <Window.Visibility>
         <Binding Path="isVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
+    <Window.InputBindings>
+        <KeyBinding Key="Return" Command="{Binding CmdSubmitLogin}"/>
+    </Window.InputBindings>
     <Grid>
         <Border CornerRadius="0"                    
             BorderThickness="0"
@@ -81,6 +84,7 @@
                             Style="{StaticResource LogButton}"
                             Content="Zaloguj"                           
                             Command="{Binding CmdSubmitLogin}">
+                                                
                     </Button>
                 </StackPanel>
             </Grid>

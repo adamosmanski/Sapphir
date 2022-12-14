@@ -12,10 +12,19 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using bcrypt = BCrypt.Net;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using SapphirApp.Data.Models;
+using System.Text.RegularExpressions;
+using System.ComponentModel;
+using System.Net.Mail;
 
 namespace SapphirApp.ViewModels
 {
-    public class AddingUserVM : ObserveObject
+    public class AddingUserVM : ObserveObject, IDataErrorInfo
     {
         public AddingUserVM() 
         {
@@ -24,18 +33,120 @@ namespace SapphirApp.ViewModels
             AddUserToDTO = new RelayCommand(Add);
         }
         #region Variables
+        
         private SapphirApplicationContext context = new SapphirApplicationContext();
         private UserRepository Repository;
         private AddUser _addUser = new AddUser();
-        public AddUser addUser
+        public string Name
         {
-            get => _addUser;
+            get => _addUser.Name;
             set
             {
-                _addUser = value;
-                OnPropertyChanged(nameof(addUser));
+                _addUser.Name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
+        public string LevelPerm
+        {
+            get => _addUser.LevelPermission;
+            set
+            {
+                _addUser.LevelPermission = value;
+                OnPropertyChanged(nameof(LevelPerm));
+            }
+        }
+        public string fullName
+        {
+            get => _addUser.FullName;
+            set
+            {
+                _addUser.FullName = value;
+                OnPropertyChanged(nameof(fullName));
+            }
+        }
+        public string Login
+        {
+            get => _addUser.Login;
+            set
+            {
+                _addUser.Login = value;
+                OnPropertyChanged(nameof(Login));
+            }
+        }
+        public string Password
+        {
+            get => _addUser.Password;
+            set
+            {
+                _addUser.Password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+        public DateTime LastLoginDate
+        {
+            get => _addUser.LastLoginTime;
+            set
+            {
+                _addUser.LastLoginTime = value;
+                OnPropertyChanged(nameof(LastLoginDate));
+            }
+        }
+        public DateTime ModDate
+        {
+            get => _addUser.ModDate;
+            set
+            {
+                _addUser.ModDate = value;
+                OnPropertyChanged(nameof(ModDate));
+            }
+        }
+        public int ModUser
+        {
+            get => _addUser.ModUser;
+            set
+            {
+                _addUser.ModUser = value;
+                OnPropertyChanged(nameof(ModUser));
+            }
+
+        }
+        public string Surname
+        {
+            get=>_addUser.Surname;
+            set
+            {
+                _addUser.Surname = value;
+                OnPropertyChanged(nameof(Surname));
+            }
+        }
+        public string SecondName
+        {
+            get => _addUser.SecondName;
+            set
+            {
+                _addUser.SecondName = value;
+                OnPropertyChanged(nameof(SecondName));
+            }
+        }
+        public string Email
+        {
+            get => _addUser.Email;
+            set
+            {
+                _addUser.Email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+        public string Phone
+        {
+            get => _addUser.Phone;
+            set
+            {
+                _addUser.Phone = value;
+                OnPropertyChanged(nameof(Phone));
+            }
+        }
+
         private List<UsersLists> _usersList = new List<UsersLists>();
         public List<UsersLists> UsersList
         {
@@ -53,26 +164,27 @@ namespace SapphirApp.ViewModels
         #region Methods
         private void Add(object obj)
         {
-            addUser.FullName = FullName();
-            addUser.Login = LoginUser();
-            addUser.Password = bcrypt.BCrypt.HashPassword(Password());
-            addUser.LastLoginTime = DateTime.Now;
-            addUser.ModDate = DateTime.Now;
-            addUser.ModUser = LoggedUser.ID;
-            Repository.InsertUsers(UserConverter.ConvertAddUser(addUser), LoggedUser.Login);
-            UsersList = UserListConverter.Converter(Repository.GetAll());
+            //fullName = FullName();
+            //Login = LoginUser();
+            //Password = bcrypt.BCrypt.HashPassword(GeneratePassword());
+            //LastLoginDate = DateTime.Now;
+            //ModDate = DateTime.Now;
+            //ModUser = LoggedUser.ID;
+            //Repository.InsertUsers(UserConverter.ConvertAddUser(_addUser), LoggedUser.Login);
+            //UsersList = UserListConverter.Converter(Repository.GetAll());
+            MessageBox.Show(Error);
         }
         private string LoginUser()
         {
-            var result = $"{addUser.Name.Substring(0, 1)}{addUser.Surname}";
+            var result = $"{Name.Substring(0, 1)}{Surname}";
             return result;
         }
         private string FullName()
         {
-            var result = $"{addUser.Name} {addUser.SecondName} {addUser.Surname}";
+            var result = $"{Name} {SecondName} {Surname}";
             return result;
         }
-        private string Password()
+        private string GeneratePassword()
         {
             const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()";
             const int passwordLength = 16;
@@ -117,6 +229,46 @@ namespace SapphirApp.ViewModels
                 }
             }
             return password.ToString();
+        }
+        public string Error => throw new NotImplementedException();
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+                if (columnName == nameof(LevelPerm))
+                {
+                    var pattern = "^[0-9]*$";
+                    Regex regex = new Regex(pattern);  
+                    if (string.IsNullOrEmpty(_addUser.LevelPermission) || !regex.IsMatch(_addUser.LevelPermission))
+                    {
+                        result = "To pole musi zawierać cyfyr od 1-10.";
+                    }
+                }
+                if(columnName == nameof(Email)) 
+                { 
+                    if(string.IsNullOrWhiteSpace(_addUser.Email) || !IsValid(_addUser.Email))
+                    {
+                        result = "Nie prawidłowy format adresu email.";
+                    }
+                }
+                return result;
+            }
+        }
+
+        public bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+                
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
         #endregion
     }

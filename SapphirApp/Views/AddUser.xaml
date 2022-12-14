@@ -24,17 +24,61 @@
         </StackPanel>
         <StackPanel Grid.Column="0">
             <TextBlock Text="Imię: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Name}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Name}"/>
             <TextBlock Text="Drugie imię: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,10,5" Text="{Binding addUser.SecondName}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding SecondName}"/>
             <TextBlock Text="Naziwsko: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Surname}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Surname}"/>
             <TextBlock Text="Numer telefonu: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Phone}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Phone}"/>
             <TextBlock Text="Mail: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,10,5" Text="{Binding addUser.Email}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="true">
+                                        <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                            ToolTip="Nie prawidłowy format adresu email.">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                            </TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                            <Border BorderBrush="Red" BorderThickness="1" />
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
             <TextBlock Text="Poziom uprawnień: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,10,5" Text="{Binding addUser.LevelPermission}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding LevelPerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="true">
+                                        <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                            ToolTip="To pole musi zawierać cyfyr od 1-10.">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                            </TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                            <Border BorderBrush="Red" BorderThickness="1" />
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+                    
+
             <Button Style="{StaticResource LogButton}" Content="Dodaj Użytkownika" Command="{Binding AddUserToDTO}"/>
         </StackPanel>
     </Grid>
