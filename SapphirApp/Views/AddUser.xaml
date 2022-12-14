@@ -24,13 +24,97 @@
         </StackPanel>
         <StackPanel Grid.Column="0">
             <TextBlock Text="Imię: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,30,5" Text="{Binding Name}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="true">
+                                        <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                            ToolTip="To pole zawiera nie prawidłowe znaki!">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                            </TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                            <Border BorderBrush="Red" BorderThickness="1" />
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
             <TextBlock Text="Drugie imię: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,30,5" Text="{Binding SecondName}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding SecondName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="true">
+                                        <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                            ToolTip="To pole zawiera nie prawidłowe znaki!">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                            </TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                            <Border BorderBrush="Red" BorderThickness="1" />
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
             <TextBlock Text="Naziwsko: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,30,5" Text="{Binding Surname}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Surname,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="true">
+                                        <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                            ToolTip="To pole zawiera nie prawidłowe znaki!">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                            </TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                            <Border BorderBrush="Red" BorderThickness="1" />
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
             <TextBlock Text="Numer telefonu: " Foreground="White" Margin="10,10,10,5"/>
-            <TextBox Margin="10,5,30,5" Text="{Binding Phone}"/>
+            <TextBox Margin="10,5,30,5" Text="{Binding Phone,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}">
+                <TextBox.Style>
+                    <Style>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="true">
+                                        <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                            ToolTip="To pole może zawierać tylko liczby!">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                            </TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                            <Border BorderBrush="Red" BorderThickness="1" />
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
             <TextBlock Text="Mail: " Foreground="White" Margin="10,10,10,5"/>
             <TextBox Margin="10,5,30,5" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                 <TextBox.Style>

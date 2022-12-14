@@ -236,27 +236,60 @@ namespace SapphirApp.ViewModels
         {
             get
             {
+                var patternNumber = "^[0-9]*$";
+                Regex regex = new Regex(patternNumber);
                 string result = null;
-                if (columnName == nameof(LevelPerm))
+                if (columnName == nameof(LevelPerm) || columnName == nameof(Phone))
                 {
-                    var pattern = "^[0-9]*$";
-                    Regex regex = new Regex(pattern);  
+ 
                     if (string.IsNullOrEmpty(_addUser.LevelPermission) || !regex.IsMatch(_addUser.LevelPermission))
                     {
                         result = "To pole musi zawierać cyfyr od 1-10.";
                     }
+                    if (string.IsNullOrEmpty(_addUser.Phone) || !regex.IsMatch(_addUser.Phone))
+                    {
+                        result = "To pole musi zawierać cyfyr od 1-10.";
+                    }
                 }
-                if(columnName == nameof(Email)) 
+                if (columnName == nameof(Phone))
+                {
+
+                    if (string.IsNullOrEmpty(_addUser.Phone) || !regex.IsMatch(_addUser.Phone) || _addUser.Phone.Length > 10)
+                    {
+                        result = "To pole musi zawierać cyfyr od 1-9.";
+                    }
+                }
+                if (columnName == nameof(Email)) 
                 { 
                     if(string.IsNullOrWhiteSpace(_addUser.Email) || !IsValid(_addUser.Email))
                     {
                         result = "Nie prawidłowy format adresu email.";
                     }
                 }
+                if(columnName == nameof(Name) || columnName == nameof(SecondName) || columnName == nameof(Surname))
+                {
+                    if(string.IsNullOrEmpty(_addUser.Name) || regex.IsMatch(_addUser.Name))
+                    {
+                        result = "To pole zawiera nie dozwolone znaki.";
+                    }
+                }
+                if (columnName == nameof(SecondName))
+                {
+                    if (string.IsNullOrEmpty(_addUser.SecondName) || regex.IsMatch(_addUser.SecondName))
+                    {
+                        result = "To pole zawiera nie dozwolone znaki.";
+                    }
+                }
+                if (columnName == nameof(Surname))
+                {
+                    if (string.IsNullOrEmpty(_addUser.Surname) || regex.IsMatch(_addUser.Surname))
+                    {
+                        result = "To pole zawiera nie dozwolone znaki.";
+                    }
+                }
                 return result;
             }
         }
-
         public bool IsValid(string emailaddress)
         {
             try
