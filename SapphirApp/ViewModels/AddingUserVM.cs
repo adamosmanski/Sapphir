@@ -164,15 +164,15 @@ namespace SapphirApp.ViewModels
         #region Methods
         private void Add(object obj)
         {
-            //fullName = FullName();
-            //Login = LoginUser();
-            //Password = bcrypt.BCrypt.HashPassword(GeneratePassword());
-            //LastLoginDate = DateTime.Now;
-            //ModDate = DateTime.Now;
-            //ModUser = LoggedUser.ID;
-            //Repository.InsertUsers(UserConverter.ConvertAddUser(_addUser), LoggedUser.Login);
-            //UsersList = UserListConverter.Converter(Repository.GetAll());
-            MessageBox.Show(Error);
+            fullName = FullName();
+            Login = LoginUser();
+            Password = bcrypt.BCrypt.HashPassword(GeneratePassword());
+            LastLoginDate = DateTime.Now;
+            ModDate = DateTime.Now;
+            ModUser = LoggedUser.ID;
+            Repository.InsertUsers(UserConverter.ConvertAddUser(_addUser), LoggedUser.Login);
+            UsersList = UserListConverter.Converter(Repository.GetAll());
+            //MessageBox.Show(Error);
         }
         private string LoginUser()
         {
@@ -246,17 +246,12 @@ namespace SapphirApp.ViewModels
                     {
                         result = "To pole musi zawierać cyfyr od 1-10.";
                     }
-                    if (string.IsNullOrEmpty(_addUser.Phone) || !regex.IsMatch(_addUser.Phone))
-                    {
-                        result = "To pole musi zawierać cyfyr od 1-10.";
-                    }
                 }
                 if (columnName == nameof(Phone))
                 {
-
                     if (string.IsNullOrEmpty(_addUser.Phone) || !regex.IsMatch(_addUser.Phone) || _addUser.Phone.Length > 10)
                     {
-                        result = "To pole musi zawierać cyfyr od 1-9.";
+                        result = "To pole musi zawierać do 9 cyfr.";
                     }
                 }
                 if (columnName == nameof(Email)) 

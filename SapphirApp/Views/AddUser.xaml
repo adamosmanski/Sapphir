@@ -101,7 +101,7 @@
                                 <ControlTemplate>
                                     <DockPanel LastChildFill="true">
                                         <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
-                            ToolTip="To pole może zawierać tylko liczby!">
+                            ToolTip="To pole musi zawierać do 9 cyfr.">
                                             <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
                                             </TextBlock>
                                         </Border>
