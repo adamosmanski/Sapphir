@@ -134,5 +134,17 @@ namespace SapphirApp.Data.Repository
                 context.SaveChanges();
             }
         }
+        public bool IsNewUserExist(string Mail, string fullName)
+        {
+            var UserExist = context.Users.Where(x => x.FullName == fullName).SingleOrDefault(x => x.Mail == Mail);
+            if (UserExist != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

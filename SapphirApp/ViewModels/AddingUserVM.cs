@@ -20,6 +20,8 @@ using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Net.Mail;
 using System.Net;
+using SapphirApp.Views;
+using System.Windows.Controls;
 
 namespace SapphirApp.ViewModels
 {
@@ -35,7 +37,7 @@ namespace SapphirApp.ViewModels
         
         private SapphirApplicationContext context = new SapphirApplicationContext();
         private UserRepository Repository;
-        private AddUser _addUser = new AddUser();
+        private Models.AddUser _addUser = new Models.AddUser();
         public string Name
         {
             get => _addUser.Name;
@@ -163,16 +165,28 @@ namespace SapphirApp.ViewModels
         #region Methods
         private void Add(object obj)
         {
+
             fullName = FullName();
             Login = LoginUser();
-            string decryptedPass = GeneratePassword();
-            Password = bcrypt.BCrypt.HashPassword(decryptedPass);
-            LastLoginDate = DateTime.Now;
-            ModDate = DateTime.Now;
-            ModUser = LoggedUser.ID;
-            Repository.InsertUsers(UserConverter.ConvertAddUser(_addUser), LoggedUser.Login);
-            UsersList = UserListConverter.Converter(Repository.GetAll());
-            SendMail(Email, decryptedPass);
+            if(Repository.IsNewUserExist(Email, fullName ) == false)
+            {
+                string decryptedPass = GeneratePassword();
+                Password = bcrypt.BCrypt.HashPassword(decryptedPass);
+                LastLoginDate = DateTime.Now;
+                ModDate = DateTime.Now;
+                ModUser = LoggedUser.ID;
+                Repository.InsertUsers(UserConverter.ConvertAddUser(_addUser), LoggedUser.Login);
+                UsersList = UserListConverter.Converter(Repository.GetAll());
+                SendMail(Email, decryptedPass, fullName);
+            }
+            else
+            {
+                NotifyPopUp window = new NotifyPopUp();
+                NotifyPopUpVM dataContext = new NotifyPopUpVM($"Użytkownik istnieje. Zresetuj hasło");
+                window.DataContext = dataContext;
+                window.Show();
+            }
+            
         }
         private string LoginUser()
         {
@@ -249,7 +263,7 @@ namespace SapphirApp.ViewModels
                 }
                 if (columnName == nameof(Phone))
                 {
-                    if (string.IsNullOrEmpty(_addUser.Phone) || !regex.IsMatch(_addUser.Phone) || _addUser.Phone.Length > 10)
+                    if (string.IsNullOrEmpty(_addUser.Phone) || !regex.IsMatch(_addUser.Phone) && (_addUser.Phone.Length > 10 && _addUser.Phone.Length < 8))
                     {
                         result = "To pole musi zawierać do 9 cyfr.";
                     }
@@ -291,15 +305,12 @@ namespace SapphirApp.ViewModels
                 return false;
             }
         }
-
-
-        public void SendMail(string emailTo, string passwordTo)
+        public void SendMail(string emailTo, string passwordTo, string Name)
         {
-            var password = "Hpzdajhqrp144!";
-            var decryptedPass = HashPassword(password);
+            var password = "Quku6n8w144!";
             var fromAddress = "adamosmanski70@gmail.com";
-            var subject = "Twoje hasło";
-            var body = $"<div style=\"background-color: white; border-style: solid; border-color: blue;border-radius: 15px;\">\r\n<p style=\"margin: 3vh\">Poniżej znajduję się Twoje hasło do konta:</p>\r\n  <p style=\"margin: 3vh\">\r\n    {passwordTo}\r\n  </p>\r\n</div>";
+            var subject = "Dostęp";
+            var body = $"<div style=\"background-color: white; border-style: solid; border-color: blue;border-radius: 15px;\">\r\n<p style=\"margin: 3vh\">Cześć {Name}! <br>Poniżej znajduję się Twoje hasło do konta:</p>\r\n  <p style=\"margin: 3vh\">\r\n    {passwordTo}\r\n  </p>\r\n</div>";
            
             SmtpClient smtp = new SmtpClient
             {
@@ -307,54 +318,22 @@ namespace SapphirApp.ViewModels
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential(fromAddress, decryptedPass),
+                Credentials = new NetworkCredential(fromAddress, password),
                 Timeout = 20000
             };
-
-            // Tworzenie obiektu wiadomości
             MailMessage message = new MailMessage(fromAddress, emailTo, subject, body);
-            // Ustawienie formatu wiadomości na HTML
             message.IsBodyHtml = true;
             try 
             {
-                // Wysyłka wiadomości
                 smtp.Send(message);
             }
             catch(Exception e)
             {
-                MessageBox.Show($"nie mozna nadac wiadomosci + {e.ToString()}");
+                NotifyPopUp window = new NotifyPopUp();
+                NotifyPopUpVM dataContext = new NotifyPopUpVM($"Dostęp zabroniony!\nPrzekaż poniższe hasło:\n{passwordTo} ");
+                window.DataContext = dataContext;
+                window.Show();
             }
-        }
-
-        public string HashPassword(string password)
-        {
-            int key = -7;
-            string normalPassword = "";
-            foreach (char c in password)
-            {
-                if (char.IsLetter(c))
-                {
-                    if (char.IsUpper(c))
-                    {
-                        int cValue = (int)c - key;
-                        if (cValue < 65)
-                            cValue += 26;
-                        normalPassword += (char)cValue;
-                    }
-                    else
-                    {
-                        int cValue = (int)c - key;
-                        if (cValue < 97)
-                            cValue += 26;
-                        normalPassword += (char)cValue;
-                    }
-                }
-                else
-                {
-                    normalPassword += c;
-                }
-            }
-            return normalPassword;
         }
         #endregion
     }

@@ -20,7 +20,8 @@
                       AutoGenerateColumns="True"
                       IsReadOnly="True"
                       Background="Transparent"
-                      VerticalScrollBarVisibility="Auto"/>
+                      VerticalScrollBarVisibility="Auto"
+                      CanUserSortColumns="False"/>
         </StackPanel>
         <StackPanel Grid.Column="0">
             <TextBlock Text="Imię: " Foreground="White" Margin="10,10,10,5"/>
