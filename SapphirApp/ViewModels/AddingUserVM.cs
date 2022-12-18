@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using bcrypt = BCrypt.Net;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
@@ -21,6 +19,7 @@ using SapphirApp.Data.Models;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Net.Mail;
+using System.Net;
 
 namespace SapphirApp.ViewModels
 {
@@ -166,13 +165,14 @@ namespace SapphirApp.ViewModels
         {
             fullName = FullName();
             Login = LoginUser();
-            Password = bcrypt.BCrypt.HashPassword(GeneratePassword());
+            string decryptedPass = GeneratePassword();
+            Password = bcrypt.BCrypt.HashPassword(decryptedPass);
             LastLoginDate = DateTime.Now;
             ModDate = DateTime.Now;
             ModUser = LoggedUser.ID;
             Repository.InsertUsers(UserConverter.ConvertAddUser(_addUser), LoggedUser.Login);
             UsersList = UserListConverter.Converter(Repository.GetAll());
-            //MessageBox.Show(Error);
+            SendMail(Email, decryptedPass);
         }
         private string LoginUser()
         {
@@ -239,7 +239,7 @@ namespace SapphirApp.ViewModels
                 var patternNumber = "^[0-9]*$";
                 Regex regex = new Regex(patternNumber);
                 string result = null;
-                if (columnName == nameof(LevelPerm) || columnName == nameof(Phone))
+                if (columnName == nameof(LevelPerm))
                 {
  
                     if (string.IsNullOrEmpty(_addUser.LevelPermission) || !regex.IsMatch(_addUser.LevelPermission))
@@ -261,16 +261,9 @@ namespace SapphirApp.ViewModels
                         result = "Nie prawidłowy format adresu email.";
                     }
                 }
-                if(columnName == nameof(Name) || columnName == nameof(SecondName) || columnName == nameof(Surname))
+                if(columnName == nameof(Name) || columnName == nameof(Surname))
                 {
                     if(string.IsNullOrEmpty(_addUser.Name) || regex.IsMatch(_addUser.Name))
-                    {
-                        result = "To pole zawiera nie dozwolone znaki.";
-                    }
-                }
-                if (columnName == nameof(SecondName))
-                {
-                    if (string.IsNullOrEmpty(_addUser.SecondName) || regex.IsMatch(_addUser.SecondName))
                     {
                         result = "To pole zawiera nie dozwolone znaki.";
                     }
@@ -297,6 +290,71 @@ namespace SapphirApp.ViewModels
             {
                 return false;
             }
+        }
+
+
+        public void SendMail(string emailTo, string passwordTo)
+        {
+            var password = "Hpzdajhqrp144!";
+            var decryptedPass = HashPassword(password);
+            var fromAddress = "adamosmanski70@gmail.com";
+            var subject = "Twoje hasło";
+            var body = $"<div style=\"background-color: white; border-style: solid; border-color: blue;border-radius: 15px;\">\r\n<p style=\"margin: 3vh\">Poniżej znajduję się Twoje hasło do konta:</p>\r\n  <p style=\"margin: 3vh\">\r\n    {passwordTo}\r\n  </p>\r\n</div>";
+           
+            SmtpClient smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential(fromAddress, decryptedPass),
+                Timeout = 20000
+            };
+
+            // Tworzenie obiektu wiadomości
+            MailMessage message = new MailMessage(fromAddress, emailTo, subject, body);
+            // Ustawienie formatu wiadomości na HTML
+            message.IsBodyHtml = true;
+            try 
+            {
+                // Wysyłka wiadomości
+                smtp.Send(message);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"nie mozna nadac wiadomosci + {e.ToString()}");
+            }
+        }
+
+        public string HashPassword(string password)
+        {
+            int key = -7;
+            string normalPassword = "";
+            foreach (char c in password)
+            {
+                if (char.IsLetter(c))
+                {
+                    if (char.IsUpper(c))
+                    {
+                        int cValue = (int)c - key;
+                        if (cValue < 65)
+                            cValue += 26;
+                        normalPassword += (char)cValue;
+                    }
+                    else
+                    {
+                        int cValue = (int)c - key;
+                        if (cValue < 97)
+                            cValue += 26;
+                        normalPassword += (char)cValue;
+                    }
+                }
+                else
+                {
+                    normalPassword += c;
+                }
+            }
+            return normalPassword;
         }
         #endregion
     }
