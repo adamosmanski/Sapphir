@@ -30,6 +30,7 @@ namespace SapphirApp.Converter
             user.FirstName = UserChanged.Name;
             user.SecondName = UserChanged.SecondName;
             user.Mail = UserChanged.Mail;
+            user.Password = UserChanged.Password;
             return user;
         }
         public static User ConvertAddUser(AddUser User)

@@ -1,4 +1,5 @@
-﻿using SapphirApp.Converter;
+﻿using BCrypt.Net;
+using SapphirApp.Converter;
 using SapphirApp.Core;
 using SapphirApp.Data.Context;
 using SapphirApp.Data.Repository;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using bcrypt = BCrypt.Net;
 
 namespace SapphirApp.ViewModels
 {
@@ -63,6 +65,8 @@ namespace SapphirApp.ViewModels
         #region Commmands
         public ICommand EditUser { get; }
         public ICommand UpdateDataUser { get; }
+        public ICommand DeleteUser { get; }
+        public ICommand ChangePassword { get; }
         #endregion
         public UsersVM()
         {
@@ -71,6 +75,8 @@ namespace SapphirApp.ViewModels
             UsersLists = UserListConverter.Converter(Repository.GetAll());
             EditUser = new RelayCommand(EditSelectUser);
             UpdateDataUser = new RelayCommand(UpdateUser);
+            DeleteUser = new RelayCommand(DeleteSelectedUser);
+            ChangePassword = new RelayCommand(ChangePasswordSelectedUser);
         }
         #region Methods
         private void EditSelectUser(object obj)
@@ -90,9 +96,47 @@ namespace SapphirApp.ViewModels
         }
         private void UpdateUser(object obj)
         {
-            var fullName = User.FullName;
             Repository.UpdateExistingUser(User.FullName, UserConverter.ConvertChangedUserToDTO(UserChanged));
             UsersLists = UserListConverter.Converter(Repository.GetAll());
+        }
+
+        private void DeleteSelectedUser(object obj)
+        {
+            try
+            {
+                Repository.DeleteUsers(User.FullName);
+                UsersLists = UserListConverter.Converter(Repository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                NotifyPopUpVM viewModel = new NotifyPopUpVM("Zaznacz odpowiedniego użytkownika aby skasować!");
+                NotifyPopUp window = new NotifyPopUp();
+                window.DataContext = viewModel;
+                window.Show();
+            }
+        }
+        private void ChangePasswordSelectedUser(object obj) 
+        {
+            var uniquePassword = UniquePassword.GeneratePassword();
+            var encryptedPassword = bcrypt.BCrypt.HashPassword(uniquePassword);
+            try
+            {
+                NotifyPopUpVM viewModel = new NotifyPopUpVM($"Przekaż hasło użytkownikowi:\n{uniquePassword}");
+                NotifyPopUp window = new NotifyPopUp();
+                window.DataContext = viewModel;
+                window.Show();
+
+                UserChanged.Password = encryptedPassword;
+                Repository.UpdateExistingUser(User.FullName, UserConverter.ConvertChangedUserToDTO(UserChanged));
+                UsersLists = UserListConverter.Converter(Repository.GetAll());
+            }
+            catch(Exception ex)
+            {
+                NotifyPopUpVM viewModel = new NotifyPopUpVM("Nie udało się zaktualizować hasła.");
+                NotifyPopUp window = new NotifyPopUp();
+                window.DataContext = viewModel;
+                window.Show();
+            }
         }
         #endregion
     }

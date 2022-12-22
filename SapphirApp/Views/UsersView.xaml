@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="DataColumn" Width="{Binding WidthGrid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ColumnDefinition Name="DataColumn" Width="{Binding WidthGrid, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Background="Transparent" Orientation="Vertical">
@@ -29,6 +29,38 @@
             <Label Content="Poziom dostępu: " Margin="10"  Foreground="White"/>
             <TextBox Margin="10,0,10,0" FontSize="12" Text="{Binding UserChanged.PermissionLevel, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             <Button Style="{StaticResource LogButton}" Content="Zaktualizuj" FontSize="18" Command="{Binding UpdateDataUser}"/>
+            <Button Content="Wygeneruj nowe hasło" FontSize="18" Command="{Binding ChangePassword}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="FontFamily" Value="Montserrat"/>
+                        <Setter Property="Margin" Value="0,20,0,0"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Width" Value="210"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="210" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                
+            </Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Background="Transparent">
             <ListBox          
@@ -66,11 +98,18 @@
                                 <Label Content="{Binding FullName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Foreground="White"/>
                                 <Label Content="Wybierz a następnie kliknij przycisk po prawej stronie aby edytować." FontSize="9" FontWeight="Bold" Foreground="White"/>
                             </StackPanel>
-                            <Button Margin="0,0,20,0"
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Margin="0,0,20,0"
                                 Style="{StaticResource ArchiveProject}"
                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.EditUser}" CommandParameter="{Binding User.FullName}">
-                                <Image Source="pack://application:,,,/Assets/Normal/edit_30px.png"/>
-                            </Button>
+                                    <Image Source="pack://application:,,,/Assets/Normal/edit_30px.png"/>
+                                </Button>
+                                <Button Margin="0,0,20,0"
+                                Style="{StaticResource ArchiveProject}"
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.DeleteUser}" CommandParameter="{Binding User.FullName}">
+                                    <Image Source="pack://application:,,,/Assets/Normal/delete_240px.png"/>
+                                </Button>
+                            </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

@@ -104,6 +104,7 @@ namespace SapphirApp.Data.Repository
                     result.FirstName = User.FirstName;
                     result.SecondName = User.SecondName;
                     result.Mail = User.Mail;
+                    result.Password = User.Password;
                     result.FullName = $"{User.FirstName} {User.SecondName} {User.Surname}";
                     context.Users.Update(result);
                     context.SaveChanges();
@@ -144,6 +145,15 @@ namespace SapphirApp.Data.Repository
             else
             {
                 return true;
+            }
+        }
+        public void DeleteUsers(string FullName)
+        {
+            var user = context.Users.Where(x => x.FullName == FullName).SingleOrDefault();
+            if (user != null)
+            {
+                context.Users.Remove(user);
+                context.SaveChanges();
             }
         }
     }
