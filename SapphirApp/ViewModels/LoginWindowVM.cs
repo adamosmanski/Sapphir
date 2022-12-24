@@ -16,8 +16,7 @@ namespace SapphirApp.ViewModels
     public class LoginWindowVM : ObserveObject
     {
         #region Variables
-        UserRepository UserRepository;
-        SapphirApplicationContext context = new SapphirApplicationContext();
+
         private bool _isVisible = true;
         public bool isVisible
         {
@@ -55,6 +54,10 @@ namespace SapphirApp.ViewModels
                 OnPropertyChanged(nameof(LevelAccess));
             }
         }
+
+        UserRepository UserRepository;
+        SapphirApplicationContext context = new SapphirApplicationContext();
+
         #endregion;
         public LoginWindowVM()
         {

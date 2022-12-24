@@ -8,8 +8,8 @@
         xmlns:converter ="clr-namespace:SapphirApp.Converter"
         mc:Ignorable="d"
         Title="Safira" Height="800" Width="1400"
-        MinHeight="800" MinWidth="1400" Closing="Window_Closing"
-        >
+        MinHeight="800" MinWidth="1400" Closing="Window_Closing">
+    
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:ChatVM}">
             <local:ChatView/>
@@ -29,6 +29,7 @@
         <converter:ButtonVisibilityConverter x:Key="ButtonVisibilityConverter"/>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
     </Window.Resources>
+    
     <Window.DataContext>
         <vm:MainVM/>
     </Window.DataContext>    
@@ -172,7 +173,6 @@
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
-
                 </Menu>
             </StackPanel>
             
