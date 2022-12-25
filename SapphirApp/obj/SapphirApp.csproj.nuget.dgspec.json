@@ -74,7 +74,7 @@
             },
             "Syncfusion.SfKanban.WPF": {
               "target": "Package",
-              "version": "[20.3.0.61, )"
+              "version": "[20.4.0.38, )"
             }
           },
           "imports": [

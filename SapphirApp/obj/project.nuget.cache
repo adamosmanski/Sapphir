@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UKHjUuqnAVbyGQZoOW7+cTVOQJlIleT5sJillDHP3zc00NyJDJ+QxTfRfRxLTCpoB845WXzhF45RW8zqMfjwKg==",
+  "dgSpecHash": "GqvCRdpjHUgm+YqU2HLu7BQzlxzTsmlOVI0Vpnqq1qsLLQasrZjDDeBQGqglUN971r7HXKtE+v9alS271+cHOQ==",
   "success": true,
   "projectFilePath": "D:\\Projekty\\Sapphir\\Sapphir\\SapphirApp\\SapphirApp.csproj",
   "expectedPackageFiles": [
@@ -55,8 +55,8 @@
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\adamo\\.nuget\\packages\\syncfusion.licensing\\20.3.0.61\\syncfusion.licensing.20.3.0.61.nupkg.sha512",
-    "C:\\Users\\adamo\\.nuget\\packages\\syncfusion.sfkanban.wpf\\20.3.0.61\\syncfusion.sfkanban.wpf.20.3.0.61.nupkg.sha512",
+    "C:\\Users\\adamo\\.nuget\\packages\\syncfusion.licensing\\20.4.0.38\\syncfusion.licensing.20.4.0.38.nupkg.sha512",
+    "C:\\Users\\adamo\\.nuget\\packages\\syncfusion.sfkanban.wpf\\20.4.0.38\\syncfusion.sfkanban.wpf.20.4.0.38.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\system.codedom\\4.7.0\\system.codedom.4.7.0.nupkg.sha512",
     "C:\\Users\\adamo\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",

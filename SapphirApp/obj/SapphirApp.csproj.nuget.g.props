@@ -19,7 +19,7 @@
     <Import Project="$(NuGetPackageRoot)entityframework\6.4.4\buildTransitive\netcoreapp3.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)entityframework\6.4.4\buildTransitive\netcoreapp3.0\EntityFramework.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgSyncfusion_SfKanban_WPF Condition=" '$(PkgSyncfusion_SfKanban_WPF)' == '' ">C:\Users\adamo\.nuget\packages\syncfusion.sfkanban.wpf\20.3.0.61</PkgSyncfusion_SfKanban_WPF>
+    <PkgSyncfusion_SfKanban_WPF Condition=" '$(PkgSyncfusion_SfKanban_WPF)' == '' ">C:\Users\adamo\.nuget\packages\syncfusion.sfkanban.wpf\20.4.0.38</PkgSyncfusion_SfKanban_WPF>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\adamo\.nuget\packages\microsoft.entityframeworkcore.tools\7.0.1</PkgMicrosoft_EntityFrameworkCore_Tools>
     <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">C:\Users\adamo\.nuget\packages\entityframework\6.4.4</PkgEntityFramework>
   </PropertyGroup>

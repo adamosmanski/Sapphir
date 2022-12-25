@@ -324,10 +324,20 @@ namespace SapphirApp.ViewModels
         }
         private void AddCommentsToTask(object obj)
         {
-            message.ShortTaskName = SelectedTask.ShortName;
-            message.UserName = LoggedUser.Login;
-            message.Time = DateTime.Now;            
-            commentsRepository.AddComment(DtoTasksToModel.ConverterComments(message));
+            try
+            {
+                message.ShortTaskName = SelectedTask.ShortName;
+                message.UserName = LoggedUser.Login;
+                message.Time = DateTime.Now;
+                commentsRepository.AddComment(DtoTasksToModel.ConverterComments(message));
+            }
+            catch (Exception e)
+            {
+                NotifyPopUp window = new NotifyPopUp();
+                window.Show();
+                window.DataContext = new NotifyPopUpVM("Nie można dodać pustego komentarza!");
+            }
+
             GetAllComments();
         }
         private void ShowGridWithTask(object obj)

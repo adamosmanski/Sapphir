@@ -198,19 +198,27 @@ namespace SapphirApp.ViewModels
         }
         private void OpenKanbanBoard(object obj)
         {
-            SelectedProject.Name = SelectedBoard.ShortNumber;
-            SelectedProject.ID = SelectedBoard.Id;
-            if (SelectedProject.ID == SelectedBoard.Id)
+            try
             {
-                VisibilityListBox = false;
-                CurrentVM = new KanbanBoardVM();
-            }
-            else if (SelectedProject.ID < 0)
+                SelectedProject.Name = SelectedBoard.ShortNumber;
+                SelectedProject.ID = SelectedBoard.Id;
+                if (SelectedProject.ID == SelectedBoard.Id)
+                {
+                    VisibilityListBox = false;
+                    CurrentVM = new KanbanBoardVM();
+                }
+                else if (SelectedProject.ID < 0)
+                {
+                    NotifyPopUp window = new NotifyPopUp();
+                    window.Show();
+                    window.DataContext = new NotifyPopUpVM("Nie odnaleziono projektu");
+                }
+            }catch(Exception ex)
             {
                 NotifyPopUp window = new NotifyPopUp();
                 window.Show();
-                window.DataContext = new NotifyPopUpVM("Nie odnaleziono projektu");
-            }            
+                window.DataContext = new NotifyPopUpVM("Wystąpił nie oczekiwany błąd.\nProsimy o kontakt z administratorem!");
+            }
         }
         private void ArchiveBoard(object obj)
         {
