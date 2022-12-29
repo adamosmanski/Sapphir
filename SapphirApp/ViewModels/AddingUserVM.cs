@@ -265,7 +265,7 @@ namespace SapphirApp.ViewModels
             var password = "Quku6n8w144!";
             var fromAddress = "adamosmanski70@gmail.com";
             var subject = "Dostęp";
-            var body = $"<div style=\"background-color: white; border-style: solid; border-color: blue;border-radius: 15px;\">\r\n<p style=\"margin: 3vh\">Cześć {Name}! <br>Poniżej znajduję się Twoje hasło do konta:</p>\r\n  <p style=\"margin: 3vh\">\r\n    {passwordTo}\r\n  </p>\r\n</div>";
+            var body = $"<div style=\"background-color: white; border-style: solid; border-color: blue;border-radius: 15px;\">\r\n<p style=\"margin: 3vh\">Cześć {Name}! <br>Poniżej znajduję się Twoje hasło do konta:</p>\r\n  <p style=\"margin: 3vh\">\r\n{passwordTo}\r\n</p>\r\n</div>";
            
             SmtpClient smtp = new SmtpClient
             {
@@ -285,7 +285,7 @@ namespace SapphirApp.ViewModels
             catch(Exception e)
             {
                 NotifyPopUp window = new NotifyPopUp();
-                NotifyPopUpVM dataContext = new NotifyPopUpVM($"Dostęp zabroniony!\nPrzekaż poniższe hasło:\n{passwordTo} ");
+                NotifyPopUpVM dataContext = new NotifyPopUpVM($"Nie udało się wysłać maila!\nPrzekaż poniższe hasło:\n{passwordTo} ");
                 window.DataContext = dataContext;
                 window.Show();
             }
